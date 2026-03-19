@@ -1,3 +1,3 @@
-import * as THREE from "three"
+import Game from "./Game/Game"
 
-console.log(THREE)
+const game = new Game(document.querySelector("canvas.webgl"))
