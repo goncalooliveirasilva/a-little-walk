@@ -27,10 +27,6 @@ export default class Helpers {
       this.group.remove(this.grid)
       this.grid.dispose()
     }
-    if (this.subGrid) {
-      this.group.remove(this.subGrid)
-      this.subGrid.dispose()
-    }
 
     const { gridSize, cellSize } = this.params
 
@@ -42,11 +38,6 @@ export default class Helpers {
       0x2a3a55,
     )
     this.group.add(this.grid)
-
-    // Sub-grid
-    this.subGrid = new THREE.GridHelper(gridSize, gridSize, 0x1a2030, 0x1a2030)
-    this.subGrid.position.y = -0.01
-    this.group.add(this.subGrid)
   }
 
   setAxes() {
@@ -86,7 +77,6 @@ export default class Helpers {
       expanded: false,
     })
     gridFolder.addBinding(this.grid, "visible", { label: "Main" })
-    gridFolder.addBinding(this.subGrid, "visible", { label: "Sub-grid" })
     gridFolder
       .addBinding(this.params, "gridSize", {
         label: "Size",

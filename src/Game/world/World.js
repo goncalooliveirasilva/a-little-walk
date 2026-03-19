@@ -1,6 +1,7 @@
 import * as THREE from "three"
 import Game from "../Game"
 import Floor from "./Floor"
+import Cube from "./Cube"
 
 export default class World {
   constructor() {
@@ -9,7 +10,10 @@ export default class World {
 
     // Setup
     this.floor = new Floor()
+    this.cube = new Cube()
   }
 
-  update() {}
+  update() {
+    this.cube.update()
+  }
 }

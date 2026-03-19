@@ -20,7 +20,7 @@ export default class Camera {
       0.1,
       100,
     )
-    this.instance.position.set(6, 4, 8)
+    this.instance.position.set(15, 10, 20)
     this.scene.add(this.instance)
   }
 
