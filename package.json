@@ -1,0 +1,29 @@
+{
+  "name": "ua-icg",
+  "version": "1.0.0",
+  "description": "Final project of Introduction to Computer Graphics course from University of Aveiro.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goncalooliveirasilva/ua-icg.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/goncalooliveirasilva/ua-icg/issues"
+  },
+  "homepage": "https://github.com/goncalooliveirasilva/ua-icg#readme",
+  "dependencies": {
+    "three": "^0.183.2",
+    "tweakpane": "^4.0.5",
+    "vite": "^8.0.1"
+  },
+  "devDependencies": {
+    "prettier": "^3.8.1"
+  }
+}
