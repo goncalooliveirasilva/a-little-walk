@@ -7,6 +7,8 @@ import Renderer from "./Renderer"
 import Physics from "./Physics"
 import World from "./world/World"
 import Helpers from "./Helpers"
+import Resources from "./utils/Resources"
+import sources from "./sources"
 
 let instantce = null
 
@@ -37,6 +39,7 @@ export default class Game {
     this.sizes = new Sizes()
     this.time = new Time()
     this.scene = new THREE.Scene()
+    this.resources = new Resources(sources)
     this.camera = new Camera()
     this.renderer = new Renderer()
     this.physics = new Physics()
