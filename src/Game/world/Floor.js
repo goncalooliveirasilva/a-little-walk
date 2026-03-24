@@ -8,9 +8,9 @@ export default class Floor {
     this.scene = this.game.scene
     this.physics = this.game.physics
 
-    // this.setGeometry()
-    // this.setMaterial()
-    // this.setMesh()
+    this.setGeometry()
+    this.setMaterial()
+    this.setMesh()
     this.setBody()
   }
 
@@ -19,12 +19,15 @@ export default class Floor {
   }
 
   setMaterial() {
-    this.material = new THREE.MeshBasicMaterial()
+    this.material = new THREE.MeshStandardMaterial({
+      color: "#1a4d1a",
+    })
   }
 
   setMesh() {
     this.mesh = new THREE.Mesh(this.geometry, this.material)
     this.mesh.rotation.x = -Math.PI * 0.5
+    this.mesh.receiveShadow = true
     this.scene.add(this.mesh)
   }
 
