@@ -16,8 +16,8 @@ export default class Grass {
   }
 
   setGeometry() {
-    this.subdivisions = 60
-    this.size = 10
+    this.subdivisions = 80
+    this.size = 15
     this.count = this.subdivisions * this.subdivisions
     this.cellSize = this.size / this.subdivisions
 

@@ -7,6 +7,7 @@ import Renderer from "./Renderer"
 import Physics from "./Physics"
 import World from "./world/World"
 import Helpers from "./Helpers"
+import Input from "./utils/Input"
 import Resources from "./utils/Resources"
 import sources from "./sources"
 
@@ -38,6 +39,7 @@ export default class Game {
 
     this.sizes = new Sizes()
     this.time = new Time()
+    this.input = new Input()
     this.scene = new THREE.Scene()
     this.resources = new Resources(sources)
     this.camera = new Camera()
