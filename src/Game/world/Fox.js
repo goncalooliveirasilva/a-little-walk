@@ -7,7 +7,15 @@ export default class Fox {
     this.scene = this.game.scene
     this.resources = this.game.resources
     this.time = this.game.time
+    this.input = this.game.input
     this.debug = this.game.debug
+
+    // Movement
+    this.walkSpeed = 2
+    this.runSpeed = 5
+    this.rotationSpeed = 5
+    this.direction = new THREE.Vector3()
+    this.currentState = "idle"
 
     // Setup
     this.resource = this.resources.items.foxModel
@@ -86,7 +94,50 @@ export default class Fox {
       .on("click", debugObject.playRunning)
   }
 
+  updateMovement(delta) {
+    // Movement direction
+    this.direction.set(0, 0, 0)
+    if (this.input.forward) this.direction.z -= 1
+    if (this.input.backward) this.direction.z += 1
+    if (this.input.left) this.direction.x -= 1
+    if (this.input.right) this.direction.x += 1
+
+    if (this.input.moving) {
+      this.direction.normalize()
+
+      const isRunning = this.input.shift
+      const speed = isRunning ? this.runSpeed : this.walkSpeed
+
+      // Move
+      this.model.position.addScaledVector(this.direction, speed * delta)
+
+      // Rotate to face movement direction
+      const targetAngle = Math.atan2(this.direction.x, this.direction.z)
+      const angleDiff = this.shortestAngle(this.model.rotation.y, targetAngle)
+      this.model.rotation.y += angleDiff * this.rotationSpeed * delta
+
+      // Switch animation
+      const targetState = isRunning ? "running" : "walking"
+      if (this.currentState !== targetState) {
+        this.animation.play(targetState)
+        this.currentState = targetState
+      }
+    } else if (this.currentState !== "idle") {
+      this.animation.play("idle")
+      this.currentState = "idle"
+    }
+  }
+
+  shortestAngle(from, to) {
+    let diff = to - from
+    while (diff > Math.PI) diff -= Math.PI * 2
+    while (diff < -Math.PI) diff += Math.PI * 2
+    return diff
+  }
+
   update() {
-    this.animation.mixer.update(this.time.delta * 0.001)
+    const delta = this.time.delta * 0.001
+    this.updateMovement(delta)
+    this.animation.mixer.update(delta)
   }
 }
