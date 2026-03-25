@@ -1,5 +1,6 @@
 import { GLTFLoader } from "three/examples/jsm/Addons.js"
 import Events from "./Events"
+import { TextureLoader } from "three"
 
 export default class Resources extends Events {
   constructor(sources) {
@@ -19,12 +20,17 @@ export default class Resources extends Events {
   setLoaders() {
     this.loaders = {}
     this.loaders.gltfLoader = new GLTFLoader()
+    this.loaders.textureLoader = new TextureLoader()
   }
 
   startLoading() {
     for (const source of this.sources) {
       if (source.type === "gltfModel") {
         this.loaders.gltfLoader.load(source.path, (file) => {
+          this.sourceLoaded(source, file)
+        })
+      } else if (source.type === "texture") {
+        this.loaders.textureLoader.load(source.path, (file) => {
           this.sourceLoaded(source, file)
         })
       }

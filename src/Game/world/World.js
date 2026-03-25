@@ -16,10 +16,10 @@ export default class World {
     this.resources.on("ready", () => {
       this.fox = new Fox()
       this.game.camera.setTarget(this.fox.model)
+      this.grass = new Grass()
     })
 
     this.floor = new Floor()
-    this.grass = new Grass()
     this.environment = new Environment()
     // this.cube = new Cube()
   }
@@ -27,5 +27,6 @@ export default class World {
   update() {
     // this.cube.update()
     if (this.fox) this.fox.update()
+    if (this.grass) this.grass.update()
   }
 }
