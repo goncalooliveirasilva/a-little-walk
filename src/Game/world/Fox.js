@@ -13,7 +13,7 @@ export default class Fox {
     // Movement
     this.walkSpeed = 2
     this.runSpeed = 5
-    this.rotationSpeed = 5
+    this.rotationSpeed = 4
     this.direction = new THREE.Vector3()
     this.currentState = "idle"
 
@@ -64,7 +64,7 @@ export default class Fox {
 
       newAction.reset()
       newAction.play()
-      newAction.crossFadeFrom(oldAction, 1)
+      newAction.crossFadeFrom(oldAction, 0.2)
       this.animation.actions.current = newAction
     }
   }
@@ -95,7 +95,7 @@ export default class Fox {
   }
 
   updateMovement(delta) {
-    // Movement direction
+    // Raw input direction
     this.direction.set(0, 0, 0)
     if (this.input.forward) this.direction.z -= 1
     if (this.input.backward) this.direction.z += 1
@@ -105,14 +105,32 @@ export default class Fox {
     if (this.input.moving) {
       this.direction.normalize()
 
+      // Make movement relative to camera direction
+      const camera = this.game.camera.instance
+      const cameraForward = new THREE.Vector3()
+      camera.getWorldDirection(cameraForward)
+      cameraForward.y = 0
+      cameraForward.normalize()
+
+      const cameraRight = new THREE.Vector3()
+      cameraRight
+        .crossVectors(cameraForward, new THREE.Vector3(0, 1, 0))
+        .normalize()
+
+      // Combine: forward/backward along camera forward, left/right along camera right
+      const moveDirection = new THREE.Vector3()
+      moveDirection.addScaledVector(cameraForward, -this.direction.z)
+      moveDirection.addScaledVector(cameraRight, this.direction.x)
+      moveDirection.normalize()
+
       const isRunning = this.input.shift
       const speed = isRunning ? this.runSpeed : this.walkSpeed
 
       // Move
-      this.model.position.addScaledVector(this.direction, speed * delta)
+      this.model.position.addScaledVector(moveDirection, speed * delta)
 
       // Rotate to face movement direction
-      const targetAngle = Math.atan2(this.direction.x, this.direction.z)
+      const targetAngle = Math.atan2(moveDirection.x, moveDirection.z)
       const angleDiff = this.shortestAngle(this.model.rotation.y, targetAngle)
       this.model.rotation.y += angleDiff * this.rotationSpeed * delta
 
