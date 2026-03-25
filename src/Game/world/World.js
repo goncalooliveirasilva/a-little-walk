@@ -15,6 +15,7 @@ export default class World {
     // Setup
     this.resources.on("ready", () => {
       this.fox = new Fox()
+      this.game.camera.setTarget(this.fox.model)
     })
 
     this.floor = new Floor()
