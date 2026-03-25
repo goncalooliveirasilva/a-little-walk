@@ -8,6 +8,7 @@ export default class Grass {
     this.game = new Game()
     this.scene = this.game.scene
     this.debug = this.game.debug
+    this.time = this.game.time
 
     this.setGeometry()
     this.setMaterial()
@@ -72,12 +73,20 @@ export default class Grass {
   }
 
   setMaterial() {
+    this.noiseTexture = this.game.resources.items.perlinTexture
+    this.noiseTexture.wrapS = THREE.RepeatWrapping
+    this.noiseTexture.wrapT = THREE.RepeatWrapping
+
     this.material = new THREE.ShaderMaterial({
       uniforms: {
         uBladeWidth: { value: 0.1 },
         uBladeHeight: { value: 0.6 },
         uBaseColor: { value: new THREE.Color(0.1, 0.3, 0.1) },
         uTipColor: { value: new THREE.Color(0.3, 0.7, 0.3) },
+        uTime: { value: 0 },
+        uNoiseTexture: { value: this.noiseTexture },
+        uWindStrength: { value: 0.5 },
+        uWindSpeed: { value: 0.1 },
       },
       vertexShader,
       fragmentShader,
@@ -87,6 +96,10 @@ export default class Grass {
   setMesh() {
     this.mesh = new THREE.Mesh(this.geometry, this.material)
     this.scene.add(this.mesh)
+  }
+
+  update() {
+    this.material.uniforms.uTime.value = this.time.elapsed * 0.001
   }
 
   setDebug() {
@@ -127,5 +140,19 @@ export default class Grass {
       .on("change", (e) => {
         this.material.uniforms.uTipColor.value.set(e.value)
       })
+
+    this.debugFolder.addBinding(this.material.uniforms.uWindStrength, "value", {
+      label: "Wind strength",
+      min: 0,
+      max: 2.0,
+      step: 0.01,
+    })
+
+    this.debugFolder.addBinding(this.material.uniforms.uWindSpeed, "value", {
+      label: "Wind speed",
+      min: 0,
+      max: 1.0,
+      step: 0.01,
+    })
   }
 }
