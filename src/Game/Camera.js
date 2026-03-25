@@ -15,9 +15,9 @@ export default class Camera {
       theta: 0, // horizontal angle
       phi: 1.0, // vertical angle (radians from top, clamped)
       distance: 15, // distance from target
-      minDistance: 3,
+      minDistance: 8,
       maxDistance: 25,
-      minPhi: 0.3, // don't go too high
+      minPhi: 0.7, // don't go too high
       maxPhi: 1.4, // don't go below ground
     }
     this.mouseSensitivity = 0.003

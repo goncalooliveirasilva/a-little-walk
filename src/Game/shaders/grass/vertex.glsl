@@ -7,6 +7,7 @@ uniform float uWindSpeed;
 
 attribute float aRandom;
 varying float vTipness;
+varying vec2 vBladePos;
 
 void main() {
     vec2 base = position.xy;
@@ -20,6 +21,7 @@ void main() {
     vTipness = tipness;
 
     vec3 bladeWorldPos = vec3(base.x, 0.0, base.y);
+    vBladePos = bladeWorldPos.xz;
     vec3 offset = vec3(0.0);
 
     // Height varies between 40% and 100% based on random

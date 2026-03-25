@@ -86,7 +86,8 @@ export default class Grass {
         uTime: { value: 0 },
         uNoiseTexture: { value: this.noiseTexture },
         uWindStrength: { value: 0.5 },
-        uWindSpeed: { value: 0.1 },
+        uWindSpeed: { value: 0.06 },
+        uColorVariation: { value: 0.4 },
       },
       vertexShader,
       fragmentShader,
@@ -140,6 +141,17 @@ export default class Grass {
       .on("change", (e) => {
         this.material.uniforms.uTipColor.value.set(e.value)
       })
+
+    this.debugFolder.addBinding(
+      this.material.uniforms.uColorVariation,
+      "value",
+      {
+        label: "Color variation",
+        min: 0,
+        max: 0.5,
+        step: 0.01,
+      },
+    )
 
     this.debugFolder.addBinding(this.material.uniforms.uWindStrength, "value", {
       label: "Wind strength",
