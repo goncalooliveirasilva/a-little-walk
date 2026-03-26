@@ -9,4 +9,9 @@ export default [
     type: "texture",
     path: "textures/noiseTexture.png",
   },
+  {
+    name: "leafsTexture",
+    type: "texture",
+    path: "textures/leafsTexture.png",
+  },
 ]

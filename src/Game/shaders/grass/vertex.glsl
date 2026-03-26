@@ -4,6 +4,7 @@ uniform float uTime;
 uniform sampler2D uNoiseTexture;
 uniform float uWindStrength;
 uniform float uWindSpeed;
+uniform vec2 uPlayerPosition;
 
 attribute float aRandom;
 varying float vTipness;
@@ -19,6 +20,13 @@ void main() {
     // 1.0 at tip, 0.0 at base
     float tipness = vertexId == 0 ? 1.0 : 0.0;
     vTipness = tipness;
+
+    // wrap position
+    vec2 gridSize = vec2(15.0);
+    vec2 halfGrid = gridSize * 0.5;
+    base -= uPlayerPosition;
+    base = mod(base + halfGrid, gridSize) - halfGrid;
+    base += uPlayerPosition;
 
     vec3 bladeWorldPos = vec3(base.x, 0.0, base.y);
     vBladePos = bladeWorldPos.xz;

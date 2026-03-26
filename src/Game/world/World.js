@@ -5,6 +5,7 @@ import Floor from "./Floor"
 import Grass from "./Grass"
 import Fox from "./Fox"
 import Environment from "./Environment"
+import Bush from "./Bush"
 
 export default class World {
   constructor() {
@@ -17,6 +18,7 @@ export default class World {
       this.fox = new Fox()
       this.game.camera.setTarget(this.fox.model)
       this.grass = new Grass()
+      this.bush = new Bush()
     })
 
     this.floor = new Floor()
@@ -28,5 +30,6 @@ export default class World {
     // this.cube.update()
     if (this.fox) this.fox.update()
     if (this.grass) this.grass.update()
+    if (this.bush) this.bush.update()
   }
 }

@@ -46,7 +46,10 @@ export default class Game {
     this.renderer = new Renderer()
     this.physics = new Physics()
     this.world = new World()
-    this.helpers = new Helpers()
+
+    if (this.debug.active) {
+      this.helpers = new Helpers()
+    }
 
     // Sizes resize event
     this.sizes.on("resize", () => {

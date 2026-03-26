@@ -88,6 +88,7 @@ export default class Grass {
         uWindStrength: { value: 0.5 },
         uWindSpeed: { value: 0.06 },
         uColorVariation: { value: 0.4 },
+        uPlayerPosition: { value: new THREE.Vector2(0, 0) },
       },
       vertexShader,
       fragmentShader,
@@ -101,6 +102,10 @@ export default class Grass {
 
   update() {
     this.material.uniforms.uTime.value = this.time.elapsed * 0.001
+    this.material.uniforms.uPlayerPosition.value.set(
+      this.game.world.fox.model.position.x,
+      this.game.world.fox.model.position.z,
+    )
   }
 
   setDebug() {
