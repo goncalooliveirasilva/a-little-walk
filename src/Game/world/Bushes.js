@@ -10,12 +10,16 @@ export default class Bush {
     this.resources = this.game.resources
     this.debug = this.game.debug
 
+    this.color = "#e29211"
+    this.colorDark = "#735307"
+
     this.foliage = new Foliage({
       planeCount: 30,
       planeSize: 1.5,
       minRadius: 0.3,
       maxRadius: 1.0,
-      color: "#c79518",
+      color: this.color,
+      colorDark: this.colorDark,
       texture: this.resources.items.leafsTexture,
       noiseTexture: this.resources.items.perlinTexture,
     })
@@ -58,5 +62,29 @@ export default class Bush {
     this.foliage.update(this.game.time.elapsed * 0.001)
   }
 
-  setDebug() {}
+  setDebug() {
+    if (!this.debug.active) return
+
+    this.debugParams = {
+      color: this.color,
+      colorDark: this.colorDark,
+    }
+
+    this.debugFolder = this.game.debugFolder.addFolder({
+      title: "Bushes",
+      expanded: false,
+    })
+
+    this.debugFolder
+      .addBinding(this.debugParams, "color", { label: "Color" })
+      .on("change", (e) => {
+        this.foliage.material.uniforms.uColor.value.set(e.value)
+      })
+
+    this.debugFolder
+      .addBinding(this.debugParams, "colorDark", { label: "Color dark" })
+      .on("change", (e) => {
+        this.foliage.material.uniforms.uColorDark.value.set(e.value)
+      })
+  }
 }

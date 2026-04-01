@@ -3,10 +3,17 @@ uniform sampler2D uNoiseTexture;
 uniform float uWindStrength;
 uniform float uWindSpeed;
 
+attribute float aRandom;
+
 varying vec2 vUv;
+varying float vColorMix;
 
 void main() {
     vUv = uv;
+
+    // Blend random and height (bottom planes tend darker)
+    float height = smoothstep(-1.0, 1.0, position.y);
+    vColorMix = aRandom * 0.3 + height * 0.7;
 
     vec3 pos = position;
 

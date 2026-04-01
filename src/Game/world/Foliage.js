@@ -10,6 +10,7 @@ export default class Foliage {
     minRadius = 0.3,
     maxRadius = 1.0,
     color = "#4db34d",
+    colorDark = "#2a6e2a",
     texture = null,
     noiseTexture = null,
     windStrength = 1,
@@ -20,6 +21,7 @@ export default class Foliage {
     this.minRadius = minRadius
     this.maxRadius = maxRadius
     this.color = color
+    this.colorDark = colorDark
     this.texture = texture
     this.noiseTexture = noiseTexture
     this.windStrength = windStrength
@@ -50,6 +52,13 @@ export default class Foliage {
       plane.rotateZ(Math.random() * Math.PI * 2)
       plane.translate(position.x, position.y, position.z)
 
+      // Same random value for all vertices of this plane
+      const rand = Math.random()
+      const randArray = new Float32Array(plane.attributes.position.count).fill(
+        rand,
+      )
+      plane.setAttribute("aRandom", new THREE.BufferAttribute(randArray, 1))
+
       planes.push(plane)
     }
 
@@ -63,6 +72,7 @@ export default class Foliage {
       side: THREE.DoubleSide,
       uniforms: {
         uColor: { value: new THREE.Color(this.color) },
+        uColorDark: { value: new THREE.Color(this.colorDark) },
         uAlphaMap: { value: this.texture },
         uAlphaTest: { value: 0.5 },
         uTime: { value: 0 },
