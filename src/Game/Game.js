@@ -9,6 +9,7 @@ import World from "./world/World"
 import Helpers from "./Helpers"
 import Input from "./utils/Input"
 import Resources from "./utils/Resources"
+import Stats from "stats.js"
 import sources from "./sources"
 
 let instantce = null
@@ -49,6 +50,10 @@ export default class Game {
 
     if (this.debug.active) {
       this.helpers = new Helpers()
+
+      this.stats = new Stats()
+      this.stats.showPanel(0)
+      document.body.appendChild(this.stats.dom)
     }
 
     // Sizes resize event
@@ -68,10 +73,12 @@ export default class Game {
   }
 
   update() {
+    if (this.stats) this.stats.begin()
     this.camera.update()
     this.physics.update()
     this.world.update()
     this.renderer.update()
+    if (this.stats) this.stats.end()
   }
 
   destroy() {

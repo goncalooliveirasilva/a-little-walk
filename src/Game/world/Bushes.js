@@ -20,9 +20,11 @@ export default class Bush {
     })
 
     this.positions = [
-      { x: 3, y: 0.5, z: 0 },
-      { x: -2, y: 0.5, z: 3 },
-      { x: 5, y: 0.5, z: -2 },
+      { x: 3, z: 2, scale: 0.7 },
+      { x: -5, z: 8, scale: 0.5 },
+      { x: 10, z: -3, scale: 0.8 },
+      { x: -2, z: -6, scale: 0.6 },
+      { x: 7, z: 5, scale: 0.9 },
     ]
 
     this.setMesh()
@@ -31,6 +33,8 @@ export default class Bush {
 
   setMesh() {
     const count = this.positions.length
+    if (count === 0) return
+
     this.mesh = new THREE.InstancedMesh(
       this.foliage.geometry,
       this.foliage.material,
@@ -38,14 +42,16 @@ export default class Bush {
     )
 
     const matrix = new THREE.Matrix4()
-    const scale = new THREE.Vector3(0.7, 0.7, 0.7)
 
     for (let i = 0; i < count; i++) {
       const pos = this.positions[i]
+      const s = pos.scale
       matrix.compose(
-        new THREE.Vector3(pos.x, pos.y, pos.z),
-        new THREE.Quaternion(),
-        scale,
+        new THREE.Vector3(pos.x, s * 0.5, pos.z),
+        new THREE.Quaternion().setFromEuler(
+          new THREE.Euler(0, Math.random() * Math.PI * 2, 0),
+        ),
+        new THREE.Vector3(s, s, s),
       )
       this.mesh.setMatrixAt(i, matrix)
     }

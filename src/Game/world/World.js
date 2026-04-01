@@ -5,13 +5,15 @@ import Floor from "./Floor"
 import Grass from "./Grass"
 import Fox from "./Fox"
 import Environment from "./Environment"
-import Bush from "./Bush"
+import Bush from "./Bushes"
 
 export default class World {
   constructor() {
     this.game = new Game()
+    this.game.world = this
     this.scene = this.game.scene
     this.resources = this.game.resources
+    this.worldSize = 100
 
     // Setup
     this.resources.on("ready", () => {

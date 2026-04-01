@@ -6,21 +6,26 @@ export default class Floor {
   constructor() {
     this.game = new Game()
     this.scene = this.game.scene
+    this.debug = this.game.debug
     this.physics = this.game.physics
+
+    this.color = "#046504"
 
     this.setGeometry()
     this.setMaterial()
     this.setMesh()
     this.setBody()
+    this.setDebug()
   }
 
   setGeometry() {
-    this.geometry = new THREE.PlaneGeometry(15, 15)
+    const size = this.game.world.worldSize
+    this.geometry = new THREE.PlaneGeometry(size, size)
   }
 
   setMaterial() {
     this.material = new THREE.MeshStandardMaterial({
-      color: "#1a4d1a",
+      color: this.color,
     })
   }
 
@@ -38,5 +43,24 @@ export default class Floor {
     })
     this.body.quaternion.setFromEuler(-Math.PI * 0.5, 0, 0)
     this.physics.world.addBody(this.body)
+  }
+
+  setDebug() {
+    if (!this.debug.active) return
+
+    this.debugParams = {
+      color: this.color,
+    }
+
+    this.debugFolder = this.game.debugFolder.addFolder({
+      title: "Floor",
+      expanded: false,
+    })
+
+    this.debugFolder
+      .addBinding(this.debugParams, "color", { label: "Color" })
+      .on("change", (e) => {
+        this.material.color.set(e.value)
+      })
   }
 }

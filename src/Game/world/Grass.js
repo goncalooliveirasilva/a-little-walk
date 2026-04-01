@@ -89,6 +89,7 @@ export default class Grass {
         uWindSpeed: { value: 0.06 },
         uColorVariation: { value: 0.4 },
         uPlayerPosition: { value: new THREE.Vector2(0, 0) },
+        uGrassSize: { value: this.size },
       },
       vertexShader,
       fragmentShader,

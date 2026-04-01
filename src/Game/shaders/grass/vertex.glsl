@@ -5,6 +5,7 @@ uniform sampler2D uNoiseTexture;
 uniform float uWindStrength;
 uniform float uWindSpeed;
 uniform vec2 uPlayerPosition;
+uniform float uGrassSize;
 
 attribute float aRandom;
 varying float vTipness;
@@ -22,7 +23,7 @@ void main() {
     vTipness = tipness;
 
     // wrap position
-    vec2 gridSize = vec2(15.0);
+    vec2 gridSize = vec2(uGrassSize);
     vec2 halfGrid = gridSize * 0.5;
     base -= uPlayerPosition;
     base = mod(base + halfGrid, gridSize) - halfGrid;
