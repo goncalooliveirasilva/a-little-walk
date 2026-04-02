@@ -1,3 +1,5 @@
+#include <fog_pars_fragment>
+
 uniform vec3 uColor;
 uniform vec3 uColorDark;
 uniform sampler2D uAlphaMap;
@@ -13,4 +15,5 @@ void main() {
     vec3 color = mix(uColorDark, uColor, vColorMix);
 
     gl_FragColor = vec4(color, 1.0);
+    #include <fog_fragment>
 }

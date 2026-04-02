@@ -6,6 +6,7 @@ import Grass from "./Grass"
 import Fox from "./Fox"
 import Environment from "./Environment"
 import Bush from "./Bushes"
+import Fog from "./Fog"
 
 export default class World {
   constructor() {
@@ -25,6 +26,7 @@ export default class World {
 
     this.floor = new Floor()
     this.environment = new Environment()
+    this.fog = new Fog()
     // this.cube = new Cube()
   }
 

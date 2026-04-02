@@ -17,8 +17,8 @@ export default class Grass {
   }
 
   setGeometry() {
-    this.subdivisions = 80
-    this.size = 15
+    this.subdivisions = 400
+    this.size = 70
     this.count = this.subdivisions * this.subdivisions
     this.cellSize = this.size / this.subdivisions
 
@@ -78,21 +78,25 @@ export default class Grass {
     this.noiseTexture.wrapT = THREE.RepeatWrapping
 
     this.material = new THREE.ShaderMaterial({
-      uniforms: {
-        uBladeWidth: { value: 0.1 },
-        uBladeHeight: { value: 0.6 },
-        uBaseColor: { value: new THREE.Color(0.1, 0.3, 0.1) },
-        uTipColor: { value: new THREE.Color(0.3, 0.7, 0.3) },
-        uTime: { value: 0 },
-        uNoiseTexture: { value: this.noiseTexture },
-        uWindStrength: { value: 0.5 },
-        uWindSpeed: { value: 0.06 },
-        uColorVariation: { value: 0.4 },
-        uPlayerPosition: { value: new THREE.Vector2(0, 0) },
-        uGrassSize: { value: this.size },
-      },
+      uniforms: THREE.UniformsUtils.merge([
+        THREE.UniformsLib.fog,
+        {
+          uBladeWidth: { value: 0.1 },
+          uBladeHeight: { value: 0.6 },
+          uBaseColor: { value: new THREE.Color(0.1, 0.3, 0.1) },
+          uTipColor: { value: new THREE.Color(0.3, 0.7, 0.3) },
+          uTime: { value: 0 },
+          uNoiseTexture: { value: this.noiseTexture },
+          uWindStrength: { value: 0.5 },
+          uWindSpeed: { value: 0.06 },
+          uColorVariation: { value: 0.4 },
+          uPlayerPosition: { value: new THREE.Vector2(0, 0) },
+          uGrassSize: { value: this.size },
+        },
+      ]),
       vertexShader,
       fragmentShader,
+      fog: true,
     })
   }
 

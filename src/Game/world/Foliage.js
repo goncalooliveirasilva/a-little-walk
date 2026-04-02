@@ -70,16 +70,20 @@ export default class Foliage {
       vertexShader: foliageVertexShader,
       fragmentShader: foliageFragmentShader,
       side: THREE.DoubleSide,
-      uniforms: {
-        uColor: { value: new THREE.Color(this.color) },
-        uColorDark: { value: new THREE.Color(this.colorDark) },
-        uAlphaMap: { value: this.texture },
-        uAlphaTest: { value: 0.5 },
-        uTime: { value: 0 },
-        uNoiseTexture: { value: this.noiseTexture },
-        uWindStrength: { value: this.windStrength },
-        uWindSpeed: { value: this.windSpeed },
-      },
+      uniforms: THREE.UniformsUtils.merge([
+        THREE.UniformsLib.fog,
+        {
+          uColor: { value: new THREE.Color(this.color) },
+          uColorDark: { value: new THREE.Color(this.colorDark) },
+          uAlphaMap: { value: this.texture },
+          uAlphaTest: { value: 0.5 },
+          uTime: { value: 0 },
+          uNoiseTexture: { value: this.noiseTexture },
+          uWindStrength: { value: this.windStrength },
+          uWindSpeed: { value: this.windSpeed },
+        },
+      ]),
+      fog: true,
     })
   }
 

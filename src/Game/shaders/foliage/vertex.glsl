@@ -1,3 +1,5 @@
+#include <fog_pars_vertex>
+
 uniform float uTime;
 uniform sampler2D uNoiseTexture;
 uniform float uWindStrength;
@@ -30,5 +32,7 @@ void main() {
     pos.x += windOffset * uWindStrength * heightFactor;
     pos.z += windOffset * uWindStrength * heightFactor * 0.5;
 
-    gl_Position = projectionMatrix * modelViewMatrix * instanceMatrix * vec4(pos, 1.0);
+    vec4 mvPosition = modelViewMatrix * instanceMatrix * vec4(pos, 1.0);
+    gl_Position = projectionMatrix * mvPosition;
+    #include <fog_vertex>
 }

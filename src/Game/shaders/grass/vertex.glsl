@@ -7,6 +7,8 @@ uniform float uWindSpeed;
 uniform vec2 uPlayerPosition;
 uniform float uGrassSize;
 
+#include <fog_pars_vertex>
+
 attribute float aRandom;
 varying float vTipness;
 varying vec2 vBladePos;
@@ -70,5 +72,7 @@ void main() {
 
     vec3 pos = bladeWorldPos + rotatedOffset;
 
-    gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+    vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
+    gl_Position = projectionMatrix * mvPosition;
+    #include <fog_vertex>
 }
