@@ -12,13 +12,13 @@ export default class Camera {
 
     // Third-person camera (spherical coordinates around target)
     this.spherical = {
-      theta: 0, // horizontal angle
-      phi: 1.0, // vertical angle (radians from top, clamped)
-      distance: 15, // distance from target
+      theta: 0.31, // horizontal angle
+      phi: 1.35, // vertical angle (radians from top, clamped)
+      distance: 15.2, // distance from target
       minDistance: 8,
       maxDistance: 25,
       minPhi: 0.7, // don't go too high
-      maxPhi: 1.4, // don't go below ground
+      maxPhi: 1.5, // don't go below ground
     }
     this.mouseSensitivity = 0.003
     this.zoomSpeed = 1
