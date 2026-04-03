@@ -15,6 +15,7 @@ export default class Foliage {
     noiseTexture = null,
     windStrength = 1,
     windSpeed = 0.06,
+    seed = 12345,
   }) {
     this.planeCount = planeCount
     this.planeSize = planeSize
@@ -26,9 +27,15 @@ export default class Foliage {
     this.noiseTexture = noiseTexture
     this.windStrength = windStrength
     this.windSpeed = windSpeed
+    this.seed = seed
 
     this.setGeometry()
     this.setMaterial()
+  }
+
+  seededRandom() {
+    this.seed = (this.seed * 16807 + 0) % 2147483647
+    return (this.seed - 1) / 2147483646
   }
 
   setGeometry() {
@@ -38,9 +45,10 @@ export default class Foliage {
       const plane = new THREE.PlaneGeometry(this.planeSize, this.planeSize)
 
       const spherical = new THREE.Spherical(
-        this.minRadius + Math.random() * (this.maxRadius - this.minRadius),
-        Math.PI * 2 * Math.random(),
-        Math.PI * Math.random(),
+        this.minRadius +
+          this.seededRandom() * (this.maxRadius - this.minRadius),
+        Math.PI * 2 * this.seededRandom(),
+        Math.PI * this.seededRandom(),
       )
       const position = new THREE.Vector3().setFromSpherical(spherical)
 
@@ -49,11 +57,10 @@ export default class Foliage {
       quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), normal)
       plane.applyQuaternion(quaternion)
 
-      plane.rotateZ(Math.random() * Math.PI * 2)
+      plane.rotateZ(this.seededRandom() * Math.PI * 2)
       plane.translate(position.x, position.y, position.z)
 
-      // Same random value for all vertices of this plane
-      const rand = Math.random()
+      const rand = this.seededRandom()
       const randArray = new Float32Array(plane.attributes.position.count).fill(
         rand,
       )

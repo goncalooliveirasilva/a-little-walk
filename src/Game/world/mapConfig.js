@@ -5,3 +5,7 @@ export const bushes = [
   { x: -2, z: -6, scale: 0.6 },
   { x: 7, z: 5, scale: 0.9 },
 ]
+
+export const trees = [
+  { x: 5, z: 5, scale: 2.0 },
+]

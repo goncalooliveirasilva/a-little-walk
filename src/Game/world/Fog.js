@@ -7,7 +7,7 @@ export default class Fog {
     this.scene = this.game.scene
     this.debug = this.game.debug
 
-    this.color = "#befffb"
+    this.color = "#9bfff8"
     this.near = 28
     this.far = 63
 

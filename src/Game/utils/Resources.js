@@ -1,4 +1,5 @@
-import { GLTFLoader } from "three/examples/jsm/Addons.js"
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js"
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js"
 import Events from "./Events"
 import { TextureLoader } from "three"
 
@@ -19,7 +20,12 @@ export default class Resources extends Events {
 
   setLoaders() {
     this.loaders = {}
+
+    const dracoLoader = new DRACOLoader()
+    dracoLoader.setDecoderPath("/draco/")
+
     this.loaders.gltfLoader = new GLTFLoader()
+    this.loaders.gltfLoader.setDRACOLoader(dracoLoader)
     this.loaders.textureLoader = new TextureLoader()
   }
 
