@@ -117,8 +117,8 @@ export default class Grass {
     if (!this.debug.active) return
 
     this.debugParams = {
-      baseColor: "#1a4d1a",
-      tipColor: "#4db34d",
+      baseColor: "#3a7d1a",
+      tipColor: "#7ec850",
     }
 
     this.debugFolder = this.game.debugFolder.addFolder({

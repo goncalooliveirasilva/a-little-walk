@@ -8,4 +8,6 @@ export const bushes = [
 
 export const trees = [
   { x: 5, z: 5, scale: 2.0 },
+  { x: 8, z: 4, scale: 1.8 },
+  { x: 10, z: 9, scale: 2.1 },
 ]

@@ -13,12 +13,12 @@ export default class Trees {
     this.foliageHeight = 3
     this.positions = trees
 
-    this.trunkColor = "#5c3a1e"
-    this.foliageScale = 0.5
+    this.trunkColor = "#e8e0d4"
+    this.foliageScale = 0.65
     this.clusters = [
       { y: -0.5, x: -0.6, z: 0, scale: 1.1 },
       { y: -0.8, x: 0, z: -0.2, scale: 0.75 },
-      { y: 0.1, x: -0.7, z: -0.5, scale: 1.0 },
+      { y: 0.1, x: 0.1, z: -0.5, scale: 1.0 },
       { y: -0.1, x: 0.4, z: 0.2, scale: 1.05 },
       { y: -0.5, x: -0.2, z: -0.4, scale: 0.85 },
       { y: -0.2, x: 0, z: 0.6, scale: 0.95 },
@@ -30,8 +30,8 @@ export default class Trees {
       planeSize: 1.2,
       minRadius: 0.2,
       maxRadius: 0.8,
-      color: "#4db34d",
-      colorDark: "#2a6e2a",
+      color: "#db5309",
+      colorDark: "#9c5d04",
       texture: this.resources.items.leafsTexture,
       noiseTexture: this.resources.items.perlinTexture,
     })
@@ -57,8 +57,9 @@ export default class Trees {
         if (child.isMesh) {
           // child.castShadow = true
           // child.receiveShadow = true
-          child.material = child.material.clone()
-          child.material.color.set(this.trunkColor)
+          child.material = new THREE.MeshBasicMaterial({
+            color: this.trunkColor,
+          })
         }
       })
 
