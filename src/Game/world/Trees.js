@@ -43,28 +43,38 @@ export default class Trees {
 
   setTrunks() {
     const model = this.resources.items.tree01Model.scene
+    const count = this.positions.length
+    if (count === 0) return
 
-    for (let i = 0; i < this.positions.length; i++) {
+    let trunkGeometry, trunkMaterial
+    model.traverse((child) => {
+      if (child.isMesh) {
+        trunkGeometry = child.geometry
+        trunkMaterial = child.material
+      }
+    })
+
+    this.trunkMesh = new THREE.InstancedMesh(
+      trunkGeometry,
+      trunkMaterial,
+      count,
+    )
+
+    const matrix = new THREE.Matrix4()
+    for (let i = 0; i < count; i++) {
       const pos = this.positions[i]
       const s = pos.scale
-      const tree = model.clone()
-
-      tree.position.set(pos.x, 0, pos.z)
-      tree.scale.set(s, s, s)
-      tree.rotation.y = Math.random() * Math.PI * 2
-
-      tree.traverse((child) => {
-        if (child.isMesh) {
-          // child.castShadow = true
-          // child.receiveShadow = true
-          child.material = new THREE.MeshBasicMaterial({
-            color: this.trunkColor,
-          })
-        }
-      })
-
-      this.scene.add(tree)
+      matrix.compose(
+        new THREE.Vector3(pos.x, 0, pos.z),
+        new THREE.Quaternion().setFromEuler(
+          new THREE.Euler(0, Math.random() * Math.PI * 2, 0),
+        ),
+        new THREE.Vector3(s, s, s),
+      )
+      this.trunkMesh.setMatrixAt(i, matrix)
     }
+
+    this.scene.add(this.trunkMesh)
   }
 
   setFoliage() {

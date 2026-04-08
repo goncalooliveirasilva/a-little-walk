@@ -10,8 +10,8 @@ export default class Bush {
     this.resources = this.game.resources
     this.debug = this.game.debug
 
-    this.color = "#e29211"
-    this.colorDark = "#735307"
+    this.color = "#c8e210"
+    this.colorDark = "#6c8f00"
 
     this.foliage = new Foliage({
       planeCount: 30,
