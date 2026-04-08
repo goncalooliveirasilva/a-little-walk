@@ -17,6 +17,9 @@ export default class Fox {
     this.direction = new THREE.Vector3()
     this.currentState = "idle"
 
+    // Model
+    this.scale = 0.025
+
     // Setup
     this.resource = this.resources.items.foxModel
     this.setModel()
@@ -28,13 +31,13 @@ export default class Fox {
 
   setModel() {
     this.model = this.resource.scene
-    this.model.scale.set(0.02, 0.02, 0.02)
+    this.model.scale.set(this.scale, this.scale, this.scale)
 
-    this.model.traverse((child) => {
-      if (child instanceof THREE.Mesh) {
-        child.castShadow = true
-      }
-    })
+    // this.model.traverse((child) => {
+    //   if (child instanceof THREE.Mesh) {
+    //     child.castShadow = true
+    //   }
+    // })
 
     this.scene.add(this.model)
   }

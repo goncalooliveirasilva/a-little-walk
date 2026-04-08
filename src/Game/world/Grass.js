@@ -17,8 +17,8 @@ export default class Grass {
   }
 
   setGeometry() {
-    this.subdivisions = 80
-    this.size = 15
+    this.subdivisions = 400
+    this.size = 80
     this.count = this.subdivisions * this.subdivisions
     this.cellSize = this.size / this.subdivisions
 
@@ -77,19 +77,30 @@ export default class Grass {
     this.noiseTexture.wrapS = THREE.RepeatWrapping
     this.noiseTexture.wrapT = THREE.RepeatWrapping
 
+    this.densityMap = this.game.resources.items.mapTexture
+
     this.material = new THREE.ShaderMaterial({
-      uniforms: {
-        uBladeWidth: { value: 0.1 },
-        uBladeHeight: { value: 0.6 },
-        uBaseColor: { value: new THREE.Color(0.1, 0.3, 0.1) },
-        uTipColor: { value: new THREE.Color(0.3, 0.7, 0.3) },
-        uTime: { value: 0 },
-        uNoiseTexture: { value: this.noiseTexture },
-        uWindStrength: { value: 0.5 },
-        uWindSpeed: { value: 0.1 },
-      },
+      uniforms: THREE.UniformsUtils.merge([
+        THREE.UniformsLib.fog,
+        {
+          uBladeWidth: { value: 0.1 },
+          uBladeHeight: { value: 0.6 },
+          uBaseColor: { value: new THREE.Color(0.1, 0.3, 0.1) },
+          uTipColor: { value: new THREE.Color(0.3, 0.7, 0.3) },
+          uTime: { value: 0 },
+          uNoiseTexture: { value: this.noiseTexture },
+          uDensityMap: { value: this.densityMap },
+          uWorldSize: { value: this.game.world.worldSize },
+          uWindStrength: { value: 0.5 },
+          uWindSpeed: { value: 0.06 },
+          uColorVariation: { value: 0.4 },
+          uPlayerPosition: { value: new THREE.Vector2(0, 0) },
+          uGrassSize: { value: this.size },
+        },
+      ]),
       vertexShader,
       fragmentShader,
+      fog: true,
     })
   }
 
@@ -100,14 +111,18 @@ export default class Grass {
 
   update() {
     this.material.uniforms.uTime.value = this.time.elapsed * 0.001
+    this.material.uniforms.uPlayerPosition.value.set(
+      this.game.world.fox.model.position.x,
+      this.game.world.fox.model.position.z,
+    )
   }
 
   setDebug() {
     if (!this.debug.active) return
 
     this.debugParams = {
-      baseColor: "#1a4d1a",
-      tipColor: "#4db34d",
+      baseColor: "#3a7d1a",
+      tipColor: "#7ec850",
     }
 
     this.debugFolder = this.game.debugFolder.addFolder({
@@ -140,6 +155,17 @@ export default class Grass {
       .on("change", (e) => {
         this.material.uniforms.uTipColor.value.set(e.value)
       })
+
+    this.debugFolder.addBinding(
+      this.material.uniforms.uColorVariation,
+      "value",
+      {
+        label: "Color variation",
+        min: 0,
+        max: 0.5,
+        step: 0.01,
+      },
+    )
 
     this.debugFolder.addBinding(this.material.uniforms.uWindStrength, "value", {
       label: "Wind strength",

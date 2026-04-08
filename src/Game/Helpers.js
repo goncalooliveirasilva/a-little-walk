@@ -8,7 +8,7 @@ export default class Helpers {
     this.debug = this.game.debug
 
     this.params = {
-      gridSize: 20,
+      gridSize: 100,
       cellSize: 1,
       axesLength: 5,
     }
