@@ -11,6 +11,7 @@ import Input from "./utils/Input"
 import Resources from "./utils/Resources"
 import Stats from "stats.js"
 import sources from "./sources"
+import Overlay from "./Overlay"
 
 let instantce = null
 
@@ -42,6 +43,7 @@ export default class Game {
     this.time = new Time()
     this.input = new Input()
     this.scene = new THREE.Scene()
+    this.overlay = new Overlay()
     this.resources = new Resources(sources)
     this.camera = new Camera()
     this.renderer = new Renderer()

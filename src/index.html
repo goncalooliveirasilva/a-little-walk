@@ -8,6 +8,43 @@
   </head>
   <body>
     <canvas class="webgl"></canvas>
+
+    <div class="overlay" id="overlay">
+      <h1 class="overlay-title" id="overlay-title">
+        <span>A</span><span> </span><span>L</span><span>i</span><span>t</span
+        ><span>t</span><span>l</span><span>e</span><span> </span><span>W</span
+        ><span>a</span><span>l</span><span>k</span>
+      </h1>
+      <div class="overlay-controls" id="overlay-controls">
+        <p class="overlay-message">Click to start</p>
+        <div class="overlay-keys">
+          <div class="key-group">
+            <div class="key-row">
+              <span class="key">W</span>
+            </div>
+            <div class="key-row">
+              <span class="key">A</span>
+              <span class="key">S</span>
+              <span class="key">D</span>
+            </div>
+            <p class="key-label">Move</p>
+          </div>
+          <div class="key-group">
+            <span class="key wide">Shift</span>
+            <p class="key-label">Run</p>
+          </div>
+          <div class="key-group">
+            <span class="key wide">Mouse</span>
+            <p class="key-label">Camera</p>
+          </div>
+          <div class="key-group">
+            <span class="key wide">Scroll</span>
+            <p class="key-label">Zoom</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script type="module" src="./script.js"></script>
   </body>
 </html>
