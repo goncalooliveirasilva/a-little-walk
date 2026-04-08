@@ -1,21 +1,20 @@
 import * as THREE from "three"
 import Game from "../Game"
 import Foliage from "./Foliage"
-import { trees } from "./mapConfig"
 
 export default class Trees {
-  constructor() {
+  constructor(config = {}) {
     this.game = new Game()
     this.scene = this.game.scene
     this.resources = this.game.resources
     this.debug = this.game.debug
 
-    this.foliageHeight = 3
-    this.positions = trees
-
-    this.trunkColor = "#e8e0d4"
-    this.foliageScale = 0.65
-    this.clusters = [
+    this.name = config.name || "Trees"
+    this.modelName = config.model || "tree01Model"
+    this.positions = config.positions || []
+    this.foliageHeight = config.foliageHeight || 3
+    this.foliageScale = config.foliageScale || 0.65
+    this.clusters = config.clusters || [
       { y: -0.5, x: -0.6, z: 0, scale: 1.1 },
       { y: -0.8, x: 0, z: -0.2, scale: 0.75 },
       { y: 0.1, x: 0.1, z: -0.5, scale: 1.0 },
@@ -25,13 +24,15 @@ export default class Trees {
       { y: -0.2, x: 0.6, z: -0.2, scale: 0.85 },
     ]
 
+    this.scaleFactor = 1.2
+
     this.foliage = new Foliage({
-      planeCount: 40,
-      planeSize: 1.2,
-      minRadius: 0.2,
-      maxRadius: 0.8,
-      color: "#db5309",
-      colorDark: "#9c5d04",
+      planeCount: config.planeCount || 40,
+      planeSize: config.planeSize || 1.2,
+      minRadius: config.minRadius || 0.2,
+      maxRadius: config.maxRadius || 0.8,
+      color: config.color || "#db5309",
+      colorDark: config.colorDark || "#9c5d04",
       texture: this.resources.items.leafsTexture,
       noiseTexture: this.resources.items.perlinTexture,
     })
@@ -42,7 +43,7 @@ export default class Trees {
   }
 
   setTrunks() {
-    const model = this.resources.items.tree01Model.scene
+    const model = this.resources.items[this.modelName].scene
     const count = this.positions.length
     if (count === 0) return
 
@@ -69,7 +70,11 @@ export default class Trees {
         new THREE.Quaternion().setFromEuler(
           new THREE.Euler(0, Math.random() * Math.PI * 2, 0),
         ),
-        new THREE.Vector3(s, s, s),
+        new THREE.Vector3(
+          s * this.scaleFactor,
+          s * this.scaleFactor,
+          s * this.scaleFactor,
+        ),
       )
       this.trunkMesh.setMatrixAt(i, matrix)
     }
@@ -133,7 +138,7 @@ export default class Trees {
     if (!this.debug.active) return
 
     this.debugFolder = this.game.debugFolder.addFolder({
-      title: "Trees",
+      title: this.name,
       expanded: false,
     })
 

@@ -20,6 +20,11 @@ export default [
     path: "models/Trees/tree01.glb",
   },
   {
+    name: "tree02Model",
+    type: "gltfModel",
+    path: "models/Trees/tree02.glb",
+  },
+  {
     name: "mapTexture",
     type: "texture",
     path: "textures/mapTexture.png",
