@@ -38,15 +38,19 @@ body {
   font-weight: bold;
   letter-spacing: 8px;
   text-transform: uppercase;
-}
-
-.overlay-title span {
-  color: #333;
-  transition: color 0.4s ease;
-}
-
-.overlay-title span.lit {
   color: #fff;
+  opacity: 0;
+}
+
+.overlay-percent {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  font-family: "Courier New", monospace;
+  font-size: 70px;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 4px;
 }
 
 .overlay-controls {

@@ -4,42 +4,54 @@ export default class Overlay {
   constructor() {
     this.element = document.getElementById("overlay")
     this.title = document.getElementById("overlay-title")
-    this.letters = this.title.querySelectorAll("span")
+    this.percent = document.getElementById("overlay-percent")
     this.controls = document.getElementById("overlay-controls")
-
-    this.element.addEventListener("click", () => this.start(), { once: true })
   }
 
   setProgress(progress) {
-    const litCount = Math.floor(progress * this.letters.length)
-    for (let i = 0; i < this.letters.length; i++) {
-      if (i < litCount) {
-        this.letters[i].classList.add("lit")
-      }
-    }
+    this.percent.textContent = `${Math.round(progress * 100)}%`
   }
 
   onReady() {
-    // Light up all remaining letters
-    this.letters.forEach((letter) => letter.classList.add("lit"))
+    this.percent.textContent = "100%"
 
-    // Show controls
-    gsap.to(this.controls, {
-      opacity: 1,
-      duration: 1,
-      delay: 0.5,
-      onStart: () => {
-        this.controls.style.visibility = "visible"
+    gsap.to(this.percent, {
+      opacity: 0,
+      duration: 0.8,
+      delay: 0.3,
+      onComplete: () => {
+        this.percent.remove()
+
+        gsap.to(this.title, { opacity: 1, duration: 1 })
+
+        gsap.to(this.controls, {
+          opacity: 1,
+          duration: 1,
+          delay: 1.5,
+          onStart: () => {
+            this.controls.style.visibility = "visible"
+          },
+        })
+
+        this.element.addEventListener("click", () => this.start(), {
+          once: true,
+        })
       },
     })
   }
 
   start() {
-    gsap.to(this.element, {
+    gsap.to([this.title, this.controls], {
       opacity: 0,
-      duration: 1.5,
+      duration: 1,
       onComplete: () => {
-        this.element.remove()
+        gsap.to(this.element, {
+          opacity: 0,
+          duration: 2,
+          onComplete: () => {
+            this.element.remove()
+          },
+        })
       },
     })
   }
