@@ -32,6 +32,21 @@ export default class Fog {
       expanded: false,
     })
 
+    this.debugParams.enabled = true
+    this.debugFolder
+      .addBinding(this.debugParams, "enabled", { label: "Enabled" })
+      .on("change", (e) => {
+        if (e.value) {
+          this.scene.fog = new THREE.Fog(
+            this.debugParams.color,
+            this.near,
+            this.far,
+          )
+        } else {
+          this.scene.fog = null
+        }
+      })
+
     this.debugFolder
       .addBinding(this.debugParams, "color", { label: "Color" })
       .on("change", (e) => {

@@ -19,8 +19,7 @@ export default class Floor {
   }
 
   setGeometry() {
-    const size = this.game.world.worldSize
-    this.geometry = new THREE.PlaneGeometry(size, size)
+    this.geometry = new THREE.PlaneGeometry(500, 500)
   }
 
   setMaterial() {

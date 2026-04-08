@@ -18,7 +18,7 @@ export default class Grass {
 
   setGeometry() {
     this.subdivisions = 400
-    this.size = 70
+    this.size = 80
     this.count = this.subdivisions * this.subdivisions
     this.cellSize = this.size / this.subdivisions
 
@@ -77,6 +77,8 @@ export default class Grass {
     this.noiseTexture.wrapS = THREE.RepeatWrapping
     this.noiseTexture.wrapT = THREE.RepeatWrapping
 
+    this.densityMap = this.game.resources.items.mapTexture
+
     this.material = new THREE.ShaderMaterial({
       uniforms: THREE.UniformsUtils.merge([
         THREE.UniformsLib.fog,
@@ -87,6 +89,8 @@ export default class Grass {
           uTipColor: { value: new THREE.Color(0.3, 0.7, 0.3) },
           uTime: { value: 0 },
           uNoiseTexture: { value: this.noiseTexture },
+          uDensityMap: { value: this.densityMap },
+          uWorldSize: { value: this.game.world.worldSize },
           uWindStrength: { value: 0.5 },
           uWindSpeed: { value: 0.06 },
           uColorVariation: { value: 0.4 },
