@@ -80,3 +80,15 @@ Created by [Gonçalo Silva](https://github.com/goncalooliveirasilva).
 - Fox model by [PixelMannen](https://opengameart.org/content/fox-and-shiba) (CC0)
 - Fox animations by [tomkranis](https://sketchfab.com/3d-models/low-poly-fox-by-pixelmannen-animated-371dea88d7e04a76af5763f2a36866bc) (CC BY 4.0)
 - glTF conversion by the [Khronos Group](https://github.com/KhronosGroup/glTF-Sample-Models/tree/master/2.0/Fox)
+
+## Use of AI
+
+The overall project architecture (class-based structure, separation between `Game`, `World`, `Renderer`, `Physics`, etc., and the individual world entities) was designed and set up by me, based on patterns I learned from prior Three.js work.
+
+During development I used [Claude](https://www.anthropic.com/claude) (Anthropic) as an assistant for tasks such as:
+
+- Discussing implementation approaches and trade-offs (e.g., switching tree trunks to `InstancedMesh` for performance, implementation of the grass density map, structuring the loading screen).
+- Generating boilerplate and helping iterate on shaders, some GSAP animations, and CSS for the overlay and menu.
+- Debugging issues.
+
+All design decisions, integration into the existing project structure, tuning, and final review of the code were done by me.
