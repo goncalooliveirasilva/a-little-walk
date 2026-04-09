@@ -28,4 +28,10 @@ A visual timeline showing the progress of _A Little Walk_ over time.
 
 ---
 
+## 9 April 2026
+
+![Screenshot from 9 April 2026](./screenshots/development/09-04-2026.png)
+
+---
+
 > More screenshots will be added as development progresses.

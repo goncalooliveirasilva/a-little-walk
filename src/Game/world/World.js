@@ -7,7 +7,8 @@ import Fox from "./Fox"
 import Environment from "./Environment"
 import Bush from "./Bushes"
 import Trees from "./Trees"
-import { trees01, trees02 } from "./mapConfig"
+import Rocks from "./Rocks"
+import { trees01, trees02, rocks } from "./mapConfig"
 import Fog from "./Fog"
 
 export default class World {
@@ -48,6 +49,8 @@ export default class World {
           { y: -0.8, x: 0, z: 0.1, scale: 0.8 },
         ],
       })
+
+      this.rocks = new Rocks({ positions: rocks })
     })
 
     this.floor = new Floor()

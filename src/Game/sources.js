@@ -29,4 +29,24 @@ export default [
     type: "texture",
     path: "textures/mapTexture.png",
   },
+  {
+    name: "rocks01Model",
+    type: "gltfModel",
+    path: "models/Rocks/rocks01.glb",
+  },
+  {
+    name: "rocks02Model",
+    type: "gltfModel",
+    path: "models/Rocks/rocks02.glb",
+  },
+  {
+    name: "rocks03Model",
+    type: "gltfModel",
+    path: "models/Rocks/rocks03.glb",
+  },
+  {
+    name: "rocks04Model",
+    type: "gltfModel",
+    path: "models/Rocks/rocks04.glb",
+  },
 ]
