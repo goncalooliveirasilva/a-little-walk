@@ -42,6 +42,20 @@ body {
   opacity: 0;
 }
 
+.overlay-credits {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Courier New", monospace;
+  font-size: 14px;
+  color: #808080;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  opacity: 0;
+  visibility: hidden;
+}
+
 .overlay-percent {
   position: absolute;
   bottom: 40px;
@@ -51,6 +65,7 @@ body {
   font-weight: bold;
   color: #fff;
   letter-spacing: 4px;
+  opacity: 80%;
 }
 
 .overlay-controls {
