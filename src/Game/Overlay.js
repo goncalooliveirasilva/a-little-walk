@@ -47,7 +47,7 @@ export default class Overlay {
         gsap.to(this.credits, {
           opacity: 1,
           duration: 1,
-          delay: 1.5,
+          delay: 2,
           onStart: () => {
             this.credits.style.visibility = "visible"
           },
