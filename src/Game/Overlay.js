@@ -63,7 +63,13 @@ export default class Overlay {
   start() {
     const canvas = document.querySelector(".webgl")
     if (canvas) {
-      canvas.requestPointerLock().catch(() => {})
+      // Some browsers (e.g. Firefox) return undefined instead of a Promise
+      try {
+        const result = canvas.requestPointerLock()
+        if (result && typeof result.catch === "function") {
+          result.catch(() => {})
+        }
+      } catch (e) {}
     }
 
     gsap.to([this.title, this.controls, this.credits], {
