@@ -1,11 +1,16 @@
+import * as THREE from "three"
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js"
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js"
 import Events from "./Events"
 import { TextureLoader } from "three"
+import Game from "../Game"
 
 export default class Resources extends Events {
   constructor(sources) {
     super()
+
+    this.game = new Game()
+    this.overlay = this.game.overlay
 
     this.sources = sources
 
@@ -21,12 +26,17 @@ export default class Resources extends Events {
   setLoaders() {
     this.loaders = {}
 
+    this.loadingManager = new THREE.LoadingManager(
+      () => this.onLoad(),
+      (url, loaded, total) => this.onProgress(loaded, total),
+    )
+
     const dracoLoader = new DRACOLoader()
     dracoLoader.setDecoderPath("/draco/")
 
-    this.loaders.gltfLoader = new GLTFLoader()
+    this.loaders.gltfLoader = new GLTFLoader(this.loadingManager)
     this.loaders.gltfLoader.setDRACOLoader(dracoLoader)
-    this.loaders.textureLoader = new TextureLoader()
+    this.loaders.textureLoader = new TextureLoader(this.loadingManager)
   }
 
   startLoading() {
@@ -49,5 +59,13 @@ export default class Resources extends Events {
     if (this.loaded === this.toLoad) {
       this.trigger("ready")
     }
+  }
+
+  onLoad() {
+    this.overlay.onReady()
+  }
+
+  onProgress(loaded, total) {
+    this.overlay.setProgress(loaded / total)
   }
 }
