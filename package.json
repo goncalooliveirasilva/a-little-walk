@@ -1,6 +1,6 @@
 {
   "name": "ua-icg",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Final project of Introduction to Computer Graphics course from University of Aveiro.",
   "main": "index.js",
   "scripts": {
