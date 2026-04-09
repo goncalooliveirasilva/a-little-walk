@@ -35,7 +35,7 @@ Click anywhere on the scene to capture the mouse again.
 
 ```bash
 # Clone the repo
-git clone git@github.com:goncalooliveirasilva/ua-icg.git
+git clone git@github.com:goncalooliveirasilva/a-little-walk.git
 cd ua-icg
 
 # Install dependencies
