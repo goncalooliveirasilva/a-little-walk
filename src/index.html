@@ -3,11 +3,141 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UA-ICG</title>
+    <title>A Little Walk</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌳</text></svg>"
+    />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <canvas class="webgl"></canvas>
+
+    <div class="overlay" id="overlay">
+      <p class="overlay-credits" id="overlay-credits">
+        by
+        <a href="https://github.com/goncalooliveirasilva" target="_blank"
+          >Gonçalo Silva</a
+        >
+      </p>
+      <h1 class="overlay-title" id="overlay-title">A Little Walk</h1>
+      <p class="overlay-percent" id="overlay-percent">0%</p>
+      <div class="overlay-controls" id="overlay-controls">
+        <p class="overlay-message">Click to start</p>
+        <div class="overlay-keys">
+          <div class="key-group">
+            <div class="key-row">
+              <span class="key">W</span>
+            </div>
+            <div class="key-row">
+              <span class="key">A</span>
+              <span class="key">S</span>
+              <span class="key">D</span>
+            </div>
+            <p class="key-label">Move</p>
+          </div>
+          <div class="key-group">
+            <span class="key wide">Shift</span>
+            <p class="key-label">Run</p>
+          </div>
+          <div class="key-group">
+            <span class="key wide">Mouse</span>
+            <p class="key-label">Camera</p>
+          </div>
+          <div class="key-group">
+            <span class="key wide">Scroll</span>
+            <p class="key-label">Zoom</p>
+          </div>
+          <div class="key-group">
+            <span class="key wide">Esc</span>
+            <p class="key-label">Release Mouse</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="menu-button" id="menu-button" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="menu-panel" id="menu-panel">
+      <div class="menu-section">
+        <h2 class="menu-heading">Controls</h2>
+        <div class="menu-keys">
+          <div class="menu-key-row">
+            <span class="menu-key-name">WASD</span>
+            <span class="menu-key-desc">Move</span>
+          </div>
+          <div class="menu-key-row">
+            <span class="menu-key-name">Shift</span>
+            <span class="menu-key-desc">Run</span>
+          </div>
+          <div class="menu-key-row">
+            <span class="menu-key-name">Mouse</span>
+            <span class="menu-key-desc">Camera</span>
+          </div>
+          <div class="menu-key-row">
+            <span class="menu-key-name">Scroll</span>
+            <span class="menu-key-desc">Zoom</span>
+          </div>
+          <div class="menu-key-row">
+            <span class="menu-key-name">Esc</span>
+            <span class="menu-key-desc">Release Mouse</span>
+          </div>
+        </div>
+        <p class="menu-text" style="margin-top: 12px">
+          Click anywhere on the scene to capture the mouse again.
+        </p>
+      </div>
+
+      <div class="menu-section">
+        <h2 class="menu-heading">Credits</h2>
+        <p class="menu-text">
+          A Little Walk is a simple 3D game built with Three.js. It is currently
+          a work in progress.
+        </p>
+        <p class="menu-text">
+          Created by
+          <a href="https://github.com/goncalooliveirasilva" target="_blank"
+            >Gonçalo Silva</a
+          >
+          as the final project for the Introduction to Computer Graphics course
+          at the University of Aveiro (2026). The full source code is available
+          on
+          <a
+            href="https://github.com/goncalooliveirasilva/a-little-walk"
+            target="_blank"
+            >GitHub</a
+          >.
+        </p>
+        <p class="menu-text">
+          Fox model by
+          <a
+            href="https://opengameart.org/content/fox-and-shiba"
+            target="_blank"
+            rel="noopener noreferrer"
+            >PixelMannen</a
+          >
+          (CC0), with animations by
+          <a
+            href="https://sketchfab.com/3d-models/low-poly-fox-by-pixelmannen-animated-371dea88d7e04a76af5763f2a36866bc"
+            target="_blank"
+            rel="noopener noreferrer"
+            >tomkranis</a
+          >
+          (CC BY 4.0). glTF conversion by the
+          <a
+            href="https://github.com/KhronosGroup/glTF-Sample-Models/tree/master/2.0/Fox"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Khronos Group</a
+          >.
+        </p>
+      </div>
+    </div>
+
     <script type="module" src="./script.js"></script>
   </body>
 </html>
