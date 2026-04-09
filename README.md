@@ -38,7 +38,7 @@ Click anywhere on the scene to capture the mouse again.
 ```bash
 # Clone the repo
 git clone git@github.com:goncalooliveirasilva/a-little-walk.git
-cd ua-icg
+cd a-little-walk/
 
 # Install dependencies
 npm install
