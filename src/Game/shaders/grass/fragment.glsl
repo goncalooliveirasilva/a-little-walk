@@ -21,6 +21,12 @@ void main() {
     // Shift color
     color *= mix(1.0 - uColorVariation, 1.0 + uColorVariation, noise);
 
+    // Diffuse response to the sun
+    vec3 normal = normalize((viewMatrix * vec4(0.0, 1.0, 0.0, 0.0)).xyz);
+    vec3 lightDir = normalize(directionalLights[0].direction);
+    float diffuse = max(dot(normal, lightDir), 0.0);
+    color *= 0.4 + 0.6 * diffuse * directionalLights[0].color;
+
     // Shadow from any shadow-casting light in the scene
     float shadow = getShadowMask();
     color *= mix(0.55, 1.0, shadow);

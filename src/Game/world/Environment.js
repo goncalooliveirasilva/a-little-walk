@@ -15,7 +15,7 @@ export default class Environment {
   }
 
   setSunLight() {
-    this.sunLight = new THREE.DirectionalLight("#ffffff", 4)
+    this.sunLight = new THREE.DirectionalLight("#ffd08c", 2.5)
     this.sunLight.castShadow = true
     this.sunLight.position.set(30, 40, 20)
 

@@ -79,6 +79,7 @@ export default class Foliage {
       side: THREE.DoubleSide,
       uniforms: THREE.UniformsUtils.merge([
         THREE.UniformsLib.fog,
+        THREE.UniformsLib.lights,
         {
           uColor: { value: new THREE.Color(this.color) },
           uColorDark: { value: new THREE.Color(this.colorDark) },
@@ -91,6 +92,7 @@ export default class Foliage {
         },
       ]),
       fog: true,
+      lights: true,
     })
   }
 
