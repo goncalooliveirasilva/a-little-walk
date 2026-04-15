@@ -11,8 +11,8 @@ export default class Fox {
     this.debug = this.game.debug
 
     // Movement
-    this.walkSpeed = 2
-    this.runSpeed = 5
+    this.walkSpeed = 2.5
+    this.runSpeed = 6
     this.rotationSpeed = 4
     this.direction = new THREE.Vector3()
     this.currentState = "idle"
