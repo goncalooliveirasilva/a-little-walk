@@ -33,11 +33,11 @@ export default class Fox {
     this.model = this.resource.scene
     this.model.scale.set(this.scale, this.scale, this.scale)
 
-    // this.model.traverse((child) => {
-    //   if (child instanceof THREE.Mesh) {
-    //     child.castShadow = true
-    //   }
-    // })
+    this.model.traverse((child) => {
+      if (child instanceof THREE.Mesh) {
+        child.castShadow = true
+      }
+    })
 
     this.scene.add(this.model)
   }

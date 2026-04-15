@@ -9,7 +9,9 @@ uniform vec2 uPlayerPosition;
 uniform float uGrassSize;
 uniform float uWorldSize;
 
+#include <common>
 #include <fog_pars_vertex>
+#include <shadowmap_pars_vertex>
 
 attribute float aRandom;
 varying float vTipness;
@@ -83,6 +85,13 @@ void main() {
     );
 
     vec3 pos = bladeWorldPos + rotatedOffset;
+
+    // Needed by shadowmap_vertex chunk
+    vec4 worldPosition = modelMatrix * vec4(pos, 1.0);
+    vec3 objectNormal = vec3(0.0, 1.0, 0.0);
+    vec3 transformedNormal = vec3(0.0, 1.0, 0.0);
+
+    #include <shadowmap_vertex>
 
     vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
     gl_Position = projectionMatrix * mvPosition;
