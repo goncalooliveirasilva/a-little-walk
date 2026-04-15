@@ -11,8 +11,8 @@ export default class Fox {
     this.debug = this.game.debug
 
     // Movement
-    this.walkSpeed = 2
-    this.runSpeed = 5
+    this.walkSpeed = 2.5
+    this.runSpeed = 6
     this.rotationSpeed = 4
     this.direction = new THREE.Vector3()
     this.currentState = "idle"
@@ -33,11 +33,11 @@ export default class Fox {
     this.model = this.resource.scene
     this.model.scale.set(this.scale, this.scale, this.scale)
 
-    // this.model.traverse((child) => {
-    //   if (child instanceof THREE.Mesh) {
-    //     child.castShadow = true
-    //   }
-    // })
+    this.model.traverse((child) => {
+      if (child instanceof THREE.Mesh) {
+        child.castShadow = true
+      }
+    })
 
     this.scene.add(this.model)
   }

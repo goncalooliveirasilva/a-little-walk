@@ -44,6 +44,7 @@ export default class Rocks {
       const yOffset = -geometry.boundingBox.min.y
 
       const mesh = new THREE.InstancedMesh(geometry, material, instances.length)
+      mesh.castShadow = true
 
       const matrix = new THREE.Matrix4()
       for (let i = 0; i < instances.length; i++) {

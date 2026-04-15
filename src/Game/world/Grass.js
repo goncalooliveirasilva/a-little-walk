@@ -82,6 +82,7 @@ export default class Grass {
     this.material = new THREE.ShaderMaterial({
       uniforms: THREE.UniformsUtils.merge([
         THREE.UniformsLib.fog,
+        THREE.UniformsLib.lights,
         {
           uBladeWidth: { value: 0.1 },
           uBladeHeight: { value: 0.6 },
@@ -101,11 +102,13 @@ export default class Grass {
       vertexShader,
       fragmentShader,
       fog: true,
+      lights: true,
     })
   }
 
   setMesh() {
     this.mesh = new THREE.Mesh(this.geometry, this.material)
+    this.mesh.receiveShadow = true
     this.scene.add(this.mesh)
   }
 
