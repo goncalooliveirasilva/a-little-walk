@@ -13,7 +13,7 @@ export default class Fox {
     // Movement
     this.walkSpeed = 2.5
     this.runSpeed = 6
-    this.rotationSpeed = 4
+    this.rotationSpeed = 3
     this.direction = new THREE.Vector3()
     this.currentState = "idle"
 
