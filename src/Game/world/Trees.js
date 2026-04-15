@@ -60,6 +60,7 @@ export default class Trees {
       trunkMaterial,
       count,
     )
+    this.trunkMesh.castShadow = true
 
     const matrix = new THREE.Matrix4()
     for (let i = 0; i < count; i++) {

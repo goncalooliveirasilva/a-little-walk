@@ -7,7 +7,7 @@ export default class Fog {
     this.scene = this.game.scene
     this.debug = this.game.debug
 
-    this.color = "#d0f8f6"
+    this.color = "#f57929"
     this.near = 28
     this.far = 63
 
@@ -17,7 +17,6 @@ export default class Fog {
 
   setFog() {
     this.scene.fog = new THREE.Fog(this.color, this.near, this.far)
-    this.scene.background = new THREE.Color(this.color)
   }
 
   setDebug() {
@@ -51,7 +50,6 @@ export default class Fog {
       .addBinding(this.debugParams, "color", { label: "Color" })
       .on("change", (e) => {
         this.scene.fog.color.set(e.value)
-        this.scene.background.set(e.value)
       })
 
     this.debugFolder.addBinding(this.scene.fog, "near", {
