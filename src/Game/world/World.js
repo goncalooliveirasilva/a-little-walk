@@ -22,6 +22,7 @@ export default class World {
 
     // Setup
     this.resources.on("ready", () => {
+      this.floor = new Floor()
       this.fox = new Fox()
       this.game.camera.setTarget(this.fox.model)
       this.grass = new Grass()
@@ -54,7 +55,6 @@ export default class World {
       this.rocks = new Rocks({ positions: rocks })
     })
 
-    this.floor = new Floor()
     this.environment = new Environment()
     this.fog = new Fog()
     this.sky = new Sky()

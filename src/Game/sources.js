@@ -30,6 +30,11 @@ export default [
     path: "textures/mapTexture.png",
   },
   {
+    name: "heightMap",
+    type: "texture",
+    path: "textures/heightMap.png",
+  },
+  {
     name: "rocks01Model",
     type: "gltfModel",
     path: "models/Rocks/rocks01.glb",
