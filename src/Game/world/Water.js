@@ -10,8 +10,8 @@ export default class Water {
     this.time = this.game.time
     this.debug = this.game.debug
 
-    this.depthColor = "#0000ff"
-    this.surfaceColor = "#8888ff"
+    this.depthColor = "#1794e5"
+    this.surfaceColor = "#8dc7ed"
 
     this.setGeometry()
     this.setMaterial()
@@ -20,7 +20,7 @@ export default class Water {
   }
 
   setGeometry() {
-    this.geometry = new THREE.PlaneGeometry(20, 20, 128, 128)
+    this.geometry = new THREE.PlaneGeometry(10, 10, 512, 512)
   }
 
   setMaterial() {
@@ -28,14 +28,18 @@ export default class Water {
       vertexShader,
       fragmentShader,
       uniforms: {
-        uBigWavesElevation: { value: 0.2 },
-        uBigWavesFrequency: { value: new THREE.Vector2(4, 1.5) },
+        uBigWavesElevation: { value: 0.125 },
+        uBigWavesFrequency: { value: new THREE.Vector2(1.15, 1.91) },
         uTime: { value: 0 },
-        uBigWavesSpeed: { value: 0.75 },
+        uBigWavesSpeed: { value: 0.52 },
         uDepthColor: { value: new THREE.Color(this.depthColor) },
         uSurfaceColor: { value: new THREE.Color(this.surfaceColor) },
-        uColorOffset: { value: 0.08 },
+        uColorOffset: { value: 0.1 },
         uColorMultiplier: { value: 5 },
+        uSmallWavesElevation: { value: 0.18 },
+        uSmallWavesFrequency: { value: 1.5 },
+        uSmallWavesSpeed: { value: 0.2 },
+        uSmallIterations: { value: 4 },
       },
     })
   }
@@ -121,6 +125,30 @@ export default class Water {
       this.material.uniforms.uColorMultiplier,
       "value",
       { label: "uColorMultiplier", min: 0, max: 10, step: 0.001 },
+    )
+
+    this.debugFolder.addBinding(
+      this.material.uniforms.uSmallWavesElevation,
+      "value",
+      { label: "uSmallWavesElevation", min: 0, max: 1, step: 0.001 },
+    )
+
+    this.debugFolder.addBinding(
+      this.material.uniforms.uSmallWavesFrequency,
+      "value",
+      { label: "uSmallWavesFrequency", min: 0, max: 30, step: 0.001 },
+    )
+
+    this.debugFolder.addBinding(
+      this.material.uniforms.uSmallWavesSpeed,
+      "value",
+      { label: "uSmallWavesSpeed", min: 0, max: 4, step: 0.001 },
+    )
+
+    this.debugFolder.addBinding(
+      this.material.uniforms.uSmallIterations,
+      "value",
+      { label: "uSmallIterations", min: 0, max: 8, step: 1 },
     )
 
     this.debugFolder
