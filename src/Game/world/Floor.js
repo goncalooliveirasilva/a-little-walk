@@ -1,6 +1,8 @@
 import * as THREE from "three"
 import * as CANNON from "cannon-es"
 import Game from "../Game"
+import vertexShader from "../shaders/floor/vertex.glsl"
+import fragmentShader from "../shaders/floor/fragment.glsl"
 
 const PLANE_SIZE = 500
 const SEGMENTS = 512
@@ -17,7 +19,8 @@ export default class Floor {
     this.physics = this.game.physics
     this.resources = this.game.resources
 
-    this.color = "#046504"
+    this.baseColor = "#046504"
+    this.downColor = "#e1b737"
     this.heights = null
 
     this.setGeometry()
@@ -97,8 +100,18 @@ export default class Floor {
   }
 
   setMaterial() {
-    this.material = new THREE.MeshStandardMaterial({
-      color: this.color,
+    // this.material = new THREE.MeshStandardMaterial({
+    //   color: this.baseColor,
+    // })
+    this.material = new THREE.ShaderMaterial({
+      vertexShader,
+      fragmentShader,
+      uniforms: {
+        uBaseColor: { value: new THREE.Color(this.baseColor) },
+        uDownColor: { value: new THREE.Color(this.downColor) },
+        uMixStart: { value: -1.0 },
+        uMixEnd: { value: 0.5 },
+      },
     })
   }
 
@@ -132,7 +145,7 @@ export default class Floor {
     if (!this.debug.active) return
 
     this.debugParams = {
-      color: this.color,
+      color: this.baseColor,
     }
 
     this.debugFolder = this.game.debugFolder.addFolder({
@@ -140,10 +153,35 @@ export default class Floor {
       expanded: false,
     })
 
+    this.debugParams = {
+      baseColor: this.baseColor,
+      downColor: this.downColor,
+    }
+
     this.debugFolder
-      .addBinding(this.debugParams, "color", { label: "Color" })
+      .addBinding(this.debugParams, "baseColor", { label: "Base Color" })
       .on("change", (e) => {
-        this.material.color.set(e.value)
+        this.material.uniforms.uBaseColor.value.set(e.value)
       })
+
+    this.debugFolder
+      .addBinding(this.debugParams, "downColor", { label: "Down Color" })
+      .on("change", (e) => {
+        this.material.uniforms.uDownColor.value.set(e.value)
+      })
+
+    this.debugFolder.addBinding(this.material.uniforms.uMixStart, "value", {
+      label: "Mix Start",
+      min: -3,
+      max: 3,
+      step: 0.01,
+    })
+
+    this.debugFolder.addBinding(this.material.uniforms.uMixEnd, "value", {
+      label: "Mix End",
+      min: -3,
+      max: 3,
+      step: 0.01,
+    })
   }
 }
