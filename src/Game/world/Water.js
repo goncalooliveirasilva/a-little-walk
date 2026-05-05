@@ -20,7 +20,7 @@ export default class Water {
   }
 
   setGeometry() {
-    this.geometry = new THREE.PlaneGeometry(35, 35, 512, 512)
+    this.geometry = new THREE.PlaneGeometry(35, 35, 256, 256)
   }
 
   setMaterial() {
@@ -29,7 +29,7 @@ export default class Water {
       fragmentShader,
       uniforms: {
         uBigWavesElevation: { value: 0.125 },
-        uBigWavesFrequency: { value: new THREE.Vector2(1.15, 1.91) },
+        uBigWavesFrequency: { value: new THREE.Vector2(0.29, 0.5) },
         uTime: { value: 0 },
         uBigWavesSpeed: { value: 0.52 },
         uDepthColor: { value: new THREE.Color(this.depthColor) },
@@ -37,9 +37,9 @@ export default class Water {
         uColorOffset: { value: 0.1 },
         uColorMultiplier: { value: 5 },
         uSmallWavesElevation: { value: 0.18 },
-        uSmallWavesFrequency: { value: 1.5 },
-        uSmallWavesSpeed: { value: 0.2 },
-        uSmallIterations: { value: 4 },
+        uSmallWavesFrequency: { value: 0.86 },
+        uSmallWavesSpeed: { value: 0.25 },
+        uSmallIterations: { value: 4.0 },
       },
     })
   }
@@ -48,7 +48,7 @@ export default class Water {
     this.mesh = new THREE.Mesh(this.geometry, this.material)
     this.mesh.rotation.x = -Math.PI * 0.5
     // this.mesh.position.y = 5
-    this.mesh.position.set(-33.5, -1.5, 31)
+    this.mesh.position.set(-33.5, -0.8, 31)
     this.scene.add(this.mesh)
   }
 
