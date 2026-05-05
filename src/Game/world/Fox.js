@@ -80,6 +80,19 @@ export default class Fox {
       expanded: false,
     })
 
+    this.debugFolder.addBinding(this.model.position, "x", {
+      readonly: true,
+      label: "pos.x",
+    })
+    this.debugFolder.addBinding(this.model.position, "y", {
+      readonly: true,
+      label: "pos.y",
+    })
+    this.debugFolder.addBinding(this.model.position, "z", {
+      readonly: true,
+      label: "pos.z",
+    })
+
     const debugObject = {
       playIdle: () => this.animation.play("idle"),
       playWalking: () => this.animation.play("walking"),
