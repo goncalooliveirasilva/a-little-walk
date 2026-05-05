@@ -20,7 +20,8 @@ export default class Floor {
     this.resources = this.game.resources
 
     this.baseColor = "#046504"
-    this.downColor = "#e1b737"
+    this.shoreColor = "#91800d"
+    this.deepColor = "#8B7355"
     this.heights = null
 
     this.setGeometry()
@@ -108,9 +109,12 @@ export default class Floor {
       fragmentShader,
       uniforms: {
         uBaseColor: { value: new THREE.Color(this.baseColor) },
-        uDownColor: { value: new THREE.Color(this.downColor) },
-        uMixStart: { value: -1.0 },
-        uMixEnd: { value: 0.5 },
+        uShoreColor: { value: new THREE.Color(this.shoreColor) },
+        uDeepColor: { value: new THREE.Color(this.deepColor) },
+        uDeepToShoreStart: { value: -1.2 },
+        uDeepToShoreEnd: { value: -0.8 },
+        uShoreToGrassStart: { value: -0.3 },
+        uShoreToGrassEnd: { value: 0.3 },
       },
     })
   }
@@ -144,10 +148,6 @@ export default class Floor {
   setDebug() {
     if (!this.debug.active) return
 
-    this.debugParams = {
-      color: this.baseColor,
-    }
-
     this.debugFolder = this.game.debugFolder.addFolder({
       title: "Floor",
       expanded: false,
@@ -155,33 +155,57 @@ export default class Floor {
 
     this.debugParams = {
       baseColor: this.baseColor,
-      downColor: this.downColor,
+      shoreColor: this.shoreColor,
+      deepColor: this.deepColor,
     }
 
     this.debugFolder
-      .addBinding(this.debugParams, "baseColor", { label: "Base Color" })
+      .addBinding(this.debugParams, "baseColor", { label: "Grass Color" })
       .on("change", (e) => {
         this.material.uniforms.uBaseColor.value.set(e.value)
       })
 
     this.debugFolder
-      .addBinding(this.debugParams, "downColor", { label: "Down Color" })
+      .addBinding(this.debugParams, "shoreColor", { label: "Shore Color" })
       .on("change", (e) => {
-        this.material.uniforms.uDownColor.value.set(e.value)
+        this.material.uniforms.uShoreColor.value.set(e.value)
       })
 
-    this.debugFolder.addBinding(this.material.uniforms.uMixStart, "value", {
-      label: "Mix Start",
-      min: -3,
-      max: 3,
-      step: 0.01,
-    })
+    this.debugFolder
+      .addBinding(this.debugParams, "deepColor", { label: "Deep Color" })
+      .on("change", (e) => {
+        this.material.uniforms.uDeepColor.value.set(e.value)
+      })
 
-    this.debugFolder.addBinding(this.material.uniforms.uMixEnd, "value", {
-      label: "Mix End",
-      min: -3,
-      max: 3,
-      step: 0.01,
-    })
+    this.debugFolder.addBinding(
+      this.material.uniforms.uDeepToShoreStart,
+      "value",
+      { label: "deep-shore start", min: -3, max: 3, step: 0.01 },
+    )
+    this.debugFolder.addBinding(
+      this.material.uniforms.uDeepToShoreEnd,
+      "value",
+      { label: "seep-shore end", min: -3, max: 3, step: 0.01 },
+    )
+    this.debugFolder.addBinding(
+      this.material.uniforms.uShoreToGrassStart,
+      "value",
+      {
+        label: "shore-grass start",
+        min: -3,
+        max: 3,
+        step: 0.01,
+      },
+    )
+    this.debugFolder.addBinding(
+      this.material.uniforms.uShoreToGrassEnd,
+      "value",
+      {
+        label: "shore-grass end",
+        min: -3,
+        max: 3,
+        step: 0.01,
+      },
+    )
   }
 }
