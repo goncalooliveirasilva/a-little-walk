@@ -7,6 +7,7 @@ export const bushes = [
   { x: 41, z: 37, scale: 0.9 },
   { x: 45, z: 31, scale: 0.9 },
   { x: 35, z: 27, scale: 0.9 },
+  { x: -36, z: 47, scale: 0.9 },
 ]
 
 export const trees01 = [
@@ -28,6 +29,8 @@ export const trees02 = [
   { x: 32, z: 35, scale: 2.8 },
   { x: 25, z: 28, scale: 3.1 },
   { x: 23, z: 24, scale: 2.9 },
+  { x: 6, z: 36, scale: 3.2 },
+  { x: 7.7, z: 33, scale: 2.7 },
 ]
 
 export const rocks = [
@@ -38,4 +41,5 @@ export const rocks = [
   { x: 28, z: 20, scale: 0.7, type: 1 },
   { x: 33, z: 18, scale: 1.0, type: 2 },
   { x: 18, z: 25, scale: 0.9, type: 3 },
+  { x: -35, z: 46, scale: 0.9, type: 2 },
 ]

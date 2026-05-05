@@ -10,6 +10,9 @@ export default class Grass {
     this.debug = this.game.debug
     this.time = this.game.time
 
+    this.baseColor = "#4d962a"
+    this.tipColor = "#89db56"
+
     this.setGeometry()
     this.setMaterial()
     this.setMesh()
@@ -86,8 +89,8 @@ export default class Grass {
         {
           uBladeWidth: { value: 0.1 },
           uBladeHeight: { value: 0.6 },
-          uBaseColor: { value: new THREE.Color(0.1, 0.3, 0.1) },
-          uTipColor: { value: new THREE.Color(0.3, 0.7, 0.3) },
+          uBaseColor: { value: new THREE.Color(this.baseColor) },
+          uTipColor: { value: new THREE.Color(this.tipColor) },
           uTime: { value: 0 },
           uNoiseTexture: { value: this.noiseTexture },
           uDensityMap: { value: this.densityMap },
@@ -124,8 +127,8 @@ export default class Grass {
     if (!this.debug.active) return
 
     this.debugParams = {
-      baseColor: "#3a7d1a",
-      tipColor: "#7ec850",
+      baseColor: this.baseColor,
+      tipColor: this.tipColor,
     }
 
     this.debugFolder = this.game.debugFolder.addFolder({
