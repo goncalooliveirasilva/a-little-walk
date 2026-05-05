@@ -1,3 +1,5 @@
+#include <fog_pars_vertex>
+
 uniform float uBigWavesElevation;
 uniform vec2 uBigWavesFrequency;
 uniform float uTime;
@@ -113,7 +115,9 @@ void main() {
     // Varying
     vElevation = elevation;
 
-    vec4 viewPosition = viewMatrix * modelPosition;
-    vec4 projectedPosition = projectionMatrix * viewPosition;
-    gl_Position = projectedPosition;
+    // Fog needs this
+    vec4 mvPosition = viewMatrix * modelPosition;
+
+    gl_Position = projectionMatrix * mvPosition;
+    #include <fog_vertex>
 }

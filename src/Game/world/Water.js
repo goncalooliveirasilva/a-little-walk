@@ -27,20 +27,24 @@ export default class Water {
     this.material = new THREE.ShaderMaterial({
       vertexShader,
       fragmentShader,
-      uniforms: {
-        uBigWavesElevation: { value: 0.125 },
-        uBigWavesFrequency: { value: new THREE.Vector2(0.29, 0.5) },
-        uTime: { value: 0 },
-        uBigWavesSpeed: { value: 0.52 },
-        uDepthColor: { value: new THREE.Color(this.depthColor) },
-        uSurfaceColor: { value: new THREE.Color(this.surfaceColor) },
-        uColorOffset: { value: 0.1 },
-        uColorMultiplier: { value: 5 },
-        uSmallWavesElevation: { value: 0.18 },
-        uSmallWavesFrequency: { value: 0.86 },
-        uSmallWavesSpeed: { value: 0.25 },
-        uSmallIterations: { value: 4.0 },
-      },
+      fog: true,
+      uniforms: THREE.UniformsUtils.merge([
+        THREE.UniformsLib.fog,
+        {
+          uBigWavesElevation: { value: 0.125 },
+          uBigWavesFrequency: { value: new THREE.Vector2(0.29, 0.5) },
+          uTime: { value: 0 },
+          uBigWavesSpeed: { value: 0.52 },
+          uDepthColor: { value: new THREE.Color(this.depthColor) },
+          uSurfaceColor: { value: new THREE.Color(this.surfaceColor) },
+          uColorOffset: { value: 0.1 },
+          uColorMultiplier: { value: 5 },
+          uSmallWavesElevation: { value: 0.18 },
+          uSmallWavesFrequency: { value: 0.86 },
+          uSmallWavesSpeed: { value: 0.25 },
+          uSmallIterations: { value: 4.0 },
+        },
+      ]),
     })
   }
 

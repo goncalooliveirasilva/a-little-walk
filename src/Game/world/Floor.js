@@ -107,7 +107,10 @@ export default class Floor {
     this.material = new THREE.ShaderMaterial({
       vertexShader,
       fragmentShader,
-      uniforms: {
+      fog: true,
+      uniforms: THREE.UniformsUtils.merge([
+        THREE.UniformsLib.fog,
+        {
         uBaseColor: { value: new THREE.Color(this.baseColor) },
         uShoreColor: { value: new THREE.Color(this.shoreColor) },
         uDeepColor: { value: new THREE.Color(this.deepColor) },
@@ -115,7 +118,8 @@ export default class Floor {
         uDeepToShoreEnd: { value: -0.8 },
         uShoreToGrassStart: { value: -0.3 },
         uShoreToGrassEnd: { value: 0.3 },
-      },
+        },
+      ]),
     })
   }
 
