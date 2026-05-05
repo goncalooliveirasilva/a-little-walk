@@ -52,7 +52,7 @@ export default class Water {
     this.mesh = new THREE.Mesh(this.geometry, this.material)
     this.mesh.rotation.x = -Math.PI * 0.5
     // this.mesh.position.y = 5
-    this.mesh.position.set(-33.5, -0.8, 31)
+    this.mesh.position.set(-33.5, -0.4, 31)
     this.scene.add(this.mesh)
   }
 

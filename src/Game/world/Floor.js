@@ -20,7 +20,7 @@ export default class Floor {
     this.resources = this.game.resources
 
     this.baseColor = "#046504"
-    this.shoreColor = "#91800d"
+    this.shoreColor = "#43a110"
     this.deepColor = "#8B7355"
     this.heights = null
 
@@ -111,13 +111,13 @@ export default class Floor {
       uniforms: THREE.UniformsUtils.merge([
         THREE.UniformsLib.fog,
         {
-        uBaseColor: { value: new THREE.Color(this.baseColor) },
-        uShoreColor: { value: new THREE.Color(this.shoreColor) },
-        uDeepColor: { value: new THREE.Color(this.deepColor) },
-        uDeepToShoreStart: { value: -1.2 },
-        uDeepToShoreEnd: { value: -0.8 },
-        uShoreToGrassStart: { value: -0.3 },
-        uShoreToGrassEnd: { value: 0.3 },
+          uBaseColor: { value: new THREE.Color(this.baseColor) },
+          uShoreColor: { value: new THREE.Color(this.shoreColor) },
+          uDeepColor: { value: new THREE.Color(this.deepColor) },
+          uDeepToShoreStart: { value: -1.2 },
+          uDeepToShoreEnd: { value: -0.8 },
+          uShoreToGrassStart: { value: -0.3 },
+          uShoreToGrassEnd: { value: 0.3 },
         },
       ]),
     })
