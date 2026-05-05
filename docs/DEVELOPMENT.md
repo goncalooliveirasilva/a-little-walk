@@ -4,45 +4,51 @@ A visual timeline showing the progress of _A Little Walk_ over time.
 
 ---
 
-## 19 March 2026
+## 19th March 2026
 
-![Screenshot from 19 March 2026](./screenshots/development/19-03-2026.png)
-
----
-
-## 25 March 2026
-
-![Screenshot from 25 March 2026](./screenshots/development/25-03-2026.png)
+![Screenshot from 19th March 2026](./screenshots/development/19-03-2026.png)
 
 ---
 
-## 1 April 2026
+## 25th March 2026
 
-![Screenshot from 1 April 2026](./screenshots/development/01-04-2026.png)
-
----
-
-## 3 April 2026
-
-![Screenshot from 3 April 2026](./screenshots/development/03-04-2026.png)
+![Screenshot from 25th March 2026](./screenshots/development/25-03-2026.png)
 
 ---
 
-## 8 April 2026
+## 1st April 2026
 
-![Screenshot from 8 April 2026](./screenshots/development/08-04-2026.png)
-
----
-
-## 9 April 2026
-
-![Screenshot from 9 April 2026](./screenshots/development/09-04-2026.png)
+![Screenshot from 1st April 2026](./screenshots/development/01-04-2026.png)
 
 ---
 
-## 15 April 2026
+## 3rd April 2026
 
-![Screenshot from 15 April 2026](./screenshots/development/15-04-2026.png)
+![Screenshot from 3rd April 2026](./screenshots/development/03-04-2026.png)
+
+---
+
+## 8th April 2026
+
+![Screenshot from 8th April 2026](./screenshots/development/08-04-2026.png)
+
+---
+
+## 9th April 2026
+
+![Screenshot from 9th April 2026](./screenshots/development/09-04-2026.png)
+
+---
+
+## 15th April 2026
+
+![Screenshot from 15th April 2026](./screenshots/development/15-04-2026.png)
+
+---
+
+## 5th May 2026
+
+![Screenshot from 5th May 2026](./screenshots/development/05-05-2026.png)
 
 ---
 
