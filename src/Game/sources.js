@@ -59,4 +59,9 @@ export default [
     type: "gltfModel",
     path: "models/Birds/bird01.glb",
   },
+  {
+    name: "beehiveModel",
+    type: "gltfModel",
+    path: "models/Beehive/beehive01.glb",
+  },
 ]

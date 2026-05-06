@@ -13,6 +13,7 @@ import Fog from "./Fog"
 import Sky from "./Sky"
 import Water from "./Water"
 import Birds from "./Birds"
+import Beehive from "./Beehive"
 
 export default class World {
   constructor() {
@@ -56,6 +57,13 @@ export default class World {
 
       this.rocks = new Rocks({ positions: rocks })
       this.birds = new Birds({ x: 0, y: 8, z: 0 })
+      this.beehive = new Beehive({
+        ...trees02[10],
+        y: 3.4,
+        offsetX: -0.7,
+        offsetZ: 0.6,
+        scale: 0.4,
+      })
     })
 
     this.environment = new Environment()
@@ -75,5 +83,6 @@ export default class World {
     if (this.sky) this.sky.update()
     if (this.water) this.water.update()
     if (this.birds) this.birds.update()
+    if (this.beehive) this.beehive.update()
   }
 }
