@@ -115,7 +115,7 @@ export default class Floor {
           uShoreColor: { value: new THREE.Color(this.shoreColor) },
           uDeepColor: { value: new THREE.Color(this.deepColor) },
           uDeepToShoreStart: { value: -1.2 },
-          uDeepToShoreEnd: { value: -0.8 },
+          uDeepToShoreEnd: { value: 0 },
           uShoreToGrassStart: { value: -0.3 },
           uShoreToGrassEnd: { value: 0.3 },
         },

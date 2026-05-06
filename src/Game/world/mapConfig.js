@@ -21,6 +21,8 @@ export const trees01 = [
   { x: 47, z: 32, scale: 1.7 },
   { x: 24, z: 31, scale: 1.9 },
   { x: 35, z: 29, scale: 1.9 },
+  { x: 11, z: 37, scale: 1.4 },
+  { x: 10, z: 31.5, scale: 1.6 },
 ]
 
 export const trees02 = [
