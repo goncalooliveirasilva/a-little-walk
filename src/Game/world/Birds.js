@@ -66,9 +66,9 @@ export default class Birds {
 
     this.attractorAngle += delta * 0.15
     this.attractor.set(
-      this.origin.x + Math.cos(this.attractorAngle) * 40,
+      this.origin.x + Math.cos(this.attractorAngle) * 45,
       this.origin.y + Math.sin(this.attractorAngle * 0.4) * 3,
-      this.origin.z + Math.sin(this.attractorAngle) * 40,
+      this.origin.z + Math.sin(this.attractorAngle) * 45,
     )
 
     for (const bird of this.birds) {

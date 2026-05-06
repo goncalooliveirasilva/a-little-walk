@@ -31,15 +31,17 @@ export default class Beehive {
 
   setBees() {
     const positions = new Float32Array(this.beeCount * 3)
+    const colors = new Float32Array(this.beeCount * 3)
 
-    // Bee state: each bee orbits at its own angle, radius and speed
+    const yellow = new THREE.Color("#ffcc00")
+    const black = new THREE.Color("#111111")
+
     this.beeData = []
     for (let i = 0; i < this.beeCount; i++) {
       const r = 0.3 + Math.random() * this.swarm_radius
-      const theta = Math.random() * Math.PI * 2 // horizontal angle
-      const phi = Math.random() * Math.PI // vertical angle
-      const speed = 0.8 + Math.random() * 1.2 // orbit speed
-
+      const theta = Math.random() * Math.PI * 2
+      const phi = Math.random() * Math.PI
+      const speed = 0.8 + Math.random() * 1.2
       const wobbleAngle = Math.random() * Math.PI * 2
       const wobbleSpeed = 1.5 + Math.random() * 2
       this.beeData.push({ r, theta, phi, speed, wobbleAngle, wobbleSpeed })
@@ -49,15 +51,22 @@ export default class Beehive {
       positions[i * 3 + 1] = this.position.y + r * Math.cos(phi)
       positions[i * 3 + 2] =
         this.position.z + r * Math.sin(phi) * Math.sin(theta)
+
+      // 30% chance of being black
+      const c = Math.random() < 0.3 ? black : yellow
+      colors[i * 3 + 0] = c.r
+      colors[i * 3 + 1] = c.g
+      colors[i * 3 + 2] = c.b
     }
 
     const geometry = new THREE.BufferGeometry()
     geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3))
+    geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3))
 
     const material = new THREE.PointsMaterial({
-      color: "#ffcc00",
       size: 0.08,
       sizeAttenuation: true,
+      vertexColors: true,
     })
 
     this.bees = new THREE.Points(geometry, material)
