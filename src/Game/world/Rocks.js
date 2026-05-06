@@ -51,7 +51,7 @@ export default class Rocks {
         const pos = instances[i]
         const s = pos.scale
         matrix.compose(
-          new THREE.Vector3(pos.x, yOffset * s, pos.z),
+          new THREE.Vector3(pos.x, yOffset * s + (pos.y ?? 0), pos.z),
           new THREE.Quaternion().setFromEuler(
             new THREE.Euler(0, Math.random() * Math.PI * 2, 0),
           ),

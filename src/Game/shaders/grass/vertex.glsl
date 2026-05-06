@@ -39,8 +39,9 @@ void main() {
     vBladePos = bladeWorldPos.xz;
     vec3 offset = vec3(0.0);
 
-    // Sample density map (world position to 0-1 UV)
-    vec2 densityUV = bladeWorldPos.xz / uWorldSize + 0.5;
+    // Sample density map: swap X/Z to match heightMap texture orientation
+    vec2 rawUV = bladeWorldPos.xz / uWorldSize + 0.5;
+    vec2 densityUV = vec2(rawUV.y, rawUV.x);
     float density = texture2D(uDensityMap, densityUV).r;
 
     // Hide blade if density is too low
