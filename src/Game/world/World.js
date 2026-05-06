@@ -12,6 +12,7 @@ import { trees01, trees02, rocks } from "./mapConfig"
 import Fog from "./Fog"
 import Sky from "./Sky"
 import Water from "./Water"
+import Birds from "./Birds"
 
 export default class World {
   constructor() {
@@ -54,6 +55,7 @@ export default class World {
       })
 
       this.rocks = new Rocks({ positions: rocks })
+      this.birds = new Birds({ x: 0, y: 8, z: 0 })
     })
 
     this.environment = new Environment()
@@ -72,5 +74,6 @@ export default class World {
     if (this.trees02) this.trees02.update()
     if (this.sky) this.sky.update()
     if (this.water) this.water.update()
+    if (this.birds) this.birds.update()
   }
 }

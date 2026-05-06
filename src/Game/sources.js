@@ -54,4 +54,9 @@ export default [
     type: "gltfModel",
     path: "models/Rocks/rocks04.glb",
   },
+  {
+    name: "birdModel",
+    type: "gltfModel",
+    path: "models/Birds/bird01.glb",
+  },
 ]
