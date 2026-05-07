@@ -14,6 +14,7 @@ import Sky from "./Sky"
 import Water from "./Water"
 import Birds from "./Birds"
 import Beehive from "./Beehive"
+import Butterflies from "./Butterflies"
 
 export default class World {
   constructor() {
@@ -64,6 +65,14 @@ export default class World {
         offsetZ: 0.6,
         scale: 0.4,
       })
+      this.butterflies = new Butterflies({
+        x: 10,
+        z: 10,
+        radius: 6,
+        count: 6,
+        y: 1,
+        scale: 0.04,
+      })
     })
 
     this.environment = new Environment()
@@ -84,5 +93,6 @@ export default class World {
     if (this.water) this.water.update()
     if (this.birds) this.birds.update()
     if (this.beehive) this.beehive.update()
+    if (this.butterflies) this.butterflies.update()
   }
 }
