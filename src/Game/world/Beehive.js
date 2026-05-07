@@ -2,7 +2,7 @@ import * as THREE from "three"
 import Game from "../Game"
 
 const HANG_HEIGHT = 4
-const FOLLOW_THRESHOLD = 5
+const FOLLOW_THRESHOLD = 5.5
 
 export default class Beehive {
   constructor({ x, z, y = HANG_HEIGHT, offsetX = 0, offsetZ = 0, scale = 1 }) {
