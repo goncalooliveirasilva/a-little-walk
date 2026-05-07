@@ -2,6 +2,7 @@ import * as THREE from "three"
 import Game from "../Game"
 
 const HANG_HEIGHT = 4
+const FOLLOW_THRESHOLD = 5
 
 export default class Beehive {
   constructor({ x, z, y = HANG_HEIGHT, offsetX = 0, offsetZ = 0, scale = 1 }) {
@@ -13,6 +14,8 @@ export default class Beehive {
     this.swarm_radius = 1
 
     this.position = new THREE.Vector3(x + offsetX, y, z + offsetZ)
+    this.swarmCenter = this.position.clone()
+    this.followBlend = 0
     this.scale = scale
 
     this.setModel()
@@ -64,7 +67,7 @@ export default class Beehive {
     geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3))
 
     const material = new THREE.PointsMaterial({
-      size: 0.08,
+      size: 0.1,
       sizeAttenuation: true,
       vertexColors: true,
     })
@@ -75,6 +78,24 @@ export default class Beehive {
 
   update() {
     const delta = this.game.time.delta * 0.001
+
+    // Blend swarm center toward fox when close enough
+    const fox = this.game?.world?.fox?.model
+    if (fox) {
+      const dist = fox.position.distanceTo(this.position)
+      const targetBlend = Math.max(0, 1 - dist / FOLLOW_THRESHOLD)
+      this.followBlend = THREE.MathUtils.lerp(
+        this.followBlend,
+        targetBlend,
+        delta * 3,
+      )
+      this.swarmCenter.lerpVectors(
+        this.position,
+        fox.position,
+        this.followBlend,
+      )
+    }
+
     const positions = this.bees.geometry.attributes.position.array
 
     for (let i = 0; i < this.beeData.length; i++) {
@@ -84,13 +105,13 @@ export default class Beehive {
       bee.wobbleAngle += delta * bee.wobbleSpeed
 
       positions[i * 3 + 0] =
-        this.position.x + bee.r * Math.sin(bee.phi) * Math.cos(bee.theta)
+        this.swarmCenter.x + bee.r * Math.sin(bee.phi) * Math.cos(bee.theta)
       positions[i * 3 + 1] =
-        this.position.y +
+        this.swarmCenter.y +
         bee.r * Math.cos(bee.phi) +
         Math.sin(bee.wobbleAngle) * 0.15
       positions[i * 3 + 2] =
-        this.position.z + bee.r * Math.sin(bee.phi) * Math.sin(bee.theta)
+        this.swarmCenter.z + bee.r * Math.sin(bee.phi) * Math.sin(bee.theta)
     }
 
     this.bees.geometry.attributes.position.needsUpdate = true
