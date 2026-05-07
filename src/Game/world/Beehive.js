@@ -41,7 +41,7 @@ export default class Beehive {
       const r = 0.3 + Math.random() * this.swarm_radius
       const theta = Math.random() * Math.PI * 2
       const phi = Math.random() * Math.PI
-      const speed = 0.8 + Math.random() * 1.2
+      const speed = 0.8 + Math.random() * 3
       const wobbleAngle = Math.random() * Math.PI * 2
       const wobbleSpeed = 1.5 + Math.random() * 2
       this.beeData.push({ r, theta, phi, speed, wobbleAngle, wobbleSpeed })
