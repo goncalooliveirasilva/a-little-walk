@@ -8,7 +8,14 @@ import Environment from "./Environment"
 import Bush from "./Bushes"
 import Trees from "./Trees"
 import Rocks from "./Rocks"
-import { trees01, trees02, rocks } from "./mapConfig"
+import {
+  trees01,
+  trees02,
+  rocks,
+  woodenBeeHives,
+  beehive as beehiveConfig,
+  butterflies as butterfliesConfig,
+} from "./mapConfig"
 import Fog from "./Fog"
 import Sky from "./Sky"
 import Water from "./Water"
@@ -59,27 +66,11 @@ export default class World {
 
       this.rocks = new Rocks({ positions: rocks })
       this.birds = new Birds({ x: 0, y: 8, z: 0 })
-      this.beehive = new Beehive({
-        ...trees02[10],
-        y: 3.4,
-        offsetX: -0.7,
-        offsetZ: 0.6,
-        scale: 0.4,
-      })
-      this.woodenBeehive = new WoodenBeehive({
-        x: -5,
-        z: -5,
-        rotation: Math.PI * 0.25,
-      })
-
-      this.butterflies = new Butterflies({
-        x: 10,
-        z: 10,
-        radius: 6,
-        count: 6,
-        y: 1,
-        scale: 0.04,
-      })
+      this.beehive = new Beehive(beehiveConfig)
+      this.woodenBeehives = woodenBeeHives.map(
+        (config) => new WoodenBeehive(config),
+      )
+      this.butterflies = new Butterflies(butterfliesConfig)
     })
 
     this.environment = new Environment()

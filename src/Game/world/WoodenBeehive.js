@@ -2,7 +2,7 @@ import * as THREE from "three"
 import Game from "../Game"
 
 export default class WoodenBeehive {
-  constructor({ x, z, y = 0, rotation = 0, scale = 2 }) {
+  constructor({ x, z, y = 0, rotation = 0, scale = 1.3 }) {
     this.game = new Game()
     this.scene = this.game.scene
 

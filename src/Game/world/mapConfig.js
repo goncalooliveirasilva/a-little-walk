@@ -56,3 +56,29 @@ export const rocks = [
   { x: -45, y: -0.7, z: 45.3, scale: 1.2, type: 0 },
   { x: -42, y: -0.2, z: 47, scale: 0.9, type: 1 },
 ]
+
+export const woodenBeeHives = [
+  { x: -45, z: -19.3, rotation: 0 },
+  { x: -50.8, z: -18.4, rotation: Math.PI * 0.3 },
+  { x: -53.8, z: -12, rotation: Math.PI * 0.7 },
+  { x: -55.6, z: -15.3, rotation: Math.PI * 0.9 },
+  { x: -35.6, z: -17, rotation: Math.PI * 0.5 },
+  { x: -54, z: -5.5, rotation: Math.PI * 0.3 },
+  { x: -59.4, z: -9, rotation: Math.PI * 0.7 },
+]
+
+export const beehive = {
+  x: trees02[10].x - 0.7,
+  z: trees02[10].z + 0.6,
+  y: 3.4,
+  scale: 0.4,
+}
+
+export const butterflies = {
+  x: 10,
+  z: 10,
+  radius: 6,
+  count: 6,
+  y: 1,
+  scale: 0.04,
+}

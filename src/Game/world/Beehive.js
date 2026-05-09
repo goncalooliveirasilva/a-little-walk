@@ -5,7 +5,7 @@ const HANG_HEIGHT = 4
 const FOLLOW_THRESHOLD = 5.5
 
 export default class Beehive {
-  constructor({ x, z, y = HANG_HEIGHT, offsetX = 0, offsetZ = 0, scale = 1 }) {
+  constructor({ x, z, y = HANG_HEIGHT, scale = 1 }) {
     this.game = new Game()
     this.scene = this.game.scene
     this.resources = this.game.resources
@@ -13,7 +13,7 @@ export default class Beehive {
     this.beeCount = 50
     this.swarm_radius = 1
 
-    this.position = new THREE.Vector3(x + offsetX, y, z + offsetZ)
+    this.position = new THREE.Vector3(x, y, z)
     this.swarmCenter = this.position.clone()
     this.followBlend = 0
     this.scale = scale
