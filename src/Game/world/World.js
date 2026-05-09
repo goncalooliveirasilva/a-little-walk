@@ -13,6 +13,7 @@ import {
   trees02,
   rocks,
   woodenBeeHives,
+  bees as beesConfig,
   beehive as beehiveConfig,
   butterflies as butterfliesConfig,
 } from "./mapConfig"
@@ -23,6 +24,7 @@ import Birds from "./Birds"
 import Beehive from "./Beehive"
 import Butterflies from "./Butterflies"
 import WoodenBeehive from "./WoodenBeehive"
+import Bees from "./Bees"
 
 export default class World {
   constructor() {
@@ -70,6 +72,7 @@ export default class World {
       this.woodenBeehives = woodenBeeHives.map(
         (config) => new WoodenBeehive(config),
       )
+      this.bees = beesConfig.map((config) => new Bees(config))
       this.butterflies = new Butterflies(butterfliesConfig)
     })
 
@@ -91,6 +94,7 @@ export default class World {
     if (this.water) this.water.update()
     if (this.birds) this.birds.update()
     if (this.beehive) this.beehive.update()
+    if (this.bees) this.bees.forEach((b) => b.update())
     if (this.butterflies) this.butterflies.update()
   }
 }

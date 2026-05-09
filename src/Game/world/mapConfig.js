@@ -67,6 +67,16 @@ export const woodenBeeHives = [
   { x: -59.4, z: -9, rotation: Math.PI * 0.7 },
 ]
 
+export const bees = [
+  { x: -45, z: -19.3 },
+  { x: -50.8, z: -18.4 },
+  { x: -53.8, z: -12 },
+  { x: -55.6, z: -15.3 },
+  { x: -35.6, z: -17 },
+  { x: -54, z: -5.5 },
+  { x: -59.4, z: -9 },
+]
+
 export const beehive = {
   x: trees02[10].x - 0.7,
   z: trees02[10].z + 0.6,
