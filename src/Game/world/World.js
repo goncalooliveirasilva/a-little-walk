@@ -15,6 +15,7 @@ import Water from "./Water"
 import Birds from "./Birds"
 import Beehive from "./Beehive"
 import Butterflies from "./Butterflies"
+import WoodenBeehive from "./WoodenBeehive"
 
 export default class World {
   constructor() {
@@ -65,6 +66,12 @@ export default class World {
         offsetZ: 0.6,
         scale: 0.4,
       })
+      this.woodenBeehive = new WoodenBeehive({
+        x: -5,
+        z: -5,
+        rotation: Math.PI * 0.25,
+      })
+
       this.butterflies = new Butterflies({
         x: 10,
         z: 10,
