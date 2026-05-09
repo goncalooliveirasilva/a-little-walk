@@ -21,6 +21,10 @@ export const trees01 = [
   { x: 47, z: 32, scale: 1.7 },
   { x: 24, z: 31, scale: 1.9 },
   { x: 35, z: 29, scale: 1.9 },
+  { x: 11, z: 37, scale: 1.4 },
+  { x: 10, z: 31.5, scale: 1.6 },
+  { x: 46.7, z: 10.1, scale: 1.8 },
+  { x: 32.9, z: 11.6, scale: 1.7 },
 ]
 
 export const trees02 = [
@@ -29,8 +33,14 @@ export const trees02 = [
   { x: 32, z: 35, scale: 2.8 },
   { x: 25, z: 28, scale: 3.1 },
   { x: 23, z: 24, scale: 2.9 },
-  { x: 6, z: 36, scale: 3.2 },
-  { x: 7.7, z: 33, scale: 2.7 },
+  { x: 7.6, z: 42, scale: 3.2 },
+  { x: 12, z: 33, scale: 2.7 },
+  { x: 24, z: 38, scale: 3.1 },
+  { x: 36.5, z: 41.4, scale: 2.9 },
+  { x: 44.3, z: 24, scale: 2.4 },
+  { x: 40, z: 13, scale: 2.4 },
+  { x: 40, z: 13, scale: 2.4 },
+  { x: 50.7, z: 18.3, scale: 2.4 },
 ]
 
 export const rocks = [
@@ -42,4 +52,43 @@ export const rocks = [
   { x: 33, z: 18, scale: 1.0, type: 2 },
   { x: 18, z: 25, scale: 0.9, type: 3 },
   { x: -35, z: 46, scale: 0.9, type: 2 },
+  { x: -52, z: 38, scale: 0.9, type: 1 },
+  { x: -45, y: -0.7, z: 45.3, scale: 1.2, type: 0 },
+  { x: -42, y: -0.2, z: 47, scale: 0.9, type: 1 },
 ]
+
+export const woodenBeeHives = [
+  { x: -45, z: -19.3, rotation: 0 },
+  { x: -50.8, z: -18.4, rotation: Math.PI * 0.3 },
+  { x: -53.8, z: -12, rotation: Math.PI * 0.7 },
+  { x: -55.6, z: -15.3, rotation: Math.PI * 0.9 },
+  { x: -35.6, z: -17, rotation: Math.PI * 0.5 },
+  { x: -54, z: -5.5, rotation: Math.PI * 0.3 },
+  { x: -59.4, z: -9, rotation: Math.PI * 0.7 },
+]
+
+export const bees = [
+  { x: -45, z: -19.3 },
+  { x: -50.8, z: -18.4 },
+  { x: -53.8, z: -12 },
+  { x: -55.6, z: -15.3 },
+  { x: -35.6, z: -17 },
+  { x: -54, z: -5.5 },
+  { x: -59.4, z: -9 },
+]
+
+export const beehive = {
+  x: trees02[10].x - 0.7,
+  z: trees02[10].z + 0.6,
+  y: 3.4,
+  scale: 0.4,
+}
+
+export const butterflies = {
+  x: 10,
+  z: 10,
+  radius: 6,
+  count: 6,
+  y: 1,
+  scale: 0.04,
+}

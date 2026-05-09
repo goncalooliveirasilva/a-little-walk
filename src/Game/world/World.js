@@ -8,10 +8,23 @@ import Environment from "./Environment"
 import Bush from "./Bushes"
 import Trees from "./Trees"
 import Rocks from "./Rocks"
-import { trees01, trees02, rocks } from "./mapConfig"
+import {
+  trees01,
+  trees02,
+  rocks,
+  woodenBeeHives,
+  bees as beesConfig,
+  beehive as beehiveConfig,
+  butterflies as butterfliesConfig,
+} from "./mapConfig"
 import Fog from "./Fog"
 import Sky from "./Sky"
 import Water from "./Water"
+import Birds from "./Birds"
+import Beehive from "./Beehive"
+import Butterflies from "./Butterflies"
+import WoodenBeehive from "./WoodenBeehive"
+import Bees from "./Bees"
 
 export default class World {
   constructor() {
@@ -54,6 +67,13 @@ export default class World {
       })
 
       this.rocks = new Rocks({ positions: rocks })
+      this.birds = new Birds({ x: 0, y: 8, z: 0 })
+      this.beehive = new Beehive(beehiveConfig)
+      this.woodenBeehives = woodenBeeHives.map(
+        (config) => new WoodenBeehive(config),
+      )
+      this.bees = beesConfig.map((config) => new Bees(config))
+      this.butterflies = new Butterflies(butterfliesConfig)
     })
 
     this.environment = new Environment()
@@ -72,5 +92,9 @@ export default class World {
     if (this.trees02) this.trees02.update()
     if (this.sky) this.sky.update()
     if (this.water) this.water.update()
+    if (this.birds) this.birds.update()
+    if (this.beehive) this.beehive.update()
+    if (this.bees) this.bees.forEach((b) => b.update())
+    if (this.butterflies) this.butterflies.update()
   }
 }
