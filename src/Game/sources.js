@@ -54,4 +54,39 @@ export default [
     type: "gltfModel",
     path: "models/Rocks/rocks04.glb",
   },
+  {
+    name: "birdModel",
+    type: "gltfModel",
+    path: "models/Birds/bird01.glb",
+  },
+  {
+    name: "beehiveModel",
+    type: "gltfModel",
+    path: "models/Beehive/beehive01.glb",
+  },
+  {
+    name: "butterfly01Model",
+    type: "gltfModel",
+    path: "models/Butterflies/butterfly01.glb",
+  },
+  {
+    name: "butterfly02Model",
+    type: "gltfModel",
+    path: "models/Butterflies/butterfly02.glb",
+  },
+  {
+    name: "butterfly03Model",
+    type: "gltfModel",
+    path: "models/Butterflies/butterfly03.glb",
+  },
+  {
+    name: "butterfly04Model",
+    type: "gltfModel",
+    path: "models/Butterflies/butterfly04.glb",
+  },
+  {
+    name: "butterfly05Model",
+    type: "gltfModel",
+    path: "models/Butterflies/butterfly05.glb",
+  },
 ]
