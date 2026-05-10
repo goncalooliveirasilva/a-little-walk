@@ -45,7 +45,7 @@ export default class Flowers {
     return material
   }
 
-  createGroup({ texture, color = "#ffffff", positions, size = 0.5, y = 0.05 }) {
+  createGroup({ texture, color = "#ffffff", positions, size = 0.5, y = 0.4 }) {
     if (!positions.length) return
 
     const geometry = this.setGeometry(size)

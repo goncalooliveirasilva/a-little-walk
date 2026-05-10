@@ -80,11 +80,11 @@ export const bees = [
 export const flowers = [
   {
     texture: "flower01Texture",
-    color: "#ff6b6b",
+    color: "#f5e725",
     positions: [
-      { x: 5, z: 3, scale: 1 },
-      { x: 8, z: 7, scale: 0.8 },
-      { x: 3, z: 9, scale: 1.1 },
+      { x: 5, z: 3, scale: 5 },
+      { x: 8, z: 7, scale: 6 },
+      { x: 3, z: 9, scale: 6.5 },
     ],
   },
 ]
