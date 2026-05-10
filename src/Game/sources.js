@@ -99,4 +99,9 @@ export default [
     type: "texture",
     path: "textures/Flowers/flowers02.png",
   },
+  {
+    name: "flower03Texture",
+    type: "texture",
+    path: "textures/Flowers/flowers03.png",
+  },
 ]

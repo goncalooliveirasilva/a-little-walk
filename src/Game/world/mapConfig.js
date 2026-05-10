@@ -8,6 +8,12 @@ export const bushes = [
   { x: 45, z: 31, scale: 0.9 },
   { x: 35, z: 27, scale: 0.9 },
   { x: -36, z: 47, scale: 0.9 },
+  // garden bushes
+  { x: -45.6, z: -26.16, scale: 1 },
+  { x: -55.62, z: -23, scale: 0.9 },
+  { x: -43, z: 4.94, scale: 1.3 },
+  { x: -48.1, z: 7.36, scale: 1.1 },
+  { x: -34.64, z: 6.48, scale: 0.9 },
 ]
 
 export const trees01 = [
@@ -55,6 +61,8 @@ export const rocks = [
   { x: -52, z: 38, scale: 0.9, type: 1 },
   { x: -45, y: -0.7, z: 45.3, scale: 1.2, type: 0 },
   { x: -42, y: -0.2, z: 47, scale: 0.9, type: 1 },
+  // garden rocks
+  { x: -36.71, z: 4, scale: 0.9, type: 1 },
 ]
 
 export const woodenBeeHives = [
@@ -123,6 +131,17 @@ export const flowers = [
       { x: -59.1, z: -4.7, scale: 8 },
     ],
   },
+  {
+    texture: "flower03Texture",
+    color: "#f869f3",
+    positions: [
+      { x: -41.5, z: -5.4, scale: 6.5 },
+      { x: -36.1, z: -1.8, scale: 5 },
+      { x: -54.55, z: -17.83, scale: 7.5 },
+      { x: -32.32, z: -19.5, scale: 7 },
+      { x: -35.23, z: -26.35, scale: 8 },
+    ],
+  },
 ]
 
 export const beehive = {
@@ -132,11 +151,21 @@ export const beehive = {
   scale: 0.4,
 }
 
-export const butterflies = {
-  x: 10,
-  z: 10,
-  radius: 6,
-  count: 6,
-  y: 1,
-  scale: 0.04,
-}
+export const butterflies = [
+  {
+    x: 10,
+    z: 10,
+    radius: 6,
+    count: 6,
+    y: 1,
+    scale: 0.04,
+  },
+  {
+    x: -41.2,
+    z: -4,
+    radius: 7,
+    count: 7,
+    y: 1.2,
+    scale: 0.04,
+  },
+]

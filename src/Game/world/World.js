@@ -76,7 +76,9 @@ export default class World {
       )
       // TODO: pass positions to the constructor
       this.bees = beesConfig.map((config) => new Bees(config))
-      this.butterflies = new Butterflies(butterfliesConfig)
+      this.butterflies = butterfliesConfig.map(
+        (config) => new Butterflies(config),
+      )
       this.flowers = new Flowers(flowersConfig)
     })
 
@@ -99,7 +101,7 @@ export default class World {
     if (this.birds) this.birds.update()
     if (this.beehive) this.beehive.update()
     if (this.bees) this.bees.forEach((b) => b.update())
-    if (this.butterflies) this.butterflies.update()
+    if (this.butterflies) this.butterflies.forEach((b) => b.update())
     if (this.flowers) this.flowers.update()
   }
 }
