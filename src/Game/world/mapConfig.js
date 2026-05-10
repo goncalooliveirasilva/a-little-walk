@@ -77,6 +77,18 @@ export const bees = [
   { x: -59.4, z: -9 },
 ]
 
+export const flowers = [
+  {
+    texture: "flower01Texture",
+    color: "#ff6b6b",
+    positions: [
+      { x: 5, z: 3, scale: 1 },
+      { x: 8, z: 7, scale: 0.8 },
+      { x: 3, z: 9, scale: 1.1 },
+    ],
+  },
+]
+
 export const beehive = {
   x: trees02[10].x - 0.7,
   z: trees02[10].z + 0.6,

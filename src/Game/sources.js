@@ -65,6 +65,11 @@ export default [
     path: "models/Beehive/beehive01.glb",
   },
   {
+    name: "flower01Texture",
+    type: "texture",
+    path: "textures/Flowers/flowers01.png",
+  },
+  {
     name: "butterfly01Model",
     type: "gltfModel",
     path: "models/Butterflies/butterfly01.glb",

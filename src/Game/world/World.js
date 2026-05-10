@@ -16,6 +16,7 @@ import {
   bees as beesConfig,
   beehive as beehiveConfig,
   butterflies as butterfliesConfig,
+  flowers as flowersConfig,
 } from "./mapConfig"
 import Fog from "./Fog"
 import Sky from "./Sky"
@@ -25,6 +26,7 @@ import Beehive from "./Beehive"
 import Butterflies from "./Butterflies"
 import WoodenBeehive from "./WoodenBeehive"
 import Bees from "./Bees"
+import Flowers from "./Flowers"
 
 export default class World {
   constructor() {
@@ -72,8 +74,10 @@ export default class World {
       this.woodenBeehives = woodenBeeHives.map(
         (config) => new WoodenBeehive(config),
       )
+      // TODO: pass positions to the constructor
       this.bees = beesConfig.map((config) => new Bees(config))
       this.butterflies = new Butterflies(butterfliesConfig)
+      this.flowers = new Flowers(flowersConfig)
     })
 
     this.environment = new Environment()
@@ -96,5 +100,6 @@ export default class World {
     if (this.beehive) this.beehive.update()
     if (this.bees) this.bees.forEach((b) => b.update())
     if (this.butterflies) this.butterflies.update()
+    if (this.flowers) this.flowers.update()
   }
 }
