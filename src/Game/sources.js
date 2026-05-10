@@ -65,11 +65,6 @@ export default [
     path: "models/Beehive/beehive01.glb",
   },
   {
-    name: "flower01Texture",
-    type: "texture",
-    path: "textures/Flowers/flowers01.png",
-  },
-  {
     name: "butterfly01Model",
     type: "gltfModel",
     path: "models/Butterflies/butterfly01.glb",
@@ -93,5 +88,15 @@ export default [
     name: "butterfly05Model",
     type: "gltfModel",
     path: "models/Butterflies/butterfly05.glb",
+  },
+  {
+    name: "flower01Texture",
+    type: "texture",
+    path: "textures/Flowers/flowers01.png",
+  },
+  {
+    name: "flower02Texture",
+    type: "texture",
+    path: "textures/Flowers/flowers02.png",
   },
 ]

@@ -85,6 +85,42 @@ export const flowers = [
       { x: 5, z: 3, scale: 5 },
       { x: 8, z: 7, scale: 6 },
       { x: 3, z: 9, scale: 6.5 },
+      { x: -39.7, z: -17.4, scale: 7 },
+      { x: -42.3, z: -21.7, scale: 5.7 },
+      { x: -31.4, z: -16.2, scale: 6 },
+      { x: -49, z: -8.3, scale: 5.5 },
+    ],
+  },
+  {
+    texture: "flower01Texture",
+    color: "#fa3220",
+    positions: [
+      { x: -32.2, z: -24.1, scale: 5.5 },
+      { x: -52, z: -24.6, scale: 6.5 },
+      { x: -57.1, z: -11.4, scale: 7 },
+      { x: -41, z: -2.4, scale: 6 },
+    ],
+  },
+  {
+    texture: "flower01Texture",
+    color: "#20e8fa",
+    positions: [
+      { x: -45.75, z: -3, scale: 5 },
+      { x: -51.3, z: -0.48, scale: 8 },
+      { x: -32.8, z: -3.5, scale: 7 },
+      { x: -26.6, z: -18.9, scale: 6 },
+      { x: -38.45, z: -24.7, scale: 6.5 },
+    ],
+  },
+  {
+    texture: "flower02Texture",
+    color: "#ffffff",
+    positions: [
+      { x: -37.5, z: -5, scale: 6.5 },
+      { x: -35, z: -13.4, scale: 5 },
+      { x: -36.9, z: -20.6, scale: 7.5 },
+      { x: -50.36, z: -14.6, scale: 7 },
+      { x: -59.1, z: -4.7, scale: 8 },
     ],
   },
 ]

@@ -20,6 +20,13 @@ void main() {
     modelPosition.x += windOffset * uWindStrength;
     modelPosition.z += windOffset * uWindStrength * 0.5;
 
+    // Small bend
+    // distance with uv coordinates because they already go from 0.0 to 1.0
+    float distanceToCenter = length(vUv - vec2(0.5)); // [0.0, 0.5]
+    float normalizedDistance = distanceToCenter / 0.5; // [0.0, 1.0]
+    float elevation = max(0.0, 1.0 - normalizedDistance);
+    modelPosition.y += elevation * 0.25;
+
     // Fog needs this
     vec4 mvPosition = viewMatrix * modelPosition;
 

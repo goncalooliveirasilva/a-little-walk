@@ -17,7 +17,7 @@ export default class Flowers {
   }
 
   setGeometry(size) {
-    const geometry = new THREE.PlaneGeometry(size, size)
+    const geometry = new THREE.PlaneGeometry(size, size, 4, 4)
     geometry.rotateX(-Math.PI / 2)
     return geometry
   }
