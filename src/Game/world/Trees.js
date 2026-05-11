@@ -27,7 +27,7 @@ export default class Trees {
     this.scaleFactor = 1.2
 
     this.foliage = new Foliage({
-      planeCount: config.planeCount || 40,
+      planeCount: config.planeCount || 30,
       planeSize: config.planeSize || 1.2,
       minRadius: config.minRadius || 0.2,
       maxRadius: config.maxRadius || 0.8,

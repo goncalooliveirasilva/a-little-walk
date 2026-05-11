@@ -14,7 +14,7 @@ export default class Bush {
     this.colorDark = config.colorDark
 
     this.foliage = new Foliage({
-      planeCount: 30,
+      planeCount: 20,
       planeSize: 1.5,
       minRadius: 0.3,
       maxRadius: 1.0,

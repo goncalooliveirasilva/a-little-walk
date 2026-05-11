@@ -5,7 +5,7 @@ import foliageFragmentShader from "../shaders/foliage/fragment.glsl"
 
 export default class Foliage {
   constructor({
-    planeCount = 30,
+    planeCount = 20,
     planeSize = 1.5,
     minRadius = 0.3,
     maxRadius = 1.0,

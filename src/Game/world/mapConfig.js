@@ -84,6 +84,12 @@ export const rocks = [
   { x: -26.79, z: -29.65, scale: 0.8, type: 0 },
 ]
 
+export const fences = [{ x: 0, z: 0, scale: 1, type: 2, rotation: 0 }]
+
+export const trunks = [
+  //{ x: 0, z: 0, scale: 1, type: 0 }
+]
+
 export const woodenBeeHives = [
   { x: -45, z: -19.3, rotation: 0 },
   { x: -50.8, z: -18.4, rotation: Math.PI * 0.3 },

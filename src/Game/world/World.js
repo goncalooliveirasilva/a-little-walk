@@ -8,12 +8,16 @@ import Environment from "./Environment"
 import Bush from "./Bushes"
 import Trees from "./Trees"
 import Rocks from "./Rocks"
+import Fences from "./Fences"
+import Trunks from "./Trunks"
 import {
   bushes,
   bushes2,
   trees01,
   trees02,
   rocks,
+  fences,
+  trunks,
   woodenBeeHives,
   bees as beesConfig,
   beehive as beehiveConfig,
@@ -84,6 +88,8 @@ export default class World {
       })
 
       this.rocks = new Rocks({ positions: rocks })
+      this.fences = new Fences({ positions: fences })
+      this.trunks = new Trunks({ positions: trunks })
       this.birds = new Birds({ x: 0, y: 8, z: 0 })
       this.beehive = new Beehive(beehiveConfig)
       this.woodenBeehives = woodenBeeHives.map(

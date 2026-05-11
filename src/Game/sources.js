@@ -70,6 +70,26 @@ export default [
     path: "models/Beehive/beehive01.glb",
   },
   {
+    name: "fences01Model",
+    type: "gltfModel",
+    path: "models/Fences/fences01.glb",
+  },
+  {
+    name: "fences02Model",
+    type: "gltfModel",
+    path: "models/Fences/fences02.glb",
+  },
+  {
+    name: "fences03Model",
+    type: "gltfModel",
+    path: "models/Fences/fences03.glb",
+  },
+  {
+    name: "trunk01Model",
+    type: "gltfModel",
+    path: "models/Trunks/trunk01.glb",
+  },
+  {
     name: "butterfly01Model",
     type: "gltfModel",
     path: "models/Butterflies/butterfly01.glb",
