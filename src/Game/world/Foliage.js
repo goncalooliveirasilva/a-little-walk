@@ -77,20 +77,19 @@ export default class Foliage {
       vertexShader: foliageVertexShader,
       fragmentShader: foliageFragmentShader,
       side: THREE.DoubleSide,
-      uniforms: THREE.UniformsUtils.merge([
-        THREE.UniformsLib.fog,
-        THREE.UniformsLib.lights,
-        {
-          uColor: { value: new THREE.Color(this.color) },
-          uColorDark: { value: new THREE.Color(this.colorDark) },
-          uAlphaMap: { value: this.texture },
-          uAlphaTest: { value: 0.5 },
-          uTime: { value: 0 },
-          uNoiseTexture: { value: this.noiseTexture },
-          uWindStrength: { value: this.windStrength },
-          uWindSpeed: { value: this.windSpeed },
-        },
-      ]),
+      uniforms: {
+        // We have to clone in order to have the colors separated in the debug folder
+        ...THREE.UniformsUtils.clone(THREE.UniformsLib.fog),
+        ...THREE.UniformsUtils.clone(THREE.UniformsLib.lights),
+        uColor: { value: new THREE.Color(this.color) },
+        uColorDark: { value: new THREE.Color(this.colorDark) },
+        uAlphaMap: { value: this.texture },
+        uAlphaTest: { value: 0.5 },
+        uTime: { value: 0 },
+        uNoiseTexture: { value: this.noiseTexture },
+        uWindStrength: { value: this.windStrength },
+        uWindSpeed: { value: this.windSpeed },
+      },
       fog: true,
       lights: true,
     })

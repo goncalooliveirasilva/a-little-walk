@@ -12,7 +12,12 @@ export default [
   {
     name: "leafsTexture",
     type: "texture",
-    path: "textures/leafsTexture.png",
+    path: "textures/Leafs/leafs01.png",
+  },
+  {
+    name: "leafs02Texture",
+    type: "texture",
+    path: "textures/Leafs/leafs02.png",
   },
   {
     name: "tree01Model",

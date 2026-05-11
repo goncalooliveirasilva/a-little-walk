@@ -8,12 +8,21 @@ export const bushes = [
   { x: 45, z: 31, scale: 0.9 },
   { x: 35, z: 27, scale: 0.9 },
   { x: -36, z: 47, scale: 0.9 },
+  { x: -11.45, z: 29.11, scale: 0.9 },
+  { x: -13.25, z: 40.93, scale: 0.8 },
   // garden bushes
   { x: -45.6, z: -26.16, scale: 1 },
   { x: -55.62, z: -23, scale: 0.9 },
   { x: -43, z: 4.94, scale: 1.3 },
   { x: -48.1, z: 7.36, scale: 1.1 },
   { x: -34.64, z: 6.48, scale: 0.9 },
+]
+
+export const bushes2 = [
+  { x: -28.1, z: -21.38, scale: 0.9 },
+  { x: -45.1, z: -16.21, scale: 0.8 },
+  { x: -60.84, z: -14.17, scale: 1 },
+  { x: -56 - 5, z: -0.26, scale: 1 },
 ]
 
 export const trees01 = [
@@ -31,6 +40,8 @@ export const trees01 = [
   { x: 10, z: 31.5, scale: 1.6 },
   { x: 46.7, z: 10.1, scale: 1.8 },
   { x: 32.9, z: 11.6, scale: 1.7 },
+  { x: -13.76, z: 30.5, scale: 1.7 },
+  { x: -4.95, z: 45.78, scale: 1.9 },
 ]
 
 export const trees02 = [
@@ -47,6 +58,11 @@ export const trees02 = [
   { x: 40, z: 13, scale: 2.4 },
   { x: 40, z: 13, scale: 2.4 },
   { x: 50.7, z: 18.3, scale: 2.4 },
+  { x: -16.22, z: 45.72, scale: 2.2 },
+  { x: -21.72, z: 18, scale: 2.6 },
+  { x: -7.32, z: 28.13, scale: 2.3 },
+  { x: -12.6, z: 42.52, scale: 2 },
+  { x: -8.66, z: 31.51, scale: 1.6 },
 ]
 
 export const rocks = [
@@ -63,6 +79,9 @@ export const rocks = [
   { x: -42, y: -0.2, z: 47, scale: 0.9, type: 1 },
   // garden rocks
   { x: -36.71, z: 4, scale: 0.9, type: 1 },
+  { x: -42.1, z: -28.9, scale: 0.9, type: 3 },
+  { x: -49.83, z: -29.33, scale: 0.8, type: 2 },
+  { x: -26.79, z: -29.65, scale: 0.8, type: 0 },
 ]
 
 export const woodenBeeHives = [

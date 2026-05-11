@@ -9,6 +9,8 @@ import Bush from "./Bushes"
 import Trees from "./Trees"
 import Rocks from "./Rocks"
 import {
+  bushes,
+  bushes2,
   trees01,
   trees02,
   rocks,
@@ -42,7 +44,20 @@ export default class World {
       this.fox = new Fox()
       this.game.camera.setTarget(this.fox.model)
       this.grass = new Grass()
-      this.bush = new Bush()
+      this.bush = new Bush({
+        texture: null,
+        positions: bushes,
+        color: "#c8e210",
+        colorDark: "#6c8f00",
+        name: "Bushes",
+      })
+      this.bush2 = new Bush({
+        texture: "leafs02Texture",
+        positions: bushes2,
+        color: "#ebc211",
+        colorDark: "#5f3c0d",
+        name: "Bushes 02",
+      })
 
       // Trees
       this.trees01 = new Trees({
@@ -94,6 +109,7 @@ export default class World {
     if (this.fox) this.fox.update()
     if (this.grass) this.grass.update()
     if (this.bush) this.bush.update()
+    if (this.bush2) this.bush2.update()
     if (this.trees01) this.trees01.update()
     if (this.trees02) this.trees02.update()
     if (this.sky) this.sky.update()
