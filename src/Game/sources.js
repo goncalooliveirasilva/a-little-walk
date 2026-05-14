@@ -85,9 +85,14 @@ export default [
     path: "models/Fences/fences03.glb",
   },
   {
-    name: "trunk01Model",
+    name: "fences04Model",
     type: "gltfModel",
-    path: "models/Trunks/trunk01.glb",
+    path: "models/Fences/fences04.glb",
+  },
+  {
+    name: "fences05Model",
+    type: "gltfModel",
+    path: "models/Fences/fences05.glb",
   },
   {
     name: "butterfly01Model",

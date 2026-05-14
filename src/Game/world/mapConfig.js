@@ -16,6 +16,7 @@ export const bushes = [
   { x: -43, z: 4.94, scale: 1.3 },
   { x: -48.1, z: 7.36, scale: 1.1 },
   { x: -34.64, z: 6.48, scale: 0.9 },
+  { x: -22.93, z: -26.1, scale: 1.1 },
 ]
 
 export const bushes2 = [
@@ -23,6 +24,7 @@ export const bushes2 = [
   { x: -45.1, z: -16.21, scale: 0.8 },
   { x: -60.84, z: -14.17, scale: 1 },
   { x: -56 - 5, z: -0.26, scale: 1 },
+  { x: -25.38, z: -6.91, scale: 1 },
 ]
 
 export const trees01 = [
@@ -42,6 +44,9 @@ export const trees01 = [
   { x: 32.9, z: 11.6, scale: 1.7 },
   { x: -13.76, z: 30.5, scale: 1.7 },
   { x: -4.95, z: 45.78, scale: 1.9 },
+  { x: -7.34, z: -32.53, scale: 1.6 },
+  { x: -13.93, z: -36.36, scale: 2 },
+  { x: -4.12, z: -35.82, scale: 1.7 },
 ]
 
 export const trees02 = [
@@ -63,6 +68,18 @@ export const trees02 = [
   { x: -7.32, z: 28.13, scale: 2.3 },
   { x: -12.6, z: 42.52, scale: 2 },
   { x: -8.66, z: 31.51, scale: 1.6 },
+  { x: -29.31, z: 4.9, scale: 1.7 },
+  { x: -53.7, z: 11.84, scale: 1.8 },
+  { x: -56.2, z: 15.7, scale: 2 },
+  { x: -46.5, z: 49.27, scale: 2.7 },
+  { x: -48.58, z: 45.36, scale: 3.2 },
+  { x: -34.77, z: 55.21, scale: 3 },
+  { x: -7.33, z: -50.35, scale: 2.3 },
+  { x: -15.95, z: -50.42, scale: 2.7 },
+  { x: 2.43, z: -50.7, scale: 2.3 },
+  { x: 4.97, z: -53.54, scale: 2.3 },
+  { x: -66.36, z: 8.8, scale: 2.3 },
+  { x: -60.72, z: 25.1, scale: 2.6 },
 ]
 
 export const rocks = [
@@ -84,10 +101,14 @@ export const rocks = [
   { x: -26.79, z: -29.65, scale: 0.8, type: 0 },
 ]
 
-export const fences = [{ x: 0, z: 0, scale: 1, type: 2, rotation: 0 }]
-
-export const trunks = [
-  //{ x: 0, z: 0, scale: 1, type: 0 }
+export const fences = [
+  { x: -57.25, z: -27.03, scale: 1, type: 0, rotation: -Math.PI * 0.3 },
+  { x: -59.13, z: -20.2, scale: 1.1, type: 1, rotation: -Math.PI * 0.1 },
+  { x: -58.13, z: 5.66, scale: 1, type: 2, rotation: Math.PI * 0.2 },
+  { x: -65.68, z: -6.86, scale: 0.9, type: 1, rotation: -Math.PI * 0.05 },
+  { x: -22.3, z: -15.68, scale: 1.1, type: 3, rotation: -Math.PI * 0.05 },
+  { x: -22.84, z: -24.1, scale: 0.9, type: 2, rotation: Math.PI * 0.1 },
+  { x: -27.62, z: 0, scale: 1.2, type: 4, rotation: -Math.PI * 0.2 },
 ]
 
 export const woodenBeeHives = [

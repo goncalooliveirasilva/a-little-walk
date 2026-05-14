@@ -11,6 +11,8 @@ export default class Fences {
       "fences01Model",
       "fences02Model",
       "fences03Model",
+      "fences04Model",
+      "fences05Model",
     ]
     this.positions = config.positions || []
 

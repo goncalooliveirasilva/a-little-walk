@@ -16,6 +16,7 @@ export default class Fog {
   }
 
   setFog() {
+    if (this.debug.active) return
     this.scene.fog = new THREE.Fog(this.color, this.near, this.far)
   }
 
@@ -31,7 +32,7 @@ export default class Fog {
       expanded: false,
     })
 
-    this.debugParams.enabled = true
+    this.debugParams.enabled = false
     this.debugFolder
       .addBinding(this.debugParams, "enabled", { label: "Enabled" })
       .on("change", (e) => {
@@ -52,18 +53,16 @@ export default class Fog {
         this.scene.fog.color.set(e.value)
       })
 
-    this.debugFolder.addBinding(this.scene.fog, "near", {
-      label: "Near",
-      min: 0,
-      max: 100,
-      step: 1,
-    })
+    this.debugFolder
+      .addBinding(this, "near", { label: "Near", min: 0, max: 100, step: 1 })
+      .on("change", (e) => {
+        if (this.scene.fog) this.scene.fog.near = e.value
+      })
 
-    this.debugFolder.addBinding(this.scene.fog, "far", {
-      label: "Far",
-      min: 10,
-      max: 200,
-      step: 1,
-    })
+    this.debugFolder
+      .addBinding(this, "far", { label: "Far", min: 10, max: 200, step: 1 })
+      .on("change", (e) => {
+        if (this.scene.fog) this.scene.fog.far = e.value
+      })
   }
 }
