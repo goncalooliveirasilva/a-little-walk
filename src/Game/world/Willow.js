@@ -147,6 +147,11 @@ export default class Willow {
   setDebug() {
     if (!this.debug.active) return
 
+    this.debugParams = {
+      color: this.foliage.color,
+      colorDark: this.foliage.colorDark,
+    }
+
     this.debugFolder = this.game.debugFolder.addFolder({
       title: this.name,
       expanded: false,
@@ -169,5 +174,17 @@ export default class Willow {
         step: 0.05,
       })
       .on("change", () => this.rebuildFoliage())
+
+    this.debugFolder
+      .addBinding(this.debugParams, "color", { label: "Color" })
+      .on("change", (e) => {
+        this.foliage.material.uniforms.uColor.value.set(e.value)
+      })
+
+    this.debugFolder
+      .addBinding(this.debugParams, "colorDark", { label: "Color dark" })
+      .on("change", (e) => {
+        this.foliage.material.uniforms.uColorDark.value.set(e.value)
+      })
   }
 }
