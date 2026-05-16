@@ -10,7 +10,7 @@ export default class Beehive {
     this.scene = this.game.scene
     this.resources = this.game.resources
 
-    this.beeCount = 50
+    this.beeCount = 70
     this.swarm_radius = 1
 
     this.position = new THREE.Vector3(x, y, z)

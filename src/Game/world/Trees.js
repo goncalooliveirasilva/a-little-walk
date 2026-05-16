@@ -13,6 +13,7 @@ export default class Trees {
     this.modelName = config.model || "tree01Model"
     this.positions = config.positions || []
     this.foliageHeight = config.foliageHeight || 3
+    this.rotation = config.rotation
     this.foliageScale = config.foliageScale || 0.65
     this.clusters = config.clusters || [
       { y: -0.5, x: -0.6, z: 0, scale: 1.1 },
@@ -62,15 +63,17 @@ export default class Trees {
     )
     this.trunkMesh.castShadow = true
 
+    this.rotations = []
     const matrix = new THREE.Matrix4()
     for (let i = 0; i < count; i++) {
       const pos = this.positions[i]
       const s = pos.scale
+      const angle =
+        this.rotation ?? Math.abs(pos.x * 127.1 + pos.z * 311.7) % (Math.PI * 2)
+      this.rotations.push(angle)
       matrix.compose(
         new THREE.Vector3(pos.x, 0, pos.z),
-        new THREE.Quaternion().setFromEuler(
-          new THREE.Euler(0, Math.random() * Math.PI * 2, 0),
-        ),
+        new THREE.Quaternion().setFromEuler(new THREE.Euler(0, angle, 0)),
         new THREE.Vector3(
           s * this.scaleFactor,
           s * this.scaleFactor,
@@ -101,18 +104,21 @@ export default class Trees {
     for (let i = 0; i < count; i++) {
       const pos = this.positions[i]
       const s = pos.scale
+      const angle = this.rotations[i]
+      const cos = Math.cos(angle)
+      const sin = Math.sin(angle)
 
       for (const cluster of this.clusters) {
         const fs = s * this.foliageScale * cluster.scale
+        const cx = cluster.x * cos - cluster.z * sin
+        const cz = cluster.x * sin + cluster.z * cos
         matrix.compose(
           new THREE.Vector3(
-            pos.x + cluster.x * s,
+            pos.x + cx * s,
             this.foliageHeight * s + cluster.y * s,
-            pos.z + cluster.z * s,
+            pos.z + cz * s,
           ),
-          new THREE.Quaternion().setFromEuler(
-            new THREE.Euler(0, Math.random() * Math.PI * 2, 0),
-          ),
+          new THREE.Quaternion().setFromEuler(new THREE.Euler(0, angle, 0)),
           new THREE.Vector3(fs, fs, fs),
         )
         this.foliageMesh.setMatrixAt(instanceIndex, matrix)

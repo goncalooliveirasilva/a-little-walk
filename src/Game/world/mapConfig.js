@@ -10,6 +10,8 @@ export const bushes = [
   { x: -36, z: 47, scale: 0.9 },
   { x: -11.45, z: 29.11, scale: 0.9 },
   { x: -13.25, z: 40.93, scale: 0.8 },
+  { x: -21.33, z: 17.15, scale: 0.8 },
+  { x: -22.32, z: 7.43, scale: 1 },
   // garden bushes
   { x: -45.6, z: -26.16, scale: 1 },
   { x: -55.62, z: -23, scale: 0.9 },
@@ -25,6 +27,13 @@ export const bushes2 = [
   { x: -60.84, z: -14.17, scale: 1 },
   { x: -56 - 5, z: -0.26, scale: 1 },
   { x: -25.38, z: -6.91, scale: 1 },
+]
+
+export const cherryTrees = [
+  { x: -37.6, z: -31.24, scale: 1.5 },
+  { x: -51.77, z: -27.88, scale: 1.3 },
+  { x: -55.12, z: -1.83, scale: 1.6 },
+  { x: -38.34, z: -13.34, scale: 1.4 },
 ]
 
 export const trees01 = [
@@ -190,9 +199,9 @@ export const flowers = [
 ]
 
 export const beehive = {
-  x: trees02[10].x - 0.7,
-  z: trees02[10].z + 0.6,
-  y: 3.4,
+  x: trees02[10].x + 0.6,
+  z: trees02[10].z - 0.7,
+  y: 3.6,
   scale: 0.4,
 }
 
