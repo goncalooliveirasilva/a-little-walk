@@ -64,7 +64,6 @@ export const trees02 = [
   { x: 40, z: 13, scale: 2.4 },
   { x: 50.7, z: 18.3, scale: 2.4 },
   { x: -16.22, z: 45.72, scale: 2.2 },
-  { x: -21.72, z: 18, scale: 2.6 },
   { x: -7.32, z: 28.13, scale: 2.3 },
   { x: -12.6, z: 42.52, scale: 2 },
   { x: -8.66, z: 31.51, scale: 1.6 },
@@ -196,6 +195,8 @@ export const beehive = {
   y: 3.4,
   scale: 0.4,
 }
+
+export const willows = [{ x: -22.72, z: 22.88, scale: 2.5 }]
 
 export const butterflies = [
   {

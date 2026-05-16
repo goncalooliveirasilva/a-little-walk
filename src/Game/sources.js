@@ -4,6 +4,7 @@ export default [
     type: "gltfModel",
     path: "models/Fox/glTF/Fox.gltf",
   },
+  // Textures
   {
     name: "perlinTexture",
     type: "texture",
@@ -20,6 +21,27 @@ export default [
     path: "textures/Leafs/leafs02.png",
   },
   {
+    name: "leafs03Texture",
+    type: "texture",
+    path: "textures/Leafs/leafs03.png",
+  },
+  {
+    name: "flower01Texture",
+    type: "texture",
+    path: "textures/Flowers/flowers01.png",
+  },
+  {
+    name: "flower02Texture",
+    type: "texture",
+    path: "textures/Flowers/flowers02.png",
+  },
+  {
+    name: "flower03Texture",
+    type: "texture",
+    path: "textures/Flowers/flowers03.png",
+  },
+  // Models
+  {
     name: "tree01Model",
     type: "gltfModel",
     path: "models/Trees/tree01.glb",
@@ -28,6 +50,16 @@ export default [
     name: "tree02Model",
     type: "gltfModel",
     path: "models/Trees/tree02.glb",
+  },
+  {
+    name: "tree03Model",
+    type: "gltfModel",
+    path: "models/Trees/tree03.glb",
+  },
+  {
+    name: "tree04Model",
+    type: "gltfModel",
+    path: "models/Trees/tree04.glb",
   },
   {
     name: "mapTexture",
@@ -118,20 +150,5 @@ export default [
     name: "butterfly05Model",
     type: "gltfModel",
     path: "models/Butterflies/butterfly05.glb",
-  },
-  {
-    name: "flower01Texture",
-    type: "texture",
-    path: "textures/Flowers/flowers01.png",
-  },
-  {
-    name: "flower02Texture",
-    type: "texture",
-    path: "textures/Flowers/flowers02.png",
-  },
-  {
-    name: "flower03Texture",
-    type: "texture",
-    path: "textures/Flowers/flowers03.png",
   },
 ]

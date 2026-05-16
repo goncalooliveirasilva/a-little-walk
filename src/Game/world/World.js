@@ -7,6 +7,7 @@ import Fox from "./Fox"
 import Environment from "./Environment"
 import Bush from "./Bushes"
 import Trees from "./Trees"
+import Willow from "./Willow"
 import Rocks from "./Rocks"
 import Fences from "./Fences"
 import {
@@ -21,6 +22,7 @@ import {
   beehive as beehiveConfig,
   butterflies as butterfliesConfig,
   flowers as flowersConfig,
+  willows,
 } from "./mapConfig"
 import Fog from "./Fog"
 import Sky from "./Sky"
@@ -85,6 +87,8 @@ export default class World {
         ],
       })
 
+      this.willow = new Willow({ name: "Willow", positions: willows })
+
       this.rocks = new Rocks({ positions: rocks })
       this.fences = new Fences({ positions: fences })
       this.birds = new Birds({ x: 0, y: 8, z: 0 })
@@ -122,5 +126,6 @@ export default class World {
     if (this.bees) this.bees.forEach((b) => b.update())
     if (this.butterflies) this.butterflies.forEach((b) => b.update())
     if (this.flowers) this.flowers.update()
+    if (this.willow) this.willow.update()
   }
 }
