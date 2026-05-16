@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -33,11 +41,10 @@ body {
 }
 
 .overlay-title {
-  font-family: "Courier New", monospace;
+  font-family: "Playfair Display", serif;
   font-size: 72px;
-  font-weight: bold;
-  letter-spacing: 8px;
-  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 3px;
   color: #fff;
   opacity: 0;
 }

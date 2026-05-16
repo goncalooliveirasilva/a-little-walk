@@ -4,6 +4,7 @@ export default [
     type: "gltfModel",
     path: "models/Fox/glTF/Fox.gltf",
   },
+  // Textures
   {
     name: "perlinTexture",
     type: "texture",
@@ -12,8 +13,34 @@ export default [
   {
     name: "leafsTexture",
     type: "texture",
-    path: "textures/leafsTexture.png",
+    path: "textures/Leafs/leafs01.png",
   },
+  {
+    name: "leafs02Texture",
+    type: "texture",
+    path: "textures/Leafs/leafs02.png",
+  },
+  {
+    name: "leafs03Texture",
+    type: "texture",
+    path: "textures/Leafs/leafs03.png",
+  },
+  {
+    name: "flower01Texture",
+    type: "texture",
+    path: "textures/Flowers/flowers01.png",
+  },
+  {
+    name: "flower02Texture",
+    type: "texture",
+    path: "textures/Flowers/flowers02.png",
+  },
+  {
+    name: "flower03Texture",
+    type: "texture",
+    path: "textures/Flowers/flowers03.png",
+  },
+  // Models
   {
     name: "tree01Model",
     type: "gltfModel",
@@ -23,6 +50,16 @@ export default [
     name: "tree02Model",
     type: "gltfModel",
     path: "models/Trees/tree02.glb",
+  },
+  {
+    name: "tree03Model",
+    type: "gltfModel",
+    path: "models/Trees/tree03.glb",
+  },
+  {
+    name: "tree04Model",
+    type: "gltfModel",
+    path: "models/Trees/tree04.glb",
   },
   {
     name: "mapTexture",
@@ -63,6 +100,31 @@ export default [
     name: "beehiveModel",
     type: "gltfModel",
     path: "models/Beehive/beehive01.glb",
+  },
+  {
+    name: "fences01Model",
+    type: "gltfModel",
+    path: "models/Fences/fences01.glb",
+  },
+  {
+    name: "fences02Model",
+    type: "gltfModel",
+    path: "models/Fences/fences02.glb",
+  },
+  {
+    name: "fences03Model",
+    type: "gltfModel",
+    path: "models/Fences/fences03.glb",
+  },
+  {
+    name: "fences04Model",
+    type: "gltfModel",
+    path: "models/Fences/fences04.glb",
+  },
+  {
+    name: "fences05Model",
+    type: "gltfModel",
+    path: "models/Fences/fences05.glb",
   },
   {
     name: "butterfly01Model",

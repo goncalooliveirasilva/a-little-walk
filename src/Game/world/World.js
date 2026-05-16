@@ -7,15 +7,23 @@ import Fox from "./Fox"
 import Environment from "./Environment"
 import Bush from "./Bushes"
 import Trees from "./Trees"
+import Willow from "./Willow"
 import Rocks from "./Rocks"
+import Fences from "./Fences"
 import {
+  bushes,
+  bushes2,
   trees01,
   trees02,
   rocks,
+  fences,
   woodenBeeHives,
   bees as beesConfig,
   beehive as beehiveConfig,
   butterflies as butterfliesConfig,
+  flowers as flowersConfig,
+  willows,
+  cherryTrees,
 } from "./mapConfig"
 import Fog from "./Fog"
 import Sky from "./Sky"
@@ -25,6 +33,7 @@ import Beehive from "./Beehive"
 import Butterflies from "./Butterflies"
 import WoodenBeehive from "./WoodenBeehive"
 import Bees from "./Bees"
+import Flowers from "./Flowers"
 
 export default class World {
   constructor() {
@@ -40,7 +49,20 @@ export default class World {
       this.fox = new Fox()
       this.game.camera.setTarget(this.fox.model)
       this.grass = new Grass()
-      this.bush = new Bush()
+      this.bush = new Bush({
+        texture: null,
+        positions: bushes,
+        color: "#c8e210",
+        colorDark: "#6c8f00",
+        name: "Bushes",
+      })
+      this.bush2 = new Bush({
+        texture: "leafs02Texture",
+        positions: bushes2,
+        color: "#ebc211",
+        colorDark: "#5f3c0d",
+        name: "Bushes 02",
+      })
 
       // Trees
       this.trees01 = new Trees({
@@ -66,14 +88,43 @@ export default class World {
         ],
       })
 
+      this.willow = new Willow({ name: "Willow", positions: willows })
+      this.cherryTrees = new Trees({
+        name: "Cherry Trees",
+        model: "tree03Model",
+        positions: cherryTrees,
+        color: "#ffb7c5",
+        colorDark: "#d45c7a",
+        foliageHeight: 3.4,
+        planeCount: 20,
+        rotation: 0,
+        clusters: [
+          { x: -0.4, y: 0.8, z: 0.0, scale: 1.0 },
+          { x: 0, y: 0, z: 0.1, scale: 0.95 },
+          { x: 0.6, y: -0.8, z: 0.5, scale: 1.0 },
+          { x: -0.3, y: -0.1, z: 1.3, scale: 1.1 },
+          { x: -0.6, y: -0.1, z: -0.5, scale: 1.1 },
+          { x: -0.3, y: -1.0, z: -0.3, scale: 1.05 },
+          { x: 0.3, y: 0.6, z: 0.5, scale: 1.05 },
+          { x: 0.3, y: 0.4, z: 1.2, scale: 1 },
+          { x: 0.3, y: 0.2, z: -0.3, scale: 1 },
+          { x: -0.5, y: -0.7, z: 0.7, scale: 1.15 },
+        ],
+      })
+
       this.rocks = new Rocks({ positions: rocks })
+      this.fences = new Fences({ positions: fences })
       this.birds = new Birds({ x: 0, y: 8, z: 0 })
       this.beehive = new Beehive(beehiveConfig)
       this.woodenBeehives = woodenBeeHives.map(
         (config) => new WoodenBeehive(config),
       )
+      // TODO: pass positions to the constructor
       this.bees = beesConfig.map((config) => new Bees(config))
-      this.butterflies = new Butterflies(butterfliesConfig)
+      this.butterflies = butterfliesConfig.map(
+        (config) => new Butterflies(config),
+      )
+      this.flowers = new Flowers(flowersConfig)
     })
 
     this.environment = new Environment()
@@ -88,13 +139,17 @@ export default class World {
     if (this.fox) this.fox.update()
     if (this.grass) this.grass.update()
     if (this.bush) this.bush.update()
+    if (this.bush2) this.bush2.update()
     if (this.trees01) this.trees01.update()
     if (this.trees02) this.trees02.update()
+    if (this.cherryTrees) this.cherryTrees.update()
     if (this.sky) this.sky.update()
     if (this.water) this.water.update()
     if (this.birds) this.birds.update()
     if (this.beehive) this.beehive.update()
     if (this.bees) this.bees.forEach((b) => b.update())
-    if (this.butterflies) this.butterflies.update()
+    if (this.butterflies) this.butterflies.forEach((b) => b.update())
+    if (this.flowers) this.flowers.update()
+    if (this.willow) this.willow.update()
   }
 }

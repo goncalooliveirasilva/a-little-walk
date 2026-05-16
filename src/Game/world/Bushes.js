@@ -1,30 +1,30 @@
 import * as THREE from "three"
 import Game from "../Game"
 import Foliage from "./Foliage"
-import { bushes } from "./mapConfig"
 
 export default class Bush {
-  constructor() {
+  constructor(config) {
     this.game = new Game()
     this.scene = this.game.scene
     this.resources = this.game.resources
     this.debug = this.game.debug
+    this.name = config.name
 
-    this.color = "#c8e210"
-    this.colorDark = "#6c8f00"
+    this.color = config.color
+    this.colorDark = config.colorDark
 
     this.foliage = new Foliage({
-      planeCount: 30,
+      planeCount: 20,
       planeSize: 1.5,
       minRadius: 0.3,
       maxRadius: 1.0,
       color: this.color,
       colorDark: this.colorDark,
-      texture: this.resources.items.leafsTexture,
+      texture: this.resources.items[config.texture ?? "leafsTexture"],
       noiseTexture: this.resources.items.perlinTexture,
     })
 
-    this.positions = bushes
+    this.positions = config.positions
 
     this.setMesh()
     this.setDebug()
@@ -71,7 +71,7 @@ export default class Bush {
     }
 
     this.debugFolder = this.game.debugFolder.addFolder({
-      title: "Bushes",
+      title: this.name,
       expanded: false,
     })
 
