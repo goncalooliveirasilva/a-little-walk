@@ -1,24 +1,28 @@
 import * as THREE from "three"
 import { mergeGeometries } from "three/examples/jsm/utils/BufferGeometryUtils.js"
-import foliageVertexShader from "../shaders/foliage/vertex.glsl"
-import foliageFragmentShader from "../shaders/foliage/fragment.glsl"
+import vertexShader from "../shaders/willow/vertex.glsl"
+import fragmentShader from "../shaders/willow/fragment.glsl"
 
-export default class Foliage {
+export default class WillowFoliage {
   constructor({
-    planeCount = 20,
-    planeSize = 1.5,
-    minRadius = 0.3,
-    maxRadius = 1.0,
-    color = "#4db34d",
-    colorDark = "#2a6e2a",
+    planeCount = 40,
+    planeWidth = 0.4,
+    planeHeight = 1.5,
+    hangLength = 1.5,
+    minRadius = 0.1,
+    maxRadius = 0.5,
+    color = "#7bc44c",
+    colorDark = "#3a7a1e",
     texture = null,
     noiseTexture = null,
-    windStrength = 1,
-    windSpeed = 0.06,
-    seed = 12345,
+    windStrength = 1.5,
+    windSpeed = 0.03,
+    seed = 54321,
   }) {
     this.planeCount = planeCount
-    this.planeSize = planeSize
+    this.planeWidth = planeWidth
+    this.planeHeight = planeHeight
+    this.hangLength = hangLength
     this.minRadius = minRadius
     this.maxRadius = maxRadius
     this.color = color
@@ -42,23 +46,20 @@ export default class Foliage {
     const planes = []
 
     for (let i = 0; i < this.planeCount; i++) {
-      const plane = new THREE.PlaneGeometry(this.planeSize, this.planeSize)
+      const plane = new THREE.PlaneGeometry(this.planeWidth, this.planeHeight)
 
-      const spherical = new THREE.Spherical(
-        this.minRadius +
-          this.seededRandom() * (this.maxRadius - this.minRadius),
-        Math.PI * 2 * this.seededRandom(),
-        Math.PI * this.seededRandom(),
-      )
-      const position = new THREE.Vector3().setFromSpherical(spherical)
+      const angle = this.seededRandom() * Math.PI * 2
+      const radius =
+        this.minRadius + this.seededRandom() * (this.maxRadius - this.minRadius)
+      const x = Math.cos(angle) * radius
+      const z = Math.sin(angle) * radius
+      // Hang downward from the cluster attachment point
+      const y = -(this.seededRandom() * this.hangLength)
 
-      const normal = position.clone().normalize()
-      const quaternion = new THREE.Quaternion()
-      quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), normal)
-      plane.applyQuaternion(quaternion)
-
-      plane.rotateZ(this.seededRandom() * Math.PI * 2)
-      plane.translate(position.x, position.y, position.z)
+      // Random rotation
+      const randomRotation = (this.seededRandom() - 0.5) * Math.PI
+      plane.rotateY(angle + Math.PI * 0.5 + randomRotation)
+      plane.translate(x, y, z)
 
       const rand = this.seededRandom()
       const randArray = new Float32Array(plane.attributes.position.count).fill(
@@ -74,17 +75,15 @@ export default class Foliage {
 
   setMaterial() {
     this.material = new THREE.ShaderMaterial({
-      vertexShader: foliageVertexShader,
-      fragmentShader: foliageFragmentShader,
+      vertexShader,
+      fragmentShader,
       side: THREE.DoubleSide,
       uniforms: {
-        // We have to clone in order to have the colors separated in the debug folder
         ...THREE.UniformsUtils.clone(THREE.UniformsLib.fog),
         ...THREE.UniformsUtils.clone(THREE.UniformsLib.lights),
         uColor: { value: new THREE.Color(this.color) },
         uColorDark: { value: new THREE.Color(this.colorDark) },
-        uAlphaMap: { value: this.texture },
-        uAlphaTest: { value: 0.5 },
+        uTexture: { value: this.texture },
         uTime: { value: 0 },
         uNoiseTexture: { value: this.noiseTexture },
         uWindStrength: { value: this.windStrength },

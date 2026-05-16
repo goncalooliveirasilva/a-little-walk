@@ -1,40 +1,48 @@
 import * as THREE from "three"
 import Game from "../Game"
-import Foliage from "./Foliage"
+import WillowFoliage from "./WillowFoliage"
 
-export default class Trees {
+export default class Willow {
   constructor(config = {}) {
     this.game = new Game()
     this.scene = this.game.scene
     this.resources = this.game.resources
     this.debug = this.game.debug
 
-    this.name = config.name || "Trees"
-    this.modelName = config.model || "tree01Model"
+    this.name = config.name || "Willow"
+    this.modelName = config.model || "tree04Model"
     this.positions = config.positions || []
-    this.foliageHeight = config.foliageHeight || 3
-    this.rotation = config.rotation
-    this.foliageScale = config.foliageScale || 0.65
+    this.foliageHeight = config.foliageHeight || 3.01
+    this.foliageScale = config.foliageScale || 1.02
     this.clusters = config.clusters || [
-      { y: -0.5, x: -0.6, z: 0, scale: 1.1 },
-      { y: -0.8, x: 0, z: -0.2, scale: 0.75 },
-      { y: 0.1, x: 0.1, z: -0.5, scale: 1.0 },
-      { y: -0.1, x: 0.4, z: 0.2, scale: 1.05 },
-      { y: -0.5, x: -0.2, z: -0.4, scale: 0.85 },
-      { y: -0.2, x: 0, z: 0.6, scale: 0.95 },
-      { y: -0.2, x: 0.6, z: -0.2, scale: 0.85 },
+      // Outer ring
+      { x: 1.4, y: 0.0, z: 0.0, scale: 1.0 },
+      { x: 1.0, y: 0.0, z: 1.0, scale: 0.9 },
+      { x: 0.0, y: 0.0, z: 1.4, scale: 1.0 },
+      { x: -1.0, y: 0.0, z: 1.0, scale: 0.9 },
+      { x: -1.4, y: 0.0, z: 0.0, scale: 1.0 },
+      { x: -1.0, y: 0.0, z: -1.0, scale: 0.9 },
+      { x: 0.0, y: 0.0, z: -1.4, scale: 1.0 },
+      { x: 1.0, y: 0.0, z: -1.0, scale: 0.9 },
+      // Inner ring (slightly higher)
+      { x: 0.6, y: 0.4, z: 0.6, scale: 0.85 },
+      { x: -0.6, y: 0.4, z: 0.6, scale: 0.85 },
+      { x: -0.6, y: 0.4, z: -0.6, scale: 0.85 },
+      { x: 0.6, y: 0.4, z: -0.6, scale: 0.85 },
     ]
 
-    this.scaleFactor = 1.2
+    this.scaleFactor = 1.0
 
-    this.foliage = new Foliage({
-      planeCount: config.planeCount || 30,
-      planeSize: config.planeSize || 1.2,
-      minRadius: config.minRadius || 0.2,
-      maxRadius: config.maxRadius || 0.8,
-      color: config.color || "#db5309",
-      colorDark: config.colorDark || "#9c5d04",
-      texture: this.resources.items.leafsTexture,
+    this.foliage = new WillowFoliage({
+      planeCount: config.planeCount || 80,
+      planeWidth: config.planeWidth,
+      planeHeight: config.planeHeight,
+      hangLength: config.hangLength,
+      minRadius: config.minRadius || 1,
+      maxRadius: config.maxRadius,
+      color: config.color || "#16ed2f",
+      colorDark: config.colorDark || "#287308",
+      texture: this.resources.items.leafs03Texture,
       noiseTexture: this.resources.items.perlinTexture,
     })
 
@@ -63,17 +71,15 @@ export default class Trees {
     )
     this.trunkMesh.castShadow = true
 
-    this.rotations = []
     const matrix = new THREE.Matrix4()
     for (let i = 0; i < count; i++) {
       const pos = this.positions[i]
       const s = pos.scale
-      const angle =
-        this.rotation ?? Math.abs(pos.x * 127.1 + pos.z * 311.7) % (Math.PI * 2)
-      this.rotations.push(angle)
       matrix.compose(
         new THREE.Vector3(pos.x, 0, pos.z),
-        new THREE.Quaternion().setFromEuler(new THREE.Euler(0, angle, 0)),
+        new THREE.Quaternion().setFromEuler(
+          new THREE.Euler(0, Math.random() * Math.PI * 2, 0),
+        ),
         new THREE.Vector3(
           s * this.scaleFactor,
           s * this.scaleFactor,
@@ -104,21 +110,18 @@ export default class Trees {
     for (let i = 0; i < count; i++) {
       const pos = this.positions[i]
       const s = pos.scale
-      const angle = this.rotations[i]
-      const cos = Math.cos(angle)
-      const sin = Math.sin(angle)
 
       for (const cluster of this.clusters) {
         const fs = s * this.foliageScale * cluster.scale
-        const cx = cluster.x * cos - cluster.z * sin
-        const cz = cluster.x * sin + cluster.z * cos
         matrix.compose(
           new THREE.Vector3(
-            pos.x + cx * s,
+            pos.x + cluster.x * s,
             this.foliageHeight * s + cluster.y * s,
-            pos.z + cz * s,
+            pos.z + cluster.z * s,
           ),
-          new THREE.Quaternion().setFromEuler(new THREE.Euler(0, angle, 0)),
+          new THREE.Quaternion().setFromEuler(
+            new THREE.Euler(0, Math.random() * Math.PI * 2, 0),
+          ),
           new THREE.Vector3(fs, fs, fs),
         )
         this.foliageMesh.setMatrixAt(instanceIndex, matrix)
@@ -144,6 +147,11 @@ export default class Trees {
   setDebug() {
     if (!this.debug.active) return
 
+    this.debugParams = {
+      color: this.foliage.color,
+      colorDark: this.foliage.colorDark,
+    }
+
     this.debugFolder = this.game.debugFolder.addFolder({
       title: this.name,
       expanded: false,
@@ -153,7 +161,7 @@ export default class Trees {
       .addBinding(this, "foliageHeight", {
         label: "Foliage height",
         min: 0,
-        max: 10,
+        max: 15,
         step: 0.1,
       })
       .on("change", () => this.rebuildFoliage())
@@ -167,28 +175,16 @@ export default class Trees {
       })
       .on("change", () => this.rebuildFoliage())
 
-    // Per-cluster controls
-    this.clusters.forEach((cluster, index) => {
-      const clusterFolder = this.debugFolder.addFolder({
-        title: `Cluster ${index + 1}`,
-        expanded: false,
+    this.debugFolder
+      .addBinding(this.debugParams, "color", { label: "Color" })
+      .on("change", (e) => {
+        this.foliage.material.uniforms.uColor.value.set(e.value)
       })
 
-      clusterFolder
-        .addBinding(cluster, "x", { min: -3, max: 3, step: 0.1 })
-        .on("change", () => this.rebuildFoliage())
-
-      clusterFolder
-        .addBinding(cluster, "y", { min: -3, max: 3, step: 0.1 })
-        .on("change", () => this.rebuildFoliage())
-
-      clusterFolder
-        .addBinding(cluster, "z", { min: -3, max: 3, step: 0.1 })
-        .on("change", () => this.rebuildFoliage())
-
-      clusterFolder
-        .addBinding(cluster, "scale", { min: 0.1, max: 2, step: 0.05 })
-        .on("change", () => this.rebuildFoliage())
-    })
+    this.debugFolder
+      .addBinding(this.debugParams, "colorDark", { label: "Color dark" })
+      .on("change", (e) => {
+        this.foliage.material.uniforms.uColorDark.value.set(e.value)
+      })
   }
 }
