@@ -19,6 +19,7 @@ void main() {
 
     vec3 pos = position;
 
+    // Vertices higher up sway more in this case
     float heightFactor = smoothstep(-0.5, 1.0, pos.y);
 
     vec4 worldPos = instanceMatrix * vec4(pos, 1.0);
