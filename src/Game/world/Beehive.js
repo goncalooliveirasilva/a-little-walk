@@ -3,6 +3,9 @@ import Game from "../Game"
 
 const HANG_HEIGHT = 4
 const FOLLOW_THRESHOLD = 5.5
+const SOUND_OUTER_RADIUS = 15
+const SOUND_INNER_RADIUS = 3
+const SOUND_MAX_VOLUME = 0.05
 
 export default class Beehive {
   constructor({ x, z, y = HANG_HEIGHT, scale = 1 }) {
@@ -20,6 +23,31 @@ export default class Beehive {
 
     this.setModel()
     this.setBees()
+    this.setSound()
+  }
+
+  setSound() {
+    this.audio = new Audio("/sounds/bees/dragon-studio-beehive-asmr-482881.mp3")
+    this.audio.loop = true
+    this.audio.volume = 0
+    this._soundVolume = 0
+    this._soundStarted = false
+
+    this.audio
+      .play()
+      .then(() => {
+        this._soundStarted = true
+      })
+      .catch(() => {
+        document.addEventListener(
+          "click",
+          () => {
+            this.audio.play().catch(() => {})
+            this._soundStarted = true
+          },
+          { once: true },
+        )
+      })
   }
 
   setModel() {
@@ -115,5 +143,24 @@ export default class Beehive {
     }
 
     this.bees.geometry.attributes.position.needsUpdate = true
+
+    if (this._soundStarted && fox) {
+      const dist = fox.position.distanceTo(this.position)
+      let target = 0
+      if (dist < SOUND_OUTER_RADIUS) {
+        const t = Math.max(
+          0,
+          Math.min(
+            1,
+            (SOUND_OUTER_RADIUS - dist) /
+              (SOUND_OUTER_RADIUS - SOUND_INNER_RADIUS),
+          ),
+        )
+        target = t * t * (3 - 2 * t) * SOUND_MAX_VOLUME
+      }
+      this._soundVolume += (target - this._soundVolume) * 0.05
+      this.audio.volume =
+        this._soundVolume * this.game.soundManager.getMultiplier("bees")
+    }
   }
 }

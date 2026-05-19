@@ -23,7 +23,12 @@
       <h1 class="overlay-title" id="overlay-title">A Little Walk</h1>
       <p class="overlay-percent" id="overlay-percent">0%</p>
       <div class="overlay-controls" id="overlay-controls">
-        <p class="overlay-message">Click to start</p>
+        <div class="overlay-message-group">
+          <p class="overlay-message">Click to start</p>
+          <p class="overlay-sound-hint">
+            Turn on your sound for the best experience
+          </p>
+        </div>
         <div class="overlay-keys">
           <div class="key-group">
             <div class="key-row">
@@ -63,6 +68,43 @@
     </button>
 
     <div class="menu-panel" id="menu-panel">
+      <div class="menu-section">
+        <h2 class="menu-heading">Sound</h2>
+        <div class="sound-grid">
+          <span class="menu-key-desc">Ambience</span>
+          <button class="sound-toggle" id="sound-toggle-ambience">On</button>
+          <input
+            type="range"
+            class="sound-slider"
+            id="sound-volume-ambience"
+            min="0"
+            max="100"
+            value="100"
+          />
+
+          <span class="menu-key-desc">Bees</span>
+          <button class="sound-toggle" id="sound-toggle-bees">On</button>
+          <input
+            type="range"
+            class="sound-slider"
+            id="sound-volume-bees"
+            min="0"
+            max="100"
+            value="100"
+          />
+
+          <span class="menu-key-desc">Birds</span>
+          <button class="sound-toggle" id="sound-toggle-birds">On</button>
+          <input
+            type="range"
+            class="sound-slider"
+            id="sound-volume-birds"
+            min="0"
+            max="100"
+            value="100"
+          />
+        </div>
+      </div>
       <div class="menu-section">
         <h2 class="menu-heading">Controls</h2>
         <div class="menu-keys">
@@ -133,6 +175,54 @@
             target="_blank"
             rel="noopener noreferrer"
             >Khronos Group</a
+          >.
+        </p>
+        <p class="menu-text">
+          Bird flock sound by
+          <a
+            href="https://pixabay.com/users/soundsforyou-4861230/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Mikhail (soundsforyou)</a
+          >
+          via
+          <a
+            href="https://pixabay.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Pixabay</a
+          >.
+        </p>
+        <p class="menu-text">
+          Nature ambience sound by
+          <a
+            href="https://pixabay.com/users/u_vr5icvkppa-49666562/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >u_vr5icvkppa</a
+          >
+          via
+          <a
+            href="https://pixabay.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Pixabay</a
+          >.
+        </p>
+        <p class="menu-text">
+          Beehive ASMR sound by
+          <a
+            href="https://pixabay.com/users/dragon-studio-38165424/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >DRAGON-STUDIO</a
+          >
+          via
+          <a
+            href="https://pixabay.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Pixabay</a
           >.
         </p>
       </div>

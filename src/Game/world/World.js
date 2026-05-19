@@ -24,6 +24,7 @@ import {
   flowers as flowersConfig,
   willows,
   cherryTrees,
+  ruins as ruinsConfig,
 } from "./mapConfig"
 import Fog from "./Fog"
 import Sky from "./Sky"
@@ -34,6 +35,9 @@ import Butterflies from "./Butterflies"
 import WoodenBeehive from "./WoodenBeehive"
 import Bees from "./Bees"
 import Flowers from "./Flowers"
+import Ruins from "./Ruins"
+import BeeSound from "./BeeSound"
+import AmbienceSound from "./AmbienceSound"
 
 export default class World {
   constructor() {
@@ -125,6 +129,11 @@ export default class World {
         (config) => new Butterflies(config),
       )
       this.flowers = new Flowers(flowersConfig)
+      this.ruins = ruinsConfig.map((config) => new Ruins(config))
+
+      // Sounds
+      this.beeSound = new BeeSound()
+      this.ambienceSound = new AmbienceSound()
     })
 
     this.environment = new Environment()
@@ -151,5 +160,7 @@ export default class World {
     if (this.butterflies) this.butterflies.forEach((b) => b.update())
     if (this.flowers) this.flowers.update()
     if (this.willow) this.willow.update()
+    if (this.beeSound) this.beeSound.update()
+    if (this.ambienceSound) this.ambienceSound.update()
   }
 }

@@ -217,7 +217,7 @@ body {
   position: fixed;
   top: 80px;
   right: 24px;
-  width: 320px;
+  width: 460px;
   max-height: calc(100vh - 100px);
   overflow-y: auto;
   background: rgba(20, 20, 20, 0.6);
@@ -311,4 +311,60 @@ body {
 
 .menu-text a:hover {
   border-bottom-color: #fff;
+}
+
+/* Sound controls */
+.sound-grid {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 8px 12px;
+}
+
+.sound-toggle {
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  color: #fff;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  padding: 4px 10px;
+  cursor: pointer;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.sound-toggle:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.sound-toggle.off {
+  color: #555;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.sound-slider {
+  width: 120px;
+  accent-color: #fff;
+  cursor: pointer;
+}
+
+/* Overlay sound hint */
+.overlay-message-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.overlay-sound-hint {
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  color: #6f6f6f;
+  letter-spacing: 3px;
+  text-transform: uppercase;
 }

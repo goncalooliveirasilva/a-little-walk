@@ -13,6 +13,7 @@ import Stats from "stats.js"
 import sources from "./sources"
 import Overlay from "./Overlay"
 import Menu from "./Menu"
+import SoundManager from "./SoundManager"
 
 let instantce = null
 
@@ -44,6 +45,7 @@ export default class Game {
     this.time = new Time()
     this.input = new Input()
     this.scene = new THREE.Scene()
+    this.soundManager = new SoundManager()
     this.overlay = new Overlay()
     this.menu = new Menu()
     this.resources = new Resources(sources)
