@@ -24,6 +24,7 @@ import {
   flowers as flowersConfig,
   willows,
   cherryTrees,
+  ruins as ruinsConfig,
 } from "./mapConfig"
 import Fog from "./Fog"
 import Sky from "./Sky"
@@ -34,6 +35,7 @@ import Butterflies from "./Butterflies"
 import WoodenBeehive from "./WoodenBeehive"
 import Bees from "./Bees"
 import Flowers from "./Flowers"
+import Ruins from "./Ruins"
 
 export default class World {
   constructor() {
@@ -125,6 +127,7 @@ export default class World {
         (config) => new Butterflies(config),
       )
       this.flowers = new Flowers(flowersConfig)
+      this.ruins = new Ruins(ruinsConfig)
     })
 
     this.environment = new Environment()
