@@ -82,6 +82,9 @@ Created by [Gonçalo Silva](https://github.com/goncalooliveirasilva).
 - Fox model by [PixelMannen](https://opengameart.org/content/fox-and-shiba) (CC0)
 - Fox animations by [tomkranis](https://sketchfab.com/3d-models/low-poly-fox-by-pixelmannen-animated-371dea88d7e04a76af5763f2a36866bc) (CC BY 4.0)
 - glTF conversion by the [Khronos Group](https://github.com/KhronosGroup/glTF-Sample-Models/tree/master/2.0/Fox)
+- Beehive ASMR sound by [DRAGON-STUDIO](https://pixabay.com/users/dragon-studio-38165424/) via [Pixabay](https://pixabay.com/)
+- Nature ambience sound by [u_vr5icvkppa](https://pixabay.com/users/u_vr5icvkppa-49666562/) via [Pixabay](https://pixabay.com/)
+- Bird flock sound by [Mikhail (soundsforyou)](https://pixabay.com/users/soundsforyou-4861230/) via [Pixabay](https://pixabay.com/)
 
 ## Use of AI
 
