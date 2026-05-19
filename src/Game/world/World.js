@@ -127,7 +127,7 @@ export default class World {
         (config) => new Butterflies(config),
       )
       this.flowers = new Flowers(flowersConfig)
-      this.ruins = new Ruins(ruinsConfig)
+      this.ruins = ruinsConfig.map((config) => new Ruins(config))
     })
 
     this.environment = new Environment()

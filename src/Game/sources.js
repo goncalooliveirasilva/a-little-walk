@@ -26,6 +26,11 @@ export default [
     path: "textures/Leafs/leafs03.png",
   },
   {
+    name: "leafs04Texture",
+    type: "texture",
+    path: "textures/Leafs/leafs04.png",
+  },
+  {
     name: "flower01Texture",
     type: "texture",
     path: "textures/Flowers/flowers01.png",
@@ -39,6 +44,11 @@ export default [
     name: "flower03Texture",
     type: "texture",
     path: "textures/Flowers/flowers03.png",
+  },
+  {
+    name: "flower04Texture",
+    type: "texture",
+    path: "textures/Flowers/flowers04.png",
   },
   // Models
   {

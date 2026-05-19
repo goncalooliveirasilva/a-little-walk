@@ -9,18 +9,20 @@ export default class Ruins {
   constructor(config = {}) {
     this.game = new Game()
     this.scene = this.game.scene
+    this.debug = this.game.debug
     this.cx = config.x ?? 0
     this.cy = config.y ?? 0
     this.cz = config.z ?? 0
 
     this.material = new THREE.MeshStandardMaterial({
-      color: new THREE.Color("#9e8868"),
+      color: new THREE.Color("#a28c6a"),
       roughness: 1.0,
       metalness: 0.0,
     })
 
     this.buildBlocks(config.blocks ?? [])
     this.buildPillars(config.pillars ?? [])
+    this.setDebug()
   }
 
   buildBlocks(blocks) {
@@ -55,5 +57,22 @@ export default class Ruins {
       mesh.receiveShadow = true
       this.scene.add(mesh)
     })
+  }
+
+  setDebug() {
+    if (!this.debug.active) return
+
+    this.debugParams = { color: "#9e8868" }
+
+    const folder = this.game.debugFolder.addFolder({
+      title: "Ruins",
+      expanded: false,
+    })
+
+    folder
+      .addBinding(this.debugParams, "color", { label: "Block color" })
+      .on("change", (e) => {
+        this.material.color.set(e.value)
+      })
   }
 }
