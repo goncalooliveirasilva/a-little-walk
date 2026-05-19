@@ -52,7 +52,7 @@ export default class Overlay {
   // Wind Leaves
 
   startLeaves() {
-    this.leafInterval = setInterval(() => this.spawnLeaf(), 600)
+    this.leafInterval = setInterval(() => this.spawnLeaf(), 300)
   }
 
   spawnLeaf() {
@@ -82,7 +82,7 @@ export default class Overlay {
 
     const duration = (12 + Math.random() * 8) / s
 
-    // Wrapper moves diagonally top-left → bottom-right
+    // Wrapper moves diagonally top-left to bottom-right
     gsap.to(wrapper, {
       x: window.innerWidth + 60,
       y: window.innerHeight * (0.5 + Math.random() * 0.45),
