@@ -116,7 +116,8 @@ export default class Birds {
         }
 
         this._birdSoundVolume += (target - this._birdSoundVolume) * 0.05
-        this.birdAudio.volume = this._birdSoundVolume
+        this.birdAudio.volume =
+          this._birdSoundVolume * this.game.soundManager.getMultiplier("birds")
       }
     }
 

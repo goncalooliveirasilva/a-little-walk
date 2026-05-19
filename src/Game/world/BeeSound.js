@@ -4,7 +4,7 @@ const BEEHIVE_X = -49.7
 const BEEHIVE_Z = -13.8
 const OUTER_RADIUS = 28 // distance where sound starts
 const INNER_RADIUS = 5 // distance where sound reaches max volume
-const MAX_VOLUME = 0.2
+const MAX_VOLUME = 0.12
 
 export default class BeeSound {
   constructor() {
@@ -43,6 +43,7 @@ export default class BeeSound {
     }
 
     this.currentVolume += (target - this.currentVolume) * 0.05
-    this.audio.volume = this.currentVolume
+    this.audio.volume =
+      this.currentVolume * this.game.soundManager.getMultiplier("bees")
   }
 }

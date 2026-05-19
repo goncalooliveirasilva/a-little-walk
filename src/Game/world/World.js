@@ -161,5 +161,6 @@ export default class World {
     if (this.flowers) this.flowers.update()
     if (this.willow) this.willow.update()
     if (this.beeSound) this.beeSound.update()
+    if (this.ambienceSound) this.ambienceSound.update()
   }
 }
