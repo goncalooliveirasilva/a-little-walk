@@ -5,6 +5,7 @@ export default class Menu {
     this.isOpen = false
 
     this.button.addEventListener("click", () => this.toggle())
+    this.setSoundControls()
 
     // Close with Escape
     window.addEventListener("keydown", (e) => {
@@ -23,6 +24,24 @@ export default class Menu {
         this.close()
       }
     })
+  }
+
+  setSoundControls() {
+    for (const channel of ["ambience", "bees", "birds"]) {
+      const toggle = document.getElementById(`sound-toggle-${channel}`)
+      const slider = document.getElementById(`sound-volume-${channel}`)
+
+      toggle.addEventListener("click", () => {
+        const ch = window.game.soundManager.channels[channel]
+        ch.enabled = !ch.enabled
+        toggle.textContent = ch.enabled ? "On" : "Off"
+        toggle.classList.toggle("off", !ch.enabled)
+      })
+
+      slider.addEventListener("input", () => {
+        window.game.soundManager.channels[channel].volume = slider.value / 100
+      })
+    }
   }
 
   toggle() {

@@ -6,6 +6,10 @@ const BIRD_COUNT = 12
 const MAX_SPEED = 4
 const OFFSET_RADIUS = 4 // how far each bird drifts from the flock center
 
+const SOUND_OUTER_RADIUS = 50 // distance where bird sound starts
+const SOUND_INNER_RADIUS = 10 // distance where bird sound is at max volume
+const SOUND_MAX_VOLUME = 0.6
+
 export default class Birds {
   constructor(config = {}) {
     this.game = new Game()
@@ -19,6 +23,26 @@ export default class Birds {
 
     this.birds = []
     this.setBirds()
+    this.setBirdSound()
+  }
+
+  setBirdSound() {
+    this.birdAudio = new Audio(
+      "/sounds/birds/soundsforyou-flock-of-crows-ravens-cawing-129073.mp3",
+    )
+    this.birdAudio.loop = true
+    this.birdAudio.volume = 0
+    this._birdSoundVolume = 0
+    this._birdSoundReady = false
+
+    document.addEventListener(
+      "click",
+      () => {
+        this.birdAudio.play().catch(() => {})
+        this._birdSoundReady = true
+      },
+      { once: true },
+    )
   }
 
   setBirds() {
@@ -70,6 +94,32 @@ export default class Birds {
       this.origin.y + Math.sin(this.attractorAngle * 0.4) * 3,
       this.origin.z + Math.sin(this.attractorAngle) * 45,
     )
+
+    if (this._birdSoundReady) {
+      const fox = this.game.world?.fox?.model
+      if (fox) {
+        const dx = fox.position.x - this.attractor.x
+        const dz = fox.position.z - this.attractor.z
+        const dist = Math.sqrt(dx * dx + dz * dz)
+
+        let target = 0
+        if (dist < SOUND_OUTER_RADIUS) {
+          const t = Math.max(
+            0,
+            Math.min(
+              1,
+              (SOUND_OUTER_RADIUS - dist) /
+                (SOUND_OUTER_RADIUS - SOUND_INNER_RADIUS),
+            ),
+          )
+          target = t * t * (3 - 2 * t) * SOUND_MAX_VOLUME
+        }
+
+        this._birdSoundVolume += (target - this._birdSoundVolume) * 0.05
+        this.birdAudio.volume =
+          this._birdSoundVolume * this.game.soundManager.getMultiplier("birds")
+      }
+    }
 
     for (const bird of this.birds) {
       // Occasionally dip lower for a few seconds
