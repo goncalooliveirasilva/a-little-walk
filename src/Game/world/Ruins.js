@@ -10,12 +10,13 @@ export default class Ruins {
     this.game = new Game()
     this.scene = this.game.scene
     this.debug = this.game.debug
+    this.name = config.name ?? "Ruins"
     this.cx = config.x ?? 0
     this.cy = config.y ?? 0
     this.cz = config.z ?? 0
 
     this.material = new THREE.MeshStandardMaterial({
-      color: new THREE.Color("#a28c6a"),
+      color: new THREE.Color("#95866f"),
       roughness: 1.0,
       metalness: 0.0,
     })
@@ -65,7 +66,7 @@ export default class Ruins {
     this.debugParams = { color: "#9e8868" }
 
     const folder = this.game.debugFolder.addFolder({
-      title: "Ruins",
+      title: this.name,
       expanded: false,
     })
 

@@ -19,6 +19,12 @@ export const bushes = [
   { x: -48.1, z: 7.36, scale: 1.1 },
   { x: -34.64, z: 6.48, scale: 0.9 },
   { x: -22.93, z: -26.1, scale: 1.1 },
+  // ruin bushes
+  { x: 24.7, z: -35.25, scale: 1.1 },
+  { x: 35.65, z: -30.1, scale: 1.2 },
+  { x: 36.43, z: -37.14, scale: 1.3 },
+  { x: 46.46, z: -16.54, scale: 1.3 },
+  { x: 51.35, z: -6.13, scale: 1.2 },
 ]
 
 export const bushes2 = [
@@ -213,6 +219,7 @@ const P2 = Math.PI / 2 // rotation for the wall
 
 export const ruins = [
   {
+    name: "Ruins 01",
     x: 33,
     y: 0,
     z: -30,
@@ -281,6 +288,7 @@ export const ruins = [
     ],
   },
   {
+    name: "Ruins 02",
     x: 46,
     y: 0,
     z: -11,
