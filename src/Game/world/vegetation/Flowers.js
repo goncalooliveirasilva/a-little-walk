@@ -1,7 +1,7 @@
 import * as THREE from "three"
-import Game from "../Game"
-import vertexShader from "../shaders/flowers/vertex.glsl"
-import fragmentShader from "../shaders/flowers/fragment.glsl"
+import Game from "../../Game"
+import vertexShader from "../../shaders/flowers/vertex.glsl"
+import fragmentShader from "../../shaders/flowers/fragment.glsl"
 
 export default class Flowers {
   constructor(groups) {

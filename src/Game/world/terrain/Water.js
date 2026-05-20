@@ -1,7 +1,7 @@
 import * as THREE from "three"
-import Game from "../Game"
-import vertexShader from "../shaders/water/vertex.glsl"
-import fragmentShader from "../shaders/water/fragment.glsl"
+import Game from "../../Game"
+import vertexShader from "../../shaders/water/vertex.glsl"
+import fragmentShader from "../../shaders/water/fragment.glsl"
 
 export default class Water {
   constructor() {

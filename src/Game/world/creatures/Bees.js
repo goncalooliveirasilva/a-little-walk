@@ -1,5 +1,5 @@
 import * as THREE from "three"
-import Game from "../Game"
+import Game from "../../Game"
 
 const MAX_SPEED = 2.5
 

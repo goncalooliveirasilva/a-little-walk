@@ -1,7 +1,7 @@
 import * as THREE from "three"
-import Game from "../Game"
-import vertexShader from "../shaders/sky/vertex.glsl"
-import fragmentShader from "../shaders/sky/fragment.glsl"
+import Game from "../../Game"
+import vertexShader from "../../shaders/sky/vertex.glsl"
+import fragmentShader from "../../shaders/sky/fragment.glsl"
 
 export default class Sky {
   constructor() {

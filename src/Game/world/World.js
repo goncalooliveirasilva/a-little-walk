@@ -1,15 +1,5 @@
 import * as THREE from "three"
 import Game from "../Game"
-import Floor from "./Floor"
-// import Cube from "./Cube"
-import Grass from "./Grass"
-import Fox from "./Fox"
-import Environment from "./Environment"
-import Bush from "./Bushes"
-import Trees from "./Trees"
-import Willow from "./Willow"
-import Rocks from "./Rocks"
-import Fences from "./Fences"
 import {
   bushes,
   bushes2,
@@ -26,18 +16,39 @@ import {
   cherryTrees,
   ruins as ruinsConfig,
 } from "./mapConfig"
-import Fog from "./Fog"
-import Sky from "./Sky"
-import Water from "./Water"
-import Birds from "./Birds"
-import Beehive from "./Beehive"
-import Butterflies from "./Butterflies"
-import WoodenBeehive from "./WoodenBeehive"
-import Bees from "./Bees"
-import Flowers from "./Flowers"
-import Ruins from "./Ruins"
-import BeeSound from "./BeeSound"
-import AmbienceSound from "./AmbienceSound"
+
+// terrain
+import Floor from "./terrain/Floor"
+import Grass from "./terrain/Grass"
+import Water from "./terrain/Water"
+import Fog from "./terrain/Fog"
+
+// atmosphere
+import Sky from "./atmosphere/Sky"
+import Environment from "./atmosphere/Environment"
+
+// vegetation
+import Bush from "./vegetation/Bushes"
+import Trees from "./vegetation/Trees"
+import Willow from "./vegetation/Willow"
+import Flowers from "./vegetation/Flowers"
+
+// structures
+import Fences from "./structures/Fences"
+import Rocks from "./structures/Rocks"
+import Ruins from "./structures/Ruins"
+import Beehive from "./structures/Beehive"
+import WoodenBeehive from "./structures/WoodenBeehive"
+
+// creatures
+import Fox from "./creatures/Fox"
+import Birds from "./creatures/Birds"
+import Bees from "./creatures/Bees"
+import Butterflies from "./creatures/Butterflies"
+
+// sound
+import BeeSound from "./sound/BeeSound"
+import AmbienceSound from "./sound/AmbienceSound"
 
 export default class World {
   constructor() {
@@ -123,7 +134,7 @@ export default class World {
       this.woodenBeehives = woodenBeeHives.map(
         (config) => new WoodenBeehive(config),
       )
-      // TODO: pass positions to the constructor
+
       this.bees = beesConfig.map((config) => new Bees(config))
       this.butterflies = butterfliesConfig.map(
         (config) => new Butterflies(config),
@@ -140,11 +151,9 @@ export default class World {
     this.fog = new Fog()
     this.sky = new Sky()
     this.water = new Water()
-    // this.cube = new Cube()
   }
 
   update() {
-    // this.cube.update()
     if (this.fox) this.fox.update()
     if (this.grass) this.grass.update()
     if (this.bush) this.bush.update()

@@ -1,5 +1,5 @@
 import * as THREE from "three"
-import Game from "../Game"
+import Game from "../../Game"
 import Foliage from "./Foliage"
 
 export default class Bush {

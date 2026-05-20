@@ -1,8 +1,8 @@
 import * as THREE from "three"
 import * as CANNON from "cannon-es"
-import Game from "../Game"
-import vertexShader from "../shaders/floor/vertex.glsl"
-import fragmentShader from "../shaders/floor/fragment.glsl"
+import Game from "../../Game"
+import vertexShader from "../../shaders/floor/vertex.glsl"
+import fragmentShader from "../../shaders/floor/fragment.glsl"
 
 const PLANE_SIZE = 500
 const SEGMENTS = 512

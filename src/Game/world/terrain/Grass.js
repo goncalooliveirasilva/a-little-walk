@@ -1,7 +1,7 @@
 import * as THREE from "three"
-import Game from "../Game"
-import vertexShader from "../shaders/grass/vertex.glsl"
-import fragmentShader from "../shaders/grass/fragment.glsl"
+import Game from "../../Game"
+import vertexShader from "../../shaders/grass/vertex.glsl"
+import fragmentShader from "../../shaders/grass/fragment.glsl"
 
 export default class Grass {
   constructor() {

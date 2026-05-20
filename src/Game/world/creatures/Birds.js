@@ -1,6 +1,6 @@
 import * as THREE from "three"
 import { clone } from "three/addons/utils/SkeletonUtils.js"
-import Game from "../Game"
+import Game from "../../Game"
 
 const BIRD_COUNT = 12
 const MAX_SPEED = 4
