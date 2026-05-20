@@ -1,5 +1,5 @@
 import * as THREE from "three"
-import Game from "../Game"
+import Game from "../../Game"
 
 const BW = 1.4
 const BH = 0.7

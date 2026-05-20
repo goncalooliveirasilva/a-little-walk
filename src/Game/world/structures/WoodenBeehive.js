@@ -1,5 +1,5 @@
 import * as THREE from "three"
-import Game from "../Game"
+import Game from "../../Game"
 
 export default class WoodenBeehive {
   constructor({ x, z, y = 0, rotation = 0, scale = 1.3 }) {

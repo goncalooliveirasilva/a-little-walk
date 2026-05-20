@@ -1,7 +1,7 @@
 import * as THREE from "three"
 import { mergeGeometries } from "three/examples/jsm/utils/BufferGeometryUtils.js"
-import foliageVertexShader from "../shaders/foliage/vertex.glsl"
-import foliageFragmentShader from "../shaders/foliage/fragment.glsl"
+import foliageVertexShader from "../../shaders/foliage/vertex.glsl"
+import foliageFragmentShader from "../../shaders/foliage/fragment.glsl"
 
 export default class Foliage {
   constructor({

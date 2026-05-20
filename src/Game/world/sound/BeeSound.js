@@ -1,4 +1,4 @@
-import Game from "../Game"
+import Game from "../../Game"
 
 const BEEHIVE_X = -49.7
 const BEEHIVE_Z = -13.8

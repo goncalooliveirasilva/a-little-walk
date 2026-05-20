@@ -1,5 +1,5 @@
 import * as THREE from "three"
-import Game from "../Game"
+import Game from "../../Game"
 
 const HANG_HEIGHT = 4
 const FOLLOW_THRESHOLD = 5.5
