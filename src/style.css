@@ -6,6 +6,35 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Courier Prime";
+  src: url("/fonts/Courier_Prime/CourierPrime-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Courier Prime";
+  src: url("/fonts/Courier_Prime/CourierPrime-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Courier Prime";
+  src: url("/fonts/Courier_Prime/CourierPrime-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Courier Prime";
+  src: url("/fonts/Courier_Prime/CourierPrime-BoldItalic.ttf")
+    format("truetype");
+  font-weight: 700;
+  font-style: italic;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -22,6 +51,7 @@ body {
   top: 0;
   left: 0;
   outline: none;
+  touch-action: none;
 }
 
 /* Overlay */
@@ -54,7 +84,7 @@ body {
   bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
-  font-family: "Courier New", monospace;
+  font-family: "Courier Prime", monospace;
   font-size: 14px;
   color: #808080;
   letter-spacing: 3px;
@@ -78,7 +108,7 @@ body {
   position: absolute;
   bottom: 40px;
   left: 40px;
-  font-family: "Courier New", monospace;
+  font-family: "Courier Prime", monospace;
   font-size: 70px;
   font-weight: bold;
   color: #fff;
@@ -97,7 +127,7 @@ body {
 }
 
 .overlay-message {
-  font-family: "Courier New", monospace;
+  font-family: "Courier Prime", monospace;
   font-size: 18px;
   color: #888;
   letter-spacing: 4px;
@@ -143,7 +173,7 @@ body {
   border: 2px solid #555;
   border-radius: 6px;
   color: #ccc;
-  font-family: "Courier New", monospace;
+  font-family: "Courier Prime", monospace;
   font-size: 14px;
   font-weight: bold;
   letter-spacing: 1px;
@@ -154,7 +184,7 @@ body {
 }
 
 .key-label {
-  font-family: "Courier New", monospace;
+  font-family: "Courier Prime", monospace;
   font-size: 12px;
   color: #666;
   letter-spacing: 2px;
@@ -249,7 +279,7 @@ body {
 }
 
 .menu-heading {
-  font-family: "Courier New", monospace;
+  font-family: "Courier Prime", monospace;
   font-size: 14px;
   font-weight: bold;
   color: #fff;
@@ -270,7 +300,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: "Courier New", monospace;
+  font-family: "Courier Prime", monospace;
   font-size: 13px;
 }
 
@@ -291,7 +321,7 @@ body {
 }
 
 .menu-text {
-  font-family: "Courier New", monospace;
+  font-family: "Courier Prime", monospace;
   font-size: 12px;
   color: #bbb;
   line-height: 1.6;
@@ -322,7 +352,7 @@ body {
 }
 
 .sound-toggle {
-  font-family: "Courier New", monospace;
+  font-family: "Courier Prime", monospace;
   font-size: 11px;
   color: #fff;
   background: transparent;
@@ -353,6 +383,104 @@ body {
   cursor: pointer;
 }
 
+/* Mobile / desktop visibility */
+body:not(.is-mobile) .mobile-only {
+  display: none !important;
+}
+
+body.is-mobile .desktop-only {
+  display: none !important;
+}
+
+/* Joystick */
+#joystick-zone {
+  position: fixed;
+  bottom: 40px;
+  left: 40px;
+  width: 120px;
+  height: 120px;
+  z-index: 30;
+  touch-action: none;
+}
+
+#joystick-base {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+#joystick-thumb {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -24px;
+  margin-left: -24px;
+  transition: background 0.1s ease;
+  touch-action: none;
+}
+
+/* Run button */
+#run-button {
+  position: fixed;
+  bottom: 60px;
+  right: 50px;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-family: "Courier Prime", monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  z-index: 30;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+  transition:
+    background 0.1s ease,
+    border-color 0.1s ease;
+}
+
+#run-button.active {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .overlay-title {
+    font-size: 42px;
+  }
+
+  .overlay-controls {
+    gap: 60px;
+  }
+
+  .menu-panel {
+    width: calc(100vw - 48px);
+  }
+
+  .overlay-percent {
+    font-size: 48px;
+  }
+}
+
 /* Overlay sound hint */
 .overlay-message-group {
   display: flex;
@@ -362,7 +490,7 @@ body {
 }
 
 .overlay-sound-hint {
-  font-family: "Courier New", monospace;
+  font-family: "Courier Prime", monospace;
   font-size: 11px;
   color: #6f6f6f;
   letter-spacing: 3px;

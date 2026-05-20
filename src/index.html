@@ -24,12 +24,13 @@
       <p class="overlay-percent" id="overlay-percent">0%</p>
       <div class="overlay-controls" id="overlay-controls">
         <div class="overlay-message-group">
-          <p class="overlay-message">Click to start</p>
+          <p class="overlay-message desktop-only">Click to start</p>
+          <p class="overlay-message mobile-only">Tap to start</p>
           <p class="overlay-sound-hint">
             Turn on your sound for the best experience
           </p>
         </div>
-        <div class="overlay-keys">
+        <div class="overlay-keys desktop-only">
           <div class="key-group">
             <div class="key-row">
               <span class="key">W</span>
@@ -107,7 +108,7 @@
       </div>
       <div class="menu-section">
         <h2 class="menu-heading">Controls</h2>
-        <div class="menu-keys">
+        <div class="menu-keys desktop-only">
           <div class="menu-key-row">
             <span class="menu-key-name">WASD</span>
             <span class="menu-key-desc">Move</span>
@@ -129,9 +130,27 @@
             <span class="menu-key-desc">Release Mouse</span>
           </div>
         </div>
-        <p class="menu-text" style="margin-top: 12px">
+        <p class="menu-text desktop-only" style="margin-top: 12px">
           Click anywhere on the scene to capture the mouse again.
         </p>
+        <div class="menu-keys mobile-only">
+          <div class="menu-key-row">
+            <span class="menu-key-name">Joystick</span>
+            <span class="menu-key-desc">Move</span>
+          </div>
+          <div class="menu-key-row">
+            <span class="menu-key-name">RUN</span>
+            <span class="menu-key-desc">Sprint</span>
+          </div>
+          <div class="menu-key-row">
+            <span class="menu-key-name">Drag</span>
+            <span class="menu-key-desc">Camera</span>
+          </div>
+          <div class="menu-key-row">
+            <span class="menu-key-name">Pinch</span>
+            <span class="menu-key-desc">Zoom</span>
+          </div>
+        </div>
       </div>
 
       <div class="menu-section">

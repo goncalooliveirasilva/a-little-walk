@@ -2,6 +2,8 @@ import * as THREE from "three"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js"
 import Game from "./Game"
 
+const isMobile = "ontouchstart" in window || navigator.maxTouchPoints > 0
+
 export default class Camera {
   constructor() {
     this.game = new Game()
@@ -32,6 +34,9 @@ export default class Camera {
       this.setOrbitControls()
     } else {
       this.setMouseControls()
+      if (isMobile) {
+        this.setTouchControls()
+      }
     }
   }
 
@@ -81,6 +86,114 @@ export default class Camera {
         ),
       )
     })
+  }
+
+  setTouchControls() {
+    const SENSITIVITY = 0.005
+    let cameraTouch = null
+    let pinchTouch = null
+
+    window.addEventListener("touchstart", (e) => {
+      for (let i = 0; i < e.changedTouches.length; i++) {
+        const touch = e.changedTouches[i]
+        if (this.game.input._consumedTouchIds.has(touch.identifier)) continue
+        if (!cameraTouch) {
+          cameraTouch = {
+            id: touch.identifier,
+            lastX: touch.clientX,
+            lastY: touch.clientY,
+          }
+          this.game.input._consumedTouchIds.add(touch.identifier)
+        } else if (!pinchTouch) {
+          pinchTouch = {
+            id: touch.identifier,
+            lastX: touch.clientX,
+            lastY: touch.clientY,
+          }
+          this.game.input._consumedTouchIds.add(touch.identifier)
+          this._lastPinchDist = Math.hypot(
+            cameraTouch.lastX - pinchTouch.lastX,
+            cameraTouch.lastY - pinchTouch.lastY,
+          )
+        }
+      }
+    })
+
+    window.addEventListener(
+      "touchmove",
+      (e) => {
+        if (!cameraTouch) return
+
+        if (pinchTouch) {
+          let ct, pt
+          for (let i = 0; i < e.touches.length; i++) {
+            const t = e.touches[i]
+            if (t.identifier === cameraTouch.id) ct = t
+            if (t.identifier === pinchTouch.id) pt = t
+          }
+          if (ct && pt) {
+            const dist = Math.hypot(
+              ct.clientX - pt.clientX,
+              ct.clientY - pt.clientY,
+            )
+            if (this._lastPinchDist !== undefined) {
+              const delta = this._lastPinchDist - dist
+              this.spherical.distance = Math.max(
+                this.spherical.minDistance,
+                Math.min(
+                  this.spherical.maxDistance,
+                  this.spherical.distance + delta * 0.05,
+                ),
+              )
+            }
+            this._lastPinchDist = dist
+            cameraTouch.lastX = ct.clientX
+            cameraTouch.lastY = ct.clientY
+            pinchTouch.lastX = pt.clientX
+            pinchTouch.lastY = pt.clientY
+          }
+          return
+        }
+
+        for (let i = 0; i < e.changedTouches.length; i++) {
+          const touch = e.changedTouches[i]
+          if (touch.identifier === cameraTouch.id) {
+            const dx = touch.clientX - cameraTouch.lastX
+            const dy = touch.clientY - cameraTouch.lastY
+            this.spherical.theta -= dx * SENSITIVITY
+            this.spherical.phi = Math.max(
+              this.spherical.minPhi,
+              Math.min(
+                this.spherical.maxPhi,
+                this.spherical.phi - dy * SENSITIVITY,
+              ),
+            )
+            cameraTouch.lastX = touch.clientX
+            cameraTouch.lastY = touch.clientY
+          }
+        }
+      },
+      { passive: true },
+    )
+
+    const onTouchEnd = (e) => {
+      for (let i = 0; i < e.changedTouches.length; i++) {
+        const touch = e.changedTouches[i]
+        if (cameraTouch && touch.identifier === cameraTouch.id) {
+          this.game.input._consumedTouchIds.delete(cameraTouch.id)
+          cameraTouch = pinchTouch
+          pinchTouch = null
+          this._lastPinchDist = undefined
+        } else if (pinchTouch && touch.identifier === pinchTouch.id) {
+          this.game.input._consumedTouchIds.delete(pinchTouch.id)
+          pinchTouch = null
+          this._lastPinchDist = undefined
+        }
+      }
+    }
+
+    window.addEventListener("touchend", onTouchEnd)
+    window.addEventListener("touchcancel", onTouchEnd)
   }
 
   setTarget(target) {
