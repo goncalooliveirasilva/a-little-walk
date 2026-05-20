@@ -1,6 +1,8 @@
 import { gsap } from "gsap"
 import Game from "./Game"
 
+const isMobile = "ontouchstart" in window || navigator.maxTouchPoints > 0
+
 export default class Overlay {
   constructor() {
     this.game = new Game()
@@ -157,9 +159,13 @@ export default class Overlay {
           },
         })
 
-        this.element.addEventListener("click", () => this.start(), {
-          once: true,
-        })
+        const startHandler = () => {
+          this.element.removeEventListener("click", startHandler)
+          this.element.removeEventListener("touchend", startHandler)
+          this.start()
+        }
+        this.element.addEventListener("click", startHandler)
+        this.element.addEventListener("touchend", startHandler)
       },
     })
   }
@@ -168,14 +174,16 @@ export default class Overlay {
     this.stopGust()
     this.stopLeaves()
 
-    const canvas = document.querySelector(".webgl")
-    if (canvas) {
-      try {
-        const result = canvas.requestPointerLock()
-        if (result && typeof result.catch === "function") {
-          result.catch(() => {})
-        }
-      } catch (e) {}
+    if (!isMobile) {
+      const canvas = document.querySelector(".webgl")
+      if (canvas) {
+        try {
+          const result = canvas.requestPointerLock()
+          if (result && typeof result.catch === "function") {
+            result.catch(() => {})
+          }
+        } catch (e) {}
+      }
     }
 
     gsap.to([this.title, this.controls, this.credits], {
