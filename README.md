@@ -4,6 +4,8 @@ A low-poly 3D exploration game built with [Three.js](https://threejs.org/) as th
 
 **Play it here:** [a-little-walk.vercel.app](https://a-little-walk.vercel.app/)
 
+![Cover](./docs/screenshots/final/cover.png)
+
 ## About
 
 _A Little Walk_ is a peaceful exploration game where you control a fox wandering through an open world. There are no objectives, just exploration, and a quiet landscape to move through.
@@ -16,11 +18,11 @@ See the [development log](./docs/DEVELOPMENT.md) for screenshots of the project'
 
 ## Documentation
 
-| Milestone    | Description                                                                                                          | Links                                                                                                             |
-| ------------ | -------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| Proposal     | Initial concept: game idea, planned features, and inspiration.                                                       | [PDF](./docs/pdfs/proposal/project-proposal.pdf)                                                                  |
-| Intermediate | Mid-semester progress: implemented features so far, early screenshots, and technical notes.                          | [PDF](./docs/pdfs/intermediate/intermediate-pdf.pdf) / [Slides](./docs/pdfs/intermediate/intermediate-slides.pdf) |
-| Final        | Complete project overview: all features, shaders, animations, sound system, user interaction, and code organization. | [Slides](./docs/pdfs/final/final-slides.pdf)                                                                      |
+| Milestone    | Description                                                                                                                    | Links                                                                                                             |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- |
+| Proposal     | Initial concept: game idea, planned features, and inspiration.                                                                 | [PDF](./docs/pdfs/proposal/project-proposal.pdf)                                                                  |
+| Intermediate | Mid-semester progress: implemented features so far, early screenshots, and technical notes.                                    | [PDF](./docs/pdfs/intermediate/intermediate-pdf.pdf) / [Slides](./docs/pdfs/intermediate/intermediate-slides.pdf) |
+| Final        | Complete project overview: all features, shaders, textures, animations, sound system, user interaction, and code organization. | [Slides](./docs/pdfs/final/final-slides.pdf)                                                                      |
 
 ## Features
 
