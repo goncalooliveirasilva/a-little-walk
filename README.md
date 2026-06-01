@@ -2,7 +2,8 @@
 
 A low-poly 3D exploration game built with [Three.js](https://threejs.org/) as the final project for the Introduction to Computer Graphics course at the University of Aveiro (2026).
 
-**Play it here:** [a-little-walk.vercel.app](https://a-little-walk.vercel.app/)
+**Play it here:** [a-little-walk.vercel.app](https://a-little-walk.vercel.app/)  
+**Demo:** [YouTube](https://www.youtube.com/watch?v=Zj4uqgWfk7Y)
 
 ![Cover](./docs/screenshots/final/cover.png)
 
